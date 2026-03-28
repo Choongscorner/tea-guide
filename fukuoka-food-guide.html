@@ -1,0 +1,1138 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>후쿠오카 하카타 현지 맛집 가이드 – 4월 8~10일</title>
+<style>
+  :root {
+    --red-dark: #7a1a1a;
+    --red-mid: #a33030;
+    --gold: #B8860B;
+    --text: #1a1a1a;
+    --nav-h: 44px;
+    --g-light: rgba(255,255,255,0.94);
+    --g-dark: rgba(50,12,12,0.97);
+    --g-border: rgba(255,255,255,0.28);
+    --g-shadow: 0 8px 32px rgba(0,0,0,0.22);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Malgun Gothic','Apple SD Gothic Neo',sans-serif;
+    color: var(--text); min-height: 100vh;
+    background: transparent; font-size: 14px; line-height: 1.7;
+  }
+  body::before {
+    content: ''; position: fixed; top:0; left:0; width:100%; height:100%;
+    z-index: -1;
+    background:
+      radial-gradient(ellipse at 20% 20%, rgba(160,60,30,0.18) 0%, transparent 55%),
+      radial-gradient(ellipse at 80% 75%, rgba(120,40,20,0.15) 0%, transparent 50%),
+      linear-gradient(150deg, #140707 0%, #200e0e 35%, #180a0a 65%, #1a0d0d 100%);
+  }
+
+  /* NAV */
+  nav {
+    background: var(--g-dark);
+    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--g-border);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.40);
+    position: sticky; top:0; z-index:200; height:var(--nav-h); overflow:hidden;
+  }
+  nav ul {
+    display:flex; flex-wrap:nowrap; list-style:none; gap:2px;
+    padding:5px 12px; overflow-x:auto; -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+  }
+  nav ul::-webkit-scrollbar { display:none; }
+  nav a {
+    color:rgba(255,255,255,0.88); text-decoration:none;
+    font-size:12px; padding:6px 12px; border-radius:20px;
+    display:block; transition:background .2s; white-space:nowrap;
+  }
+  nav a:hover { background:rgba(255,255,255,0.18); color:#fff; }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, rgba(20,5,5,0.97) 0%, rgba(100,25,25,0.92) 55%, rgba(160,60,30,0.84) 100%);
+    color:#fff; padding:52px 20px 40px; text-align:center;
+    border-bottom:1px solid var(--g-border);
+  }
+  .hero h1 { font-size:24px; letter-spacing:1px; margin-bottom:8px; text-shadow:0 2px 12px rgba(0,0,0,.5); line-height:1.4; }
+  .hero p { font-size:13px; opacity:.82; margin-top:6px; }
+  .hero .badges { display:flex; justify-content:center; gap:8px; flex-wrap:wrap; margin-top:18px; }
+  .badge {
+    background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.25);
+    border-radius:20px; padding:4px 14px; font-size:11px; white-space:nowrap;
+  }
+  .schedule-bar {
+    display:flex; justify-content:center; flex-wrap:wrap; margin-top:20px;
+    border:1px solid rgba(255,255,255,0.2); border-radius:10px; overflow:hidden;
+    max-width:580px; margin-left:auto; margin-right:auto;
+  }
+  .sch-item {
+    flex:1; min-width:160px; padding:10px 14px;
+    border-right:1px solid rgba(255,255,255,0.18);
+    background:rgba(255,255,255,0.06);
+  }
+  .sch-item:last-child { border-right:none; }
+  .sch-date { font-size:11px; opacity:.7; margin-bottom:4px; }
+  .sch-note { font-size:12px; font-weight:bold; }
+
+  /* LAYOUT */
+  .container { max-width:1240px; margin:0 auto; padding:28px 16px; }
+
+  /* SECTION HEADER */
+  .section-header {
+    background:var(--g-dark); color:#fff; padding:12px 20px;
+    border-radius:10px 10px 0 0; display:flex; align-items:center; gap:10px;
+    border:1px solid var(--g-border); border-bottom:none; margin-top:36px;
+  }
+  .section-header h2 { font-size:17px; }
+  .section-header .sub { font-size:12px; opacity:.7; margin-left:4px; }
+  .section-body {
+    background:var(--g-light); border:1px solid var(--g-border);
+    border-top:none; border-radius:0 0 10px 10px;
+    box-shadow:var(--g-shadow);
+  }
+
+  /* RESTAURANT CARD GRID */
+  .rest-grid {
+    display:grid; grid-template-columns:repeat(auto-fill, minmax(340px,1fr));
+  }
+  .rest-card {
+    padding:22px 20px 24px;
+    border-bottom:1px solid rgba(200,170,170,0.35);
+    border-right:1px solid rgba(200,170,170,0.35);
+  }
+
+  /* Card header */
+  .rest-head { display:flex; align-items:flex-start; gap:10px; margin-bottom:14px; }
+  .rest-num {
+    display:inline-flex; align-items:center; justify-content:center;
+    width:28px; height:28px; border-radius:50%;
+    background:var(--red-dark); color:#fff;
+    font-size:13px; font-weight:bold; flex-shrink:0;
+  }
+  .rest-names { flex:1; }
+  .rest-ja { font-size:17px; font-weight:bold; color:var(--red-dark); line-height:1.3; }
+  .rest-phonetic { font-size:12px; color:#666; margin-top:2px; }
+  .rest-meaning { font-size:11px; color:#999; margin-top:1px; font-style:italic; }
+  .rest-category {
+    display:inline-block; padding:2px 10px; border-radius:12px;
+    font-size:11px; font-weight:bold; white-space:nowrap; margin-top:6px;
+    background:#fff3cd; color:#7a5800; border:1px solid #f0c050;
+  }
+
+  /* Food photo */
+  .food-photo {
+    width:100%; height:200px; object-fit:cover; border-radius:8px;
+    margin-bottom:14px; display:block;
+    background:#e8d0c8;
+  }
+
+  /* Info boxes */
+  .special-box {
+    background:rgba(180,60,20,0.07); border-left:3px solid var(--red-dark);
+    padding:8px 12px; border-radius:0 6px 6px 0;
+    font-size:12px; color:#333; line-height:1.65; margin-bottom:12px;
+  }
+  .warn-box {
+    background:rgba(200,150,0,0.09); border-left:3px solid var(--gold);
+    padding:8px 12px; border-radius:0 6px 6px 0;
+    font-size:12px; color:#555; line-height:1.65; margin-bottom:12px;
+  }
+  .enjoy-box {
+    background:rgba(30,80,30,0.07); border-left:3px solid #4a7a4a;
+    padding:8px 12px; border-radius:0 6px 6px 0;
+    font-size:12px; color:#333; line-height:1.65; margin-bottom:12px;
+  }
+
+  /* Info section */
+  .info-section { margin-bottom:12px; }
+  .info-title {
+    font-size:11px; font-weight:bold; color:var(--red-dark);
+    letter-spacing:.5px; border-bottom:1px solid rgba(180,100,100,0.25);
+    padding-bottom:4px; margin-bottom:8px;
+  }
+  .info-row { display:flex; gap:8px; margin-bottom:5px; align-items:flex-start; }
+  .info-label { font-size:11px; color:#888; white-space:nowrap; min-width:54px; padding-top:1px; }
+  .info-val { font-size:13px; color:#222; flex:1; line-height:1.6; }
+
+  /* Menu list */
+  .menu-list { list-style:none; }
+  .menu-item {
+    display:flex; justify-content:space-between; align-items:baseline;
+    padding:5px 0; border-bottom:1px dashed rgba(200,180,180,0.35); gap:8px;
+    flex-wrap:wrap;
+  }
+  .menu-item:last-child { border-bottom:none; }
+  .menu-name { font-size:13px; }
+  .menu-phonetic { font-size:11px; color:#888; margin-left:4px; }
+  .menu-price { font-size:12px; font-weight:bold; color:var(--gold); white-space:nowrap; }
+  .menu-desc { font-size:11px; color:#666; flex-basis:100%; padding-left:0; line-height:1.5; }
+
+  /* Hours badge */
+  .hours-badge {
+    display:inline-block; padding:1px 8px; border-radius:10px; font-size:11px;
+  }
+  .open24 { background:#d4edda; color:#155724; border:1px solid #c3e6cb; }
+  .closed-day { background:#f8d7da; color:#721c24; border:1px solid #f5c6cb; margin-left:6px; }
+
+  /* Map button */
+  .map-btn {
+    display:inline-flex; align-items:center; gap:6px;
+    background:var(--red-dark); color:#fff;
+    padding:7px 16px; border-radius:20px;
+    text-decoration:none; font-size:12px; font-weight:bold;
+    transition:background .2s; margin-top:4px;
+  }
+  .map-btn:hover { background:var(--red-mid); }
+
+  /* TIPS / SCHEDULE */
+  .tip-section-header {
+    background:var(--g-dark); color:#fff; padding:12px 20px;
+    border-radius:10px 10px 0 0; display:flex; align-items:center; gap:10px;
+    border:1px solid var(--g-border); border-bottom:none; margin-top:36px;
+  }
+  .tip-section-header h2 { font-size:17px; }
+  .tip-body {
+    background:var(--g-light); border:1px solid var(--g-border); border-top:none;
+    border-radius:0 0 10px 10px; box-shadow:var(--g-shadow); padding:20px;
+  }
+  .route-card {
+    background:rgba(255,255,255,0.7); border:1px solid rgba(200,170,170,0.4);
+    border-radius:8px; padding:14px 16px; margin-bottom:12px;
+  }
+  .route-title { font-size:13px; font-weight:bold; color:var(--red-dark); margin-bottom:10px; }
+  .route-step { font-size:12px; display:flex; gap:8px; align-items:flex-start; margin-bottom:7px; }
+  .step-time { color:#888; min-width:50px; font-size:11px; padding-top:1px; }
+  .step-content { flex:1; }
+  .step-content strong { color:var(--red-dark); }
+
+  /* Phonetics helper: inline ruby-like style */
+  .jp { font-weight:bold; color:var(--red-dark); }
+  .ph { font-size:11px; color:#888; }
+
+  footer {
+    text-align:center; padding:32px 16px 20px;
+    color:rgba(255,255,255,0.45); font-size:11px;
+  }
+  footer a { color:rgba(255,200,180,0.6); text-decoration:none; }
+
+  /* MOBILE */
+  @media (max-width:700px) {
+    .hero h1 { font-size:20px; }
+    .rest-grid { grid-template-columns:1fr; }
+    .rest-card { border-right:none; }
+    .sch-item { min-width:130px; }
+    .schedule-bar { max-width:100%; }
+    .food-photo { height:170px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <ul>
+    <li><a href="#ramen">🍜 라멘(ラーメン)</a></li>
+    <li><a href="#nabe">🫕 나베(鍋)</a></li>
+    <li><a href="#gyoza">🥟 교자(餃子)</a></li>
+    <li><a href="#yakitori">🍢 야키토리(焼鳥)</a></li>
+    <li><a href="#seafood">🐟 해산물</a></li>
+    <li><a href="#udon">🍵 우동(うどん)</a></li>
+    <li><a href="#yatai">🏮 야타이(屋台)</a></li>
+    <li><a href="#schedule">📅 일정표</a></li>
+  </ul>
+</nav>
+
+<div class="hero">
+  <h1>후쿠오카 하카타<br>현지인 단골 맛집 가이드</h1>
+  <p>관광객 줄 서는 곳 말고 — 동네 사람이 진짜 찾아가는 하카타 12선</p>
+  <div class="badges">
+    <span class="badge">🇯🇵 현지인 추천</span>
+    <span class="badge">📍 하카타·텐진 중심</span>
+    <span class="badge">✅ 2025–2026 영업 확인</span>
+    <span class="badge">💴 엔화 현금 필수</span>
+  </div>
+  <div class="schedule-bar">
+    <div class="sch-item">
+      <div class="sch-date">4월 8일 (수)</div>
+      <div class="sch-note">밤 8시 후쿠오카 공항 도착<br><span style="font-size:11px;opacity:.75">늦은 저녁 → 심야 영업 식당</span></div>
+    </div>
+    <div class="sch-item">
+      <div class="sch-date">4월 9일 (목)</div>
+      <div class="sch-note">하루 종일 자유 일정<br><span style="font-size:11px;opacity:.75">아침·점심·저녁 풀코스</span></div>
+    </div>
+    <div class="sch-item">
+      <div class="sch-date">4월 10일 (금)</div>
+      <div class="sch-note">밤 6시 공항 출발<br><span style="font-size:11px;opacity:.75">점심까지 여유 있음</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+<!-- ======================================================
+     RAMEN 섹션
+     ====================================================== -->
+<div class="section-header" id="ramen">
+  <span style="font-size:20px">🍜</span>
+  <h2>하카타 돈코츠 라멘<span class="sub">— 博多豚骨ラーメン (하카타 돈코츠 라멘)</span></h2>
+</div>
+<div class="section-body">
+<div class="rest-grid">
+
+<!-- 1. 元祖長浜屋 -->
+<div class="rest-card">
+  <div class="rest-head">
+    <span class="rest-num">1</span>
+    <div class="rest-names">
+      <div class="rest-ja">元祖長浜屋</div>
+      <div class="rest-phonetic">간소 나가하마야 (Ganso Nagahamaya)</div>
+      <div class="rest-meaning">元祖(간소)=원조, 長浜(나가하마)=지명(긴 해변), 屋(야)=가게</div>
+      <span class="rest-category">長浜ラーメン(나가하마 라멘) 원조 · 1952년경 창업</span>
+    </div>
+  </div>
+
+  <img class="food-photo"
+    src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Tonkotsu_ramen.JPG/600px-Tonkotsu_ramen.JPG"
+    alt="하카타 돈코츠 라멘 — 元祖長浜屋"
+    loading="lazy">
+
+  <div class="special-box">
+    <strong>왜 특별한가:</strong> 1952년경 나가하마(長浜 · 긴 해변) 어시장 어부들을 위해 탄생. 전 세계에 퍼진 "하카타 돈코츠 라멘"과 면 추가 시스템인 <span class="jp">替玉(카에다마)</span>의 발상지. 수십 년째 500엔을 지키는 살아있는 전설. 현지인들은 줄여서 "간소나가(元祖長·간소나가)"라고 부른다.
+  </div>
+
+  <div class="info-section">
+    <div class="info-title">시그니처 메뉴</div>
+    <ul class="menu-list">
+      <li class="menu-item">
+        <span class="menu-name">ラーメン <span class="menu-phonetic">(라멘)</span></span>
+        <span class="menu-price">¥500</span>
+        <span class="menu-desc">백탁(白濁·하쿠다쿠) 돼지뼈 스프 + 극세면(極細麵·고쿠사이멘). 토핑은 차슈 한 장뿐.</span>
+      </li>
+      <li class="menu-item">
+        <span class="menu-name">替玉 <span class="menu-phonetic">(카에다마 · 면 추가)</span></span>
+        <span class="menu-price">¥100</span>
+        <span class="menu-desc">스프가 남으면 면만 추가. 이 시스템의 발상지.</span>
+      </li>
+      <li class="menu-item">
+        <span class="menu-name">チャーシューメン <span class="menu-phonetic">(차슈멘 · 차슈 추가 라멘)</span></span>
+        <span class="menu-price">¥700</span>
+      </li>
+    </ul>
+  </div>
+
+  <div class="info-section">
+    <div class="info-title">영업 정보</div>
+    <div class="info-row"><span class="info-label">영업시간</span><span class="info-val">06:00 – 익일 01:45 <span class="hours-badge open24">사실상 24시간</span></span></div>
+    <div class="info-row"><span class="info-label">정기휴무</span><span class="info-val">연중무휴 (12/31–1/5 제외)</span></div>
+    <div class="info-row"><span class="info-label">주소</span><span class="info-val">福岡市中央区長浜 2-5-38</span></div>
+    <div class="info-row"><span class="info-label">교통</span><span class="info-val">지하철 赤坂駅(아카사카에키) 도보 10분 / 택시 권장</span></div>
+  </div>
+
+  <div class="warn-box">
+    ⚠️ <strong>주의:</strong> 현금만. 카운터석 전용, 테이블 없음. 스프 소진 시 조기 종료. 새벽에 갈수록 대기 없음.
+  </div>
+  <div class="enjoy-box">
+    🍜 <strong>즐기는 법:</strong> 주문 시 기름 양 선택 — <span class="jp">普通(후츠·보통)</span>, <span class="jp">少なめ(스쿠나메·적게)</span>, <span class="jp">多め(오오메·많이)</span>. 처음이면 普通. 극세면이라 금방 불으니 빠르게 먹기. 스프가 남으면 "카에다마 ひとつ(히토츠·하나)!" 라고 외쳐 면 추가. 탁자 위 刻み生姜(다진 생강)·ごま(참깨)·辛子(가라시·고추) 취향껏 추가.
+  </div>
+
+  <a class="map-btn" href="https://www.google.com/maps/search/元祖長浜屋+福岡市中央区長浜" target="_blank">📍 구글맵에서 보기</a>
+</div>
+
+<!-- 2. 博多一双 -->
+<div class="rest-card">
+  <div class="rest-head">
+    <span class="rest-num">2</span>
+    <div class="rest-names">
+      <div class="rest-ja">博多一双 博多駅東本店</div>
+      <div class="rest-phonetic">하카타 잇소우 하카타에키히가시혼텐</div>
+      <div class="rest-meaning">一双(잇소우)=한 쌍(점주 두 명이 함께 창업), 博多駅東(하카타에키히가시)=하카타역 동쪽</div>
+      <span class="rest-category">濃厚豚骨(노우코우 돈코츠) · Tabelog 100선 2025</span>
+    </div>
+  </div>
+
+  <img class="food-photo"
+    src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Tonkotsu_Ramen_Special%2C_Hakata_Choten%2C_Paris_001.jpg/600px-Tonkotsu_Ramen_Special%2C_Hakata_Choten%2C_Paris_001.jpg"
+    alt="濃厚豚骨ラーメン — 博多一双"
+    loading="lazy">
+
+  <div class="special-box">
+    <strong>왜 특별한가:</strong> 국산 새끼돼지 뼈만을 사용해 만든 크림처럼 진한 스프. 현지 라멘 팬들이 <span class="jp">豚骨カプチーノ(돈코츠 카푸치노)</span>라고 부를 정도의 풍부한 거품. Tabelog(타베로그 · 일본 최대 식당 리뷰 사이트) 라멘 WEST 100선(2025) 선정. 하카타역에서 도보 5분.
+  </div>
+
+  <div class="info-section">
+    <div class="info-title">시그니처 메뉴</div>
+    <ul class="menu-list">
+      <li class="menu-item">
+        <span class="menu-name">ラーメン <span class="menu-phonetic">(라멘)</span></span>
+        <span class="menu-price">¥750</span>
+      </li>
+      <li class="menu-item">
+        <span class="menu-name">味玉ラーメン <span class="menu-phonetic">(아지타마 라멘 · 간장 절임 반숙 달걀 토핑)</span></span>
+        <span class="menu-price">¥900</span>
+      </li>
+      <li class="menu-item">
+        <span class="menu-name">特製ラーメン <span class="menu-phonetic">(톡세이 라멘 · 토핑 풀 세트)</span></span>
+        <span class="menu-price">¥1,200</span>
+      </li>
+      <li class="menu-item">
+        <span class="menu-name">替玉 <span class="menu-phonetic">(카에다마 · 면 추가)</span></span>
+        <span class="menu-price">¥150</span>
+      </li>
+    </ul>
+  </div>
+
+  <div class="info-section">
+    <div class="info-title">영업 정보</div>
+    <div class="info-row"><span class="info-label">영업시간</span><span class="info-val">11:00 – 24:00 (スープ売り切れ次第終了 · 스프 소진 시 조기 마감)</span></div>
+    <div class="info-row"><span class="info-label">정기휴무</span><span class="info-val">不定休(후테이큐 · 부정기 휴무) — 방문 전 SNS 확인</span></div>
+    <div class="info-row"><span class="info-label">주소</span><span class="info-val">福岡市博多区博多駅東 1-16-12</span></div>
+    <div class="info-row"><span class="info-label">교통</span><span class="info-val">하카타역(博多口·하카타구치) 도보 5분</span></div>
+  </div>
+
+  <div class="warn-box">
+    ⚠️ <strong>주의:</strong> 오픈 전부터 줄 섬. 점심 피크(12–14시) 피하기 권장. 스프가 진해 배부르니 공복으로. 현금 위주.
+  </div>
+  <div class="enjoy-box">
+    🍜 <strong>즐기는 법:</strong> 처음 한 입은 아무것도 넣지 말고 스프 그대로 음미. 진한 맛에 익숙해지면 탁자의 刻みネギ(다진 파)·生姜(쇼가·생강)·ごま(참깨)·辛子(고추)를 조금씩 추가. 替玉 시 <span class="jp">硬め(카타메·딱딱하게)</span>로 추가 주문하면 불지 않음.
+  </div>
+
+  <a class="map-btn" href="https://www.google.com/maps/search/博多一双+博多駅東本店" target="_blank">📍 구글맵에서 보기</a>
+</div>
+
+<!-- 3. ShinShin -->
+<div class="rest-card">
+  <div class="rest-head">
+    <span class="rest-num">3</span>
+    <div class="rest-names">
+      <div class="rest-ja">博多らーめん ShinShin 天神本店</div>
+      <div class="rest-phonetic">하카타 라멘 신신 텐진혼텐</div>
+      <div class="rest-meaning">ShinShin(신신)=純情(준죠·순수한 마음), 天神(텐진)=지명·하카타 최대 번화가</div>
+      <span class="rest-category">純情豚骨(준죠 돈코츠) · 2003년 창업 · 지역민 최애</span>
+    </div>
+  </div>
+
+  <img class="food-photo"
+    src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/A_Japanese_pork_noodle_soup_at_Yau_Ma_Tei.jpg/600px-A_Japanese_pork_noodle_soup_at_Yau_Ma_Tei.jpg"
+    alt="博多純情らーめん — ShinShin"
+    loading="lazy">
+
+  <div class="special-box">
+    <strong>왜 특별한가:</strong> 2003년 창업. "誰もが飲み干す純情なスープ(누구나 다 마시게 되는 순수한 스프)"가 콘셉트. 아리타도리(有田鶏·아리타산 닭) 뼈와 돼지뼈를 함께 우려내 잡내 없이 깔끔한 돈코츠. 유명인 단골이기도 하고, 지역 직장인의 일상 라멘. 새벽 3시까지 영업.
+  </div>
+
+  <div class="info-section">
+    <div class="info-title">시그니처 메뉴</div>
+    <ul class="menu-list">
+      <li class="menu-item">
+        <span class="menu-name">博多純情らーめん <span class="menu-phonetic">(하카타 준죠 라멘)</span></span>
+        <span class="menu-price">¥700</span>
+        <span class="menu-desc">純情(준죠)=순수·깔끔함. 잡내 없는 하카타 돈코츠의 정석.</span>
+      </li>
+      <li class="menu-item">
+        <span class="menu-name">替玉 <span class="menu-phonetic">(카에다마)</span></span>
+        <span class="menu-price">¥150</span>
+      </li>
+      <li class="menu-item">
+        <span class="menu-name">ギョーザ <span class="menu-phonetic">(교자 · 군만두)</span></span>
+        <span class="menu-price">¥560</span>
+      </li>
+      <li class="menu-item">
+        <span class="menu-name">味噌ホル鉄板 <span class="menu-phonetic">(미소 호루 뎃판 · 된장 곱창 철판구이)</span></span>
+        <span class="menu-price">¥1,250</span>
+      </li>
+    </ul>
+  </div>
+
+  <div class="info-section">
+    <div class="info-title">영업 정보</div>
+    <div class="info-row"><span class="info-label">영업시간</span><span class="info-val">11:00 – 익일 03:00 <span class="hours-badge open24">심야 영업</span></span></div>
+    <div class="info-row"><span class="info-label">주소</span><span class="info-val">福岡市中央区天神 3-2-19</span></div>
+    <div class="info-row"><span class="info-label">교통</span><span class="info-val">지하철 天神駅(텐진에키) 도보 5분</span></div>
+  </div>
+
+  <div class="warn-box">
+    ⚠️ <strong>주의:</strong> 피크 시간대 줄 있음. 심야 방문 시 대기 거의 없음. <strong>4월 8일(수) 공항 도착 후 늦은 저녁으로 최적.</strong> 새벽 3시까지 영업.
+  </div>
+  <div class="enjoy-box">
+    🍜 <strong>즐기는 법:</strong> 깔끔한 스프이므로 처음엔 그대로. 중간에 刻みネギ(다진 파)와 生姜(생강)을 넣어 변화를 즐기기. 替玉 한 번 더. 교자(ギョーザ·군만두)도 꼭 추가.
+  </div>
+
+  <a class="map-btn" href="https://www.google.com/maps/search/博多らーめんShinShin天神本店" target="_blank">📍 구글맵에서 보기</a>
+</div>
+
+</div><!-- end ramen grid -->
+</div><!-- end ramen section-body -->
+
+
+<!-- ======================================================
+     NABE 섹션
+     ====================================================== -->
+<div class="section-header" id="nabe">
+  <span style="font-size:20px">🫕</span>
+  <h2>하카타 나베<span class="sub">— もつ鍋(모츠나베)·水炊き(미즈타키)</span></h2>
+</div>
+<div class="section-body">
+<div class="rest-grid">
+
+<!-- 4. やま中 -->
+<div class="rest-card">
+  <div class="rest-head">
+    <span class="rest-num">4</span>
+    <div class="rest-names">
+      <div class="rest-ja">博多もつ鍋 やま中 大橋本店</div>
+      <div class="rest-phonetic">하카타 모츠나베 야마나카 오하시혼텐</div>
+      <div class="rest-meaning">もつ鍋(모츠나베)=내장 냄비전골, やま中(야마나카)=산 가운데, 大橋(오하시)=지명</div>
+      <span class="rest-category">みそもつ鍋(미소 모츠나베) 발상지 · 1984년 창업</span>
+    </div>
+  </div>
+
+  <img class="food-photo"
+    src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/Motsunabe.jpg/600px-Motsunabe.jpg"
+    alt="みそもつ鍋 — やま中"
+    loading="lazy">
+
+  <div class="special-box">
+    <strong>왜 특별한가:</strong> 1984년 창업. 지금은 후쿠오카 대표 음식이 된 <span class="jp">みそ(미소·된장)</span> 베이스 모츠나베를 최초로 만든 집. 규슈산 된장 수종을 블렌드한 비법 스프는 40년째 같은 맛. 국산 소 小腸(코초·소장)만 사용. 현지인들이 "모츠나베라면 야마나카"라고 말하는 성지.
+  </div>
+
+  <div class="info-section">
+    <div class="info-title">시그니처 메뉴</div>
+    <ul class="menu-list">
+      <li class="menu-item">
+        <span class="menu-name">みそもつ鍋 <span class="menu-phonetic">(미소 모츠나베 · 된장 내장 전골)</span></span>
+        <span class="menu-price">¥3,300~/인</span>
+        <span class="menu-desc">국산 소 소장 + 규슈산 된장 수종 블렌드 스프. 두부·니라(부추)·キャベツ(양배추) 함께.</span>
+      </li>
+      <li class="menu-item">
+        <span class="menu-name">チャンポン麺追加 <span class="menu-phonetic">(챰폰 메 추이카 · 챰폰 면 추가)</span></span>
+        <span class="menu-price">¥330~</span>
+      </li>
+      <li class="menu-item">
+        <span class="menu-name">雑炊 <span class="menu-phonetic">(조스이 · 남은 스프로 끓인 죽)</span></span>
+        <span class="menu-price">¥330~</span>
+      </li>
+    </ul>
+  </div>
+
+  <div class="info-section">
+    <div class="info-title">영업 정보</div>
+    <div class="info-row"><span class="info-label">영업시간</span><span class="info-val">16:00 – 23:00 (L.O. 22:30)</span></div>
+    <div class="info-row"><span class="info-label">정기휴무</span><span class="info-val">火曜日(카요비 · 화요일) <span class="hours-badge closed-day">화요일 휴무</span> — 4/8(수)·4/9(목)·4/10(금) 모두 영업</span></div>
+    <div class="info-row"><span class="info-label">주소</span><span class="info-val">福岡市南区大橋 1-9-15 (大橋本店)</span></div>
+    <div class="info-row"><span class="info-label">교통</span><span class="info-val">니시테츠 大橋駅(오하시에키) 도보 5분</span></div>
+  </div>
+
+  <div class="warn-box">
+    ⚠️ <strong>주의:</strong> 예약 필수 — 당일 예약 거의 불가, 미리 예약할 것. 博多店(하카타점)은 博多駅 가까이에 위치해 더 접근하기 편리. 방문 전 예약 필수.
+  </div>
+  <div class="enjoy-box">
+    🫕 <strong>즐기는 법:</strong> ①뚜껑 덮고 내장이 익을 때까지 기다리기 → ②내장 먼저 맛보기 → ③ニラ(니라·부추), 豆腐(도후·두부), キャベツ(큐베츠·양배추) 함께 즐기기 → ④마지막엔 チャンポン麺(챰폰멘) 또는 雑炊(조스이·죽)로 마무리.
+  </div>
+
+  <a class="map-btn" href="https://www.google.com/maps/search/博多もつ鍋やま中大橋本店" target="_blank">📍 구글맵에서 보기</a>
+</div>
+
+<!-- 5. 楽天地 -->
+<div class="rest-card">
+  <div class="rest-head">
+    <span class="rest-num">5</span>
+    <div class="rest-names">
+      <div class="rest-ja">元祖もつ鍋楽天地 天神総本店</div>
+      <div class="rest-phonetic">간소 모츠나베 라쿠텐치 텐진 소혼텐</div>
+      <div class="rest-meaning">楽天地(라쿠텐치)=즐거운 곳, 総本店(소혼텐)=총본점(모든 지점의 원조)</div>
+      <span class="rest-category">しょうゆもつ鍋(쇼유 모츠나베) · 창업 48년 · 연중무휴</span>
+    </div>
+  </div>
+
+  <img class="food-photo"
+    src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Fukuoka-style_hot_pot_%283637375629%29.jpg/600px-Fukuoka-style_hot_pot_%283637375629%29.jpg"
+    alt="しょうゆもつ鍋 — 楽天地"
+    loading="lazy">
+
+  <div class="special-box">
+    <strong>왜 특별한가:</strong> 창업 48년. <span class="jp">しょうゆ(쇼유·간장)</span> 베이스 모츠나베의 원조. 40년 이상 변치 않은 おかみさん(오카미상·여주인) 특제 스프 — 간장에 비법 타레(タレ·소스)를 블렌드한 독자적 맛. 소 소장·대장·千枚(센마이·천엽) 등 6종의 내장 사용.
+  </div>
+
+  <div class="info-section">
+    <div class="info-title">시그니처 메뉴</div>
+    <ul class="menu-list">
+      <li class="menu-item">
+        <span class="menu-name">しょうゆもつ鍋 <span class="menu-phonetic">(쇼유 모츠나베 · 간장 내장 전골)</span></span>
+        <span class="menu-price">¥2,200~/인</span>
+        <span class="menu-desc">간장 스프. 6종 내장. 소 모츠(もつ=내장)의 進한 감칠맛.</span>
+      </li>
+      <li class="menu-item">
+        <span class="menu-name">もつカレー <span class="menu-phonetic">(모츠 카레 · 내장 카레)</span></span>
+        <span class="menu-price">¥1,100</span>
+      </li>
+    </ul>
+  </div>
+
+  <div class="info-section">
+    <div class="info-title">영업 정보</div>
+    <div class="info-row"><span class="info-label">영업시간</span><span class="info-val">17:00 – 24:00 <span class="hours-badge open24">심야 영업</span></span></div>
+    <div class="info-row"><span class="info-label">정기휴무</span><span class="info-val">年中無休(넨쥬무큐 · 연중무휴)</span></div>
+    <div class="info-row"><span class="info-label">주소</span><span class="info-val">福岡市中央区今泉 1-13-7 (天神総本店)</span></div>
+    <div class="info-row"><span class="info-label">교통</span><span class="info-val">지하철 天神駅(텐진에키) 도보 7분 / KITTE博多점도 있음</span></div>
+  </div>
+
+  <div class="warn-box">
+    ⚠️ <strong>주의:</strong> <strong>4월 8일(수) 밤 도착 후 바로 방문 가능 (연중무휴 17~24시)</strong>. 1인분부터 주문 가능해 혼자도 OK. 예약 권장.
+  </div>
+  <div class="enjoy-box">
+    🫕 <strong>즐기는 법:</strong> やま中(된장)과 이 집(간장)을 같은 여행에서 비교해서 먹으면 두 스타일의 차이를 확실히 체험 가능. 간장 스프는 더 가볍고 감칠맛이 강하다.
+  </div>
+
+  <a class="map-btn" href="https://www.google.com/maps/search/元祖もつ鍋楽天地+今泉+天神" target="_blank">📍 구글맵에서 보기</a>
+</div>
+
+<!-- 6. 濱田屋 -->
+<div class="rest-card">
+  <div class="rest-head">
+    <span class="rest-num">6</span>
+    <div class="rest-names">
+      <div class="rest-ja">博多水たき 濱田屋 本店</div>
+      <div class="rest-phonetic">하카타 미즈타키 하마다야 혼텐</div>
+      <div class="rest-meaning">水たき(미즈타키)=물로 끓이는 닭 냄비요리, 濱田屋(하마다야)=하마다(浜田·해변 밭) 씨의 가게</div>
+      <span class="rest-category">水炊き(미즈타키) · 캐널시티 옆 · 하카타 닭 전골</span>
+    </div>
+  </div>
+
+  <img class="food-photo"
+    src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Motsunabe_002.jpg/600px-Motsunabe_002.jpg"
+    alt="博多水炊き — 濱田屋"
+    loading="lazy">
+
+  <div class="special-box">
+    <strong>왜 특별한가:</strong> 하카타 水炊き(미즈타키)는 신선한 닭 뼈를 단시간에 강하게 끓여 만든 하얀 스프가 특징. 아무것도 넣지 않고 단지 닭과 물만으로 우려낸 감칠맛. 해물 냄비나 된장 냄비와 달리 재료의 순수한 맛만 남아있다. 캐널시티 博多(CANAL CITY·쇼핑몰) 바로 옆에 위치.
+  </div>
+
+  <div class="info-section">
+    <div class="info-title">시그니처 메뉴</div>
+    <ul class="menu-list">
+      <li class="menu-item">
+        <span class="menu-name">水炊きコース <span class="menu-phonetic">(미즈타키 코스)</span></span>
+        <span class="menu-price">¥4,400~/인</span>
+        <span class="menu-desc">前菜(젠사이·전채) → 鶏スープ(토리스프·닭 육수 시음) → 水炊き 냄비 → 雑炊(조스이·죽) 마무리</span>
+      </li>
+    </ul>
+  </div>
+
+  <div class="info-section">
+    <div class="info-title">영업 정보</div>
+    <div class="info-row"><span class="info-label">영업시간</span><span class="info-val">월~금·祝前日(슈쿠지츠마에히·휴일 전날) 17:00–22:00<br>토·일·祝(슈쿠지츠·공휴일) 11:30–15:00 / 17:00–22:00</span></div>
+    <div class="info-row"><span class="info-label">주소</span><span class="info-val">福岡市博多区住吉 2-20-1</span></div>
+    <div class="info-row"><span class="info-label">교통</span><span class="info-val">캐널시티 博多 도보 1분</span></div>
+  </div>
+
+  <div class="warn-box">
+    ⚠️ <strong>주의:</strong> 予約(요야쿠·예약) 강력 권장. 코스 위주라 2시간 이상 여유 있을 때 방문. 4월 9일(목) 저녁 추천.
+  </div>
+  <div class="enjoy-box">
+    🍲 <strong>즐기는 법:</strong> ①코스 시작 시 작은 그릇에 스프를 따라 그대로 마시기 (미즈타키의 진수) → ②ポン酢(폰즈·유자 간장 소스)에 柚子こしょう(유즈코쇼·유자 고추)를 녹여서 닭과 채소를 찍어먹기 → ③마지막 雑炊(조스이·죽)까지 남기지 말 것.
+  </div>
+
+  <a class="map-btn" href="https://www.google.com/maps/search/博多水たき濱田屋本店+住吉" target="_blank">📍 구글맵에서 보기</a>
+</div>
+
+</div><!-- end nabe grid -->
+</div>
+
+
+<!-- ======================================================
+     GYOZA 섹션
+     ====================================================== -->
+<div class="section-header" id="gyoza">
+  <span style="font-size:20px">🥟</span>
+  <h2>하카타 교자<span class="sub">— 博多一口餃子(하카타 히토쿠치 교자)</span></h2>
+</div>
+<div class="section-body">
+<div class="rest-grid">
+
+<!-- 7. 鉄なべ -->
+<div class="rest-card" style="border-right:none">
+  <div class="rest-head">
+    <span class="rest-num">7</span>
+    <div class="rest-names">
+      <div class="rest-ja">博多祇園鉄なべ</div>
+      <div class="rest-phonetic">하카타 기온 테츠나베</div>
+      <div class="rest-meaning">祇園(기온)=하카타의 지명(祭り의 고장), 鉄なべ(테츠나베)=철냄비</div>
+      <span class="rest-category">一口餃子(히토쿠치 교자) · 철솥 한 입 교자 원조</span>
+    </div>
+  </div>
+
+  <img class="food-photo"
+    src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Japanese_food_by_Naoki_Nakashima_202.jpg/600px-Japanese_food_by_Naoki_Nakashima_202.jpg"
+    alt="一口餃子 — 博多祇園鉄なべ"
+    loading="lazy">
+
+  <div class="special-box">
+    <strong>왜 특별한가:</strong> 하카타를 대표하는 <span class="jp">一口餃子(히토쿠치 교자·한 입 교자)</span> 스타일의 원조격. 손가락 한 마디 크기의 작은 교자를 주철 鉄なべ(테츠나베·철냄비)에 촘촘히 넣어 구워낸다. 마지막까지 식지 않는 철냄비 덕분에 뜨겁고 바삭한 식감 유지. 연기 자욱한 노포 분위기가 압도적.
+  </div>
+
+  <div class="info-section">
+    <div class="info-title">시그니처 메뉴</div>
+    <ul class="menu-list">
+      <li class="menu-item">
+        <span class="menu-name">ひとくち餃子 <span class="menu-phonetic">(히토쿠치 교자 · 한 입 교자)</span></span>
+        <span class="menu-price">15개 ¥650~</span>
+        <span class="menu-desc">돼지고기 + 부추 소. 바삭한 겉면, 육즙 넘치는 속.</span>
+      </li>
+      <li class="menu-item">
+        <span class="menu-name">ひとくち餃子 <span class="menu-phonetic">(25개)</span></span>
+        <span class="menu-price">¥1,000~</span>
+      </li>
+      <li class="menu-item">
+        <span class="menu-name">ライス <span class="menu-phonetic">(라이스·밥)</span></span>
+        <span class="menu-price">¥200</span>
+      </li>
+    </ul>
+  </div>
+
+  <div class="info-section">
+    <div class="info-title">영업 정보</div>
+    <div class="info-row"><span class="info-label">영업시간</span><span class="info-val">11:30 – 21:30 (재료 소진 시 조기 종료)</span></div>
+    <div class="info-row"><span class="info-label">정기휴무</span><span class="info-val">火曜日(카요비·화요일) <span class="hours-badge closed-day">화요일 휴무</span> — 4/8(수)·4/9(목)·4/10(금) 모두 영업</span></div>
+    <div class="info-row"><span class="info-label">주소</span><span class="info-val">福岡市博多区祇園町 2-20</span></div>
+    <div class="info-row"><span class="info-label">교통</span><span class="info-val">지하철 祇園駅(기온에키) 도보 3분</span></div>
+  </div>
+
+  <div class="warn-box">
+    ⚠️ <strong>주의:</strong> 오픈 직후 방문 권장 (인기 많아 일찍 소진). 현금만. 4/10(금) 점심에 하카타역으로 이동 전 방문하기 좋음.
+  </div>
+  <div class="enjoy-box">
+    🥟 <strong>즐기는 법:</strong> 탁자 위 酢(스·식초) + ラー油(라유·고추기름)를 섞어서 찍어먹기. 뜨거운 철냄비에서 빠르게 꺼내 식기 전에 먹기. 밥(ライス)과 함께 세트처럼 즐기는 것이 현지 방식. 몇 판이든 추가 주문 가능.
+  </div>
+
+  <a class="map-btn" href="https://www.google.com/maps/search/博多祇園鉄なべ+祇園町" target="_blank">📍 구글맵에서 보기</a>
+</div>
+
+</div>
+</div>
+
+
+<!-- ======================================================
+     YAKITORI 섹션
+     ====================================================== -->
+<div class="section-header" id="yakitori">
+  <span style="font-size:20px">🍢</span>
+  <h2>하카타 닭껍질 꼬치<span class="sub">— 鶏皮(토리카와)·とりかわ</span></h2>
+</div>
+<div class="section-body">
+<div class="rest-grid">
+
+<!-- 8. かわ屋 -->
+<div class="rest-card">
+  <div class="rest-head">
+    <span class="rest-num">8</span>
+    <div class="rest-names">
+      <div class="rest-ja">かわ屋 祇園店</div>
+      <div class="rest-phonetic">카와야 기온점</div>
+      <div class="rest-meaning">かわ(카와)=껍질(皮), 屋(야)=가게. 말 그대로 "껍질 가게"</div>
+      <span class="rest-category">鶏皮串(토리카와 쿠시) · 6일 제조 공정 · 예약 필수</span>
+    </div>
+  </div>
+
+  <img class="food-photo"
+    src="https://upload.wikimedia.org/wikipedia/commons/4/4b/Cooking_yakitori.jpg"
+    alt="鶏皮串 — かわ屋"
+    loading="lazy">
+
+  <div class="special-box">
+    <strong>왜 특별한가:</strong> 닭 목 부위 껍질에서 여분의 지방을 꼼꼼히 제거한 뒤, 焼き(굽기) → タレ漬け(타레즈케·소스 절임) → 焼き → 寝かせ(네카세·휴지) 사이클을 6~7번 반복하는 <strong>6일간의 제조 공정</strong>. 겉은 바삭, 속은 쫄깃한 독특한 텍스처. 이런 제조법은 후쿠오카에서도 이 집이 거의 유일.
+  </div>
+
+  <div class="info-section">
+    <div class="info-title">시그니처 메뉴</div>
+    <ul class="menu-list">
+      <li class="menu-item">
+        <span class="menu-name">鶏皮串 <span class="menu-phonetic">(토리카와 쿠시 · 닭껍질 꼬치)</span></span>
+        <span class="menu-price">¥110~/개</span>
+        <span class="menu-desc">6일 공정. 甘辛タレ(아마카라 타레·달콤 매콤 소스) 입혀 나옴.</span>
+      </li>
+      <li class="menu-item">
+        <span class="menu-name">各種焼き鳥 <span class="menu-phonetic">(각종 야키토리 · 각종 닭꼬치)</span></span>
+        <span class="menu-price">¥110~¥300</span>
+      </li>
+      <li class="menu-item">
+        <span class="menu-name">生ビール <span class="menu-phonetic">(나마 비루 · 생맥주)</span></span>
+        <span class="menu-price">¥600~</span>
+      </li>
+    </ul>
+  </div>
+
+  <div class="info-section">
+    <div class="info-title">영업 정보</div>
+    <div class="info-row"><span class="info-label">영업시간</span><span class="info-val">17:00 – 24:00 (L.O. 23:30)</span></div>
+    <div class="info-row"><span class="info-label">주소</span><span class="info-val">福岡市博多区祇園町 8-14 (祇園店)<br>※ 警固店(케이고점)·白金店(시로가네점)·大橋店도 있음</span></div>
+    <div class="info-row"><span class="info-label">교통</span><span class="info-val">지하철 祇園駅(기온에키) 도보 5분</span></div>
+    <div class="info-row"><span class="info-label">예약</span><span class="info-val">ホットペッパー(핫페퍼·예약사이트) / 전화 강력 권장</span></div>
+  </div>
+
+  <div class="warn-box">
+    ⚠️ <strong>주의:</strong> 予約(요야쿠·예약) 없으면 거의 100% 입장 불가. 당일 예약도 어려우므로 <strong>지금 바로 예약</strong>. 4월 9일(목) 저녁 첫 번째 선택지로 추천.
+  </div>
+  <div class="enjoy-box">
+    🍢 <strong>즐기는 법:</strong> タレ(달콤 매콤 소스)가 입혀진 채로 나오므로 그대로 한 입에 쏙. 식기 전에 즐기기. 生ビール(생맥주)과 찰떡궁합. 닭껍질 외에 다른 부위 야키토리도 주문해서 비교.
+  </div>
+
+  <a class="map-btn" href="https://www.google.com/maps/search/かわ屋+祇園店+福岡" target="_blank">📍 구글맵에서 보기</a>
+</div>
+
+<!-- 9. とりかわ大臣 -->
+<div class="rest-card">
+  <div class="rest-head">
+    <span class="rest-num">9</span>
+    <div class="rest-names">
+      <div class="rest-ja">博多とりかわ大臣 KITTE博多串房</div>
+      <div class="rest-phonetic">하카타 토리카와 다이진 KITTE하카타 쿠시보</div>
+      <div class="rest-meaning">とりかわ(토리카와)=닭껍질, 大臣(다이진)=장관, 串房(쿠시보)=꼬치 방</div>
+      <span class="rest-category">博多とりかわ(하카타 토리카와) · 하카타역 직결</span>
+    </div>
+  </div>
+
+  <img class="food-photo"
+    src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/2016-09-07_Liangmaqiao_Japanese_Restaurant_meat_skewer_anagoria.jpg/600px-2016-09-07_Liangmaqiao_Japanese_Restaurant_meat_skewer_anagoria.jpg"
+    alt="博多とりかわ — とりかわ大臣"
+    loading="lazy">
+
+  <div class="special-box">
+    <strong>왜 특별한가:</strong> かわ屋와 완전히 다른 하카타 스타일. 껍질을 꼬치에 タイトに(타이토니·빽빽하게) 감아 고정한 뒤, 낮은 불에서 천천히 오래 구워 내부 지방이 빠지도록 하는 방식. 겉면은 잠자리 날개처럼 파삭파삭한 식감. KITTE 博多(키테 하카타·하카타역 직결 쇼핑몰) 내 위치.
+  </div>
+
+  <div class="info-section">
+    <div class="info-title">시그니처 메뉴</div>
+    <ul class="menu-list">
+      <li class="menu-item">
+        <span class="menu-name">博多とりかわ串 <span class="menu-phonetic">(하카타 토리카와 쿠시 · 하카타식 닭껍질 꼬치)</span></span>
+        <span class="menu-price">¥110~/개</span>
+        <span class="menu-desc">빽빽하게 감아 천천히 구운 파삭파삭한 껍질. 특제 タレ(소스).</span>
+      </li>
+      <li class="menu-item">
+        <span class="menu-name">各種焼き鳥·もつ <span class="menu-phonetic">(각종 야키토리·내장 꼬치)</span></span>
+        <span class="menu-price">¥110~</span>
+      </li>
+    </ul>
+  </div>
+
+  <div class="info-section">
+    <div class="info-title">영업 정보</div>
+    <div class="info-row"><span class="info-label">영업시간</span><span class="info-val">KITTE博多 영업시간에 준함 (11:00~23:00 전후)</span></div>
+    <div class="info-row"><span class="info-label">주소</span><span class="info-val">KITTE 博多 B1F (JR 博多駅 직결)</span></div>
+    <div class="info-row"><span class="info-label">교통</span><span class="info-val">하카타역(博多口) 도보 0분 — 역 직결</span></div>
+  </div>
+
+  <div class="warn-box">
+    ⚠️ <strong>주의:</strong> 住吉串房(스미요시쿠시보·별도 지점)은 17:00–02:00까지. 방문 전 각 점포 영업시간 확인. 국산 닭껍질 사용(冷凍商品은 태국산).
+  </div>
+  <div class="enjoy-box">
+    🍡 <strong>즐기는 법:</strong> かわ屋와 같은 날 비교해서 먹어보기. かわ屋는 쫄깃 + 바삭, 이 집은 완전 파삭파삭. 먹는 법은 동일 — 소스 입혀진 채로 한 입에.
+  </div>
+
+  <a class="map-btn" href="https://www.google.com/maps/search/博多とりかわ大臣+KITTE博多" target="_blank">📍 구글맵에서 보기</a>
+</div>
+
+</div>
+</div>
+
+
+<!-- ======================================================
+     SEAFOOD 섹션
+     ====================================================== -->
+<div class="section-header" id="seafood">
+  <span style="font-size:20px">🐟</span>
+  <h2>하카타 해산물<span class="sub">— ごまさば(고마사바)·活イカ(카츠이카)</span></h2>
+</div>
+<div class="section-body">
+<div class="rest-grid">
+
+<!-- 10. はじめの一歩 -->
+<div class="rest-card" style="border-right:none">
+  <div class="rest-head">
+    <span class="rest-num">10</span>
+    <div class="rest-names">
+      <div class="rest-ja">海鮮屋 はじめの一歩 博多本店</div>
+      <div class="rest-phonetic">카이센야 하지메노 잇포 하카타혼텐</div>
+      <div class="rest-meaning">海鮮屋(카이센야)=해산물 가게, はじめの一歩(하지메노 잇포)=처음 한 걸음</div>
+      <span class="rest-category">ごまさば(고마사바) · 活イカ(활오징어) · 하카타역 앞</span>
+    </div>
+  </div>
+
+  <img class="food-photo"
+    src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Asakusaken_%2853586772646%29.jpg/600px-Asakusaken_%2853586772646%29.jpg"
+    alt="해산물 이자카야 — はじめの一歩"
+    loading="lazy">
+
+  <div class="special-box">
+    <strong>왜 특별한가:</strong> 후쿠오카 향토 음식 <span class="jp">ごまさば(고마사바)</span> — 신선한 고등어(サバ·사바) 사시미에 白ごま(시로고마·흰 참깨)를 듬뿍 버무려 비전 タレ(소스)에 절인 하카타 가정식. 이 집은 対馬(쓰시마·대마도)산 천연 고등어를 현지 어부로부터 직송받아 연중 최상품 제공. 活イカ(카츠이카·살아있는 오징어)도 명물. 하카타역 앞 5분.
+  </div>
+
+  <div class="info-section">
+    <div class="info-title">시그니처 메뉴</div>
+    <ul class="menu-list">
+      <li class="menu-item">
+        <span class="menu-name">ごまさば <span class="menu-phonetic">(고마사바 · 참깨 고등어 회무침)</span></span>
+        <span class="menu-price">¥1,200~</span>
+        <span class="menu-desc">対馬 직송 천연 고등어. 흰 참깨+비전 소스. 후쿠오카에서만 날 것으로 먹을 수 있는 이유: 대마도에서 직송이라 신선도가 다름.</span>
+      </li>
+      <li class="menu-item">
+        <span class="menu-name">活イカ造り <span class="menu-phonetic">(카츠이카 츠쿠리 · 살아있는 오징어 회)</span></span>
+        <span class="menu-price">¥1,800~(시가)</span>
+        <span class="menu-desc">산 채로 나와 몸이 아직 움직임. 투명하고 달콤한 살의 충격적인 맛.</span>
+      </li>
+      <li class="menu-item">
+        <span class="menu-name">天然魚刺身盛り <span class="menu-phonetic">(텐넨사카나 사시미모리 · 제철 생선 모둠 회)</span></span>
+        <span class="menu-price">¥1,500~</span>
+      </li>
+    </ul>
+  </div>
+
+  <div class="info-section">
+    <div class="info-title">영업 정보</div>
+    <div class="info-row"><span class="info-label">영업시간</span><span class="info-val">런치 11:30–13:30 (L.O. 13:00)<br>디너 17:00–23:00 (L.O. 22:00)</span></div>
+    <div class="info-row"><span class="info-label">주소</span><span class="info-val">福岡市博多区博多駅前 3-7-15 庄野ビル1F</span></div>
+    <div class="info-row"><span class="info-label">교통</span><span class="info-val">하카타역(博多口·하카타구치) 도보 5분</span></div>
+    <div class="info-row"><span class="info-label">예약</span><span class="info-val">☎ 092-471-1850 / 온라인 예약 가능</span></div>
+  </div>
+
+  <div class="warn-box">
+    ⚠️ <strong>주의:</strong> 고마사바는 날 생선 — 신선도가 생명. 活イカ는 時価(지카·시가)이므로 방문 당일 가격 확인. 예약 권장.
+  </div>
+  <div class="enjoy-box">
+    🐟 <strong>즐기는 법:</strong> 고마사바는 그대로 한 입. 또는 ご飯(고항·밥) 위에 올려 卵かけご飯(타마고카케 고항) 스타일로. 生わさび(나마와사비·생와사비)와 함께면 더욱 좋음. 活イカ는 몸이 투명할 때 먹어야 달콤함이 최대.
+  </div>
+
+  <a class="map-btn" href="https://www.google.com/maps/search/海鮮屋はじめの一歩+博多駅前" target="_blank">📍 구글맵에서 보기</a>
+</div>
+
+</div>
+</div>
+
+
+<!-- ======================================================
+     UDON 섹션
+     ====================================================== -->
+<div class="section-header" id="udon">
+  <span style="font-size:20px">🍵</span>
+  <h2>하카타 우동<span class="sub">— 博多うどん(하카타 우동) · 75년 전통</span></h2>
+</div>
+<div class="section-body">
+<div class="rest-grid">
+
+<!-- 11. 因幡うどん -->
+<div class="rest-card" style="border-right:none">
+  <div class="rest-head">
+    <span class="rest-num">11</span>
+    <div class="rest-names">
+      <div class="rest-ja">因幡うどん 博多デイトス店</div>
+      <div class="rest-phonetic">이나바 우동 하카타 데이토스점</div>
+      <div class="rest-meaning">因幡(이나바)=창업 당시 가게가 있던 天神의 옛 지명 "因幡町", デイトス(데이토스)=박다역 내 상업시설</div>
+      <span class="rest-category">博多うどん(하카타 우동) · 1951년 창업 · 하카타역 직결</span>
+    </div>
+  </div>
+
+  <img class="food-photo"
+    src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Udon_by_udono.jpg/600px-Udon_by_udono.jpg"
+    alt="博多うどん — 因幡うどん"
+    loading="lazy">
+
+  <div class="special-box">
+    <strong>왜 특별한가:</strong> 1951년(昭和 26년) 창업, 75년 역사. 하카타 우동의 정체성을 지키는 현지인의 일상 우동집. 足踏み(아시후미·발로 밟아) 반죽하고 오래 숙성시킨 면은 도쿄 우동과 달리 두꺼운데 폭신폭신하고 부드러운 식감. 달콤한 규슈식 간장 육수. 2025년 도쿄 하라카도(ハラカド)에 첫 진출할 정도의 명성. 하카타역 데이토스(デイトス) 내라 이동 동선상 최적.
+  </div>
+
+  <div class="info-section">
+    <div class="info-title">시그니처 메뉴</div>
+    <ul class="menu-list">
+      <li class="menu-item">
+        <span class="menu-name">ごぼう天うどん <span class="menu-phonetic">(고보텐 우동 · 우엉 튀김 우동)</span></span>
+        <span class="menu-price">¥620</span>
+        <span class="menu-desc">ごぼう(고보·우엉) 튀김이 육수를 흡수해 씹을수록 깊은 맛. 하카타 우동의 정석 메뉴.</span>
+      </li>
+      <li class="menu-item">
+        <span class="menu-name">肉うどん <span class="menu-phonetic">(니쿠 우동 · 고기 우동)</span></span>
+        <span class="menu-price">¥750~</span>
+        <span class="menu-desc">달콤하게 조린 규슈산 소고기 토핑. 육수와 어우러진 깊은 맛.</span>
+      </li>
+      <li class="menu-item">
+        <span class="menu-name">えび天うどん <span class="menu-phonetic">(에비텐 우동 · 새우 튀김 우동)</span></span>
+        <span class="menu-price">¥780~</span>
+      </li>
+      <li class="menu-item">
+        <span class="menu-name">かけうどん <span class="menu-phonetic">(카케 우동 · 기본 우동)</span></span>
+        <span class="menu-price">¥430~</span>
+      </li>
+    </ul>
+  </div>
+
+  <div class="info-section">
+    <div class="info-title">영업 정보</div>
+    <div class="info-row"><span class="info-label">영업시간</span><span class="info-val">11:00–22:00 (L.O. 21:30)<br>토·일·祝(슈쿠지츠·공휴일) 10:00–22:00</span></div>
+    <div class="info-row"><span class="info-label">주소</span><span class="info-val">博多駅 デイトス(데이토스) 내 — 역 직결</span></div>
+    <div class="info-row"><span class="info-label">교통</span><span class="info-val">JR 博多駅 直結(직결) — 改札(카이사츠·개찰구) 근처</span></div>
+  </div>
+
+  <div class="warn-box">
+    ⚠️ <strong>주의:</strong> <strong>4월 10일(금) 공항 출발 전 마지막 한 끼로 최적.</strong> 하카타역 안이라 짐 맡기고 그대로 이동 가능. 면이 빨리 불기 때문에 받으면 즉시 먹기.
+  </div>
+  <div class="enjoy-box">
+    🍵 <strong>즐기는 법:</strong> 하카타 우동은 "부드러운 것"이 정상 — 불었다고 생각하지 말 것. 달콤한 규슈 다시(だし·육수)를 끝까지 마시기. ごぼう天(우엉 튀김)은 조금 기다렸다 육수를 흡수시킨 후 먹으면 더 맛있음.
+  </div>
+
+  <a class="map-btn" href="https://www.google.com/maps/search/因幡うどん+博多デイトス" target="_blank">📍 구글맵에서 보기</a>
+</div>
+
+</div>
+</div>
+
+
+<!-- ======================================================
+     YATAI 섹션
+     ====================================================== -->
+<div class="section-header" id="yatai">
+  <span style="font-size:20px">🏮</span>
+  <h2>중洲 야타이<span class="sub">— 中洲屋台(나카스 야타이) · 후쿠오카만의 포장마차 문화</span></h2>
+</div>
+<div class="section-body">
+<div class="rest-grid">
+
+<!-- 12. 中洲屋台 -->
+<div class="rest-card" style="border-right:none">
+  <div class="rest-head">
+    <span class="rest-num">12</span>
+    <div class="rest-names">
+      <div class="rest-ja">中洲 屋台街</div>
+      <div class="rest-phonetic">나카스 야타이가이</div>
+      <div class="rest-meaning">中洲(나카스)=하카타 강 중간에 있는 섬 지형의 환락가, 屋台(야타이)=이동식 포장마차, 街(가이)=거리</div>
+      <span class="rest-category">후쿠오카만의 야타이 문화 · 나카스 강변 · 심야 운영</span>
+    </div>
+  </div>
+
+  <img class="food-photo"
+    src="https://upload.wikimedia.org/wikipedia/commons/d/d4/Nakasu_Yatai_Stalls_%2819979437930%29.jpg"
+    alt="中洲 屋台 — 나카스 야타이 거리"
+    loading="lazy">
+
+  <div class="special-box">
+    <strong>왜 특별한가:</strong> 나카스(中洲) 강변에 줄지어 선 屋台(야타이·포장마차)는 일본 전국에서도 후쿠오카에만 남아있는 독특한 음식 문화. 각 야타이마다 점주의 개성이 강하고, ラーメン(라멘)·餃子(교자)·焼き鳥(야키토리)·おでん(오뎅)을 소주·맥주와 함께 야외에서 즐긴다. 낯선 사람과 어깨 맞대고 앉아 이야기하는 것이 야타이 문화의 묘미.
+    <br><br>
+    <strong>추천 야타이: 武ちゃん (타케찬)</strong> — 하카타 히토쿠치 교자 원조 가게에서 독립한 점주 부자가 운영. 현지인과 유명인 단골. 소박하고 친근한 분위기.
+  </div>
+
+  <div class="info-section">
+    <div class="info-title">야타이 공통 메뉴 (야타이마다 다름)</div>
+    <ul class="menu-list">
+      <li class="menu-item">
+        <span class="menu-name">豚骨ラーメン <span class="menu-phonetic">(돈코츠 라멘)</span></span>
+        <span class="menu-price">¥700~¥900</span>
+      </li>
+      <li class="menu-item">
+        <span class="menu-name">一口餃子 <span class="menu-phonetic">(히토쿠치 교자 · 한 입 교자)</span></span>
+        <span class="menu-price">¥500~¥700</span>
+      </li>
+      <li class="menu-item">
+        <span class="menu-name">焼き鳥 <span class="menu-phonetic">(야키토리 · 닭꼬치)</span></span>
+        <span class="menu-price">¥150~¥300/개</span>
+      </li>
+      <li class="menu-item">
+        <span class="menu-name">おでん <span class="menu-phonetic">(오뎅 · 어묵 탕)</span></span>
+        <span class="menu-price">¥150~</span>
+      </li>
+      <li class="menu-item">
+        <span class="menu-name">生ビール <span class="menu-phonetic">(나마 비루 · 생맥주)</span></span>
+        <span class="menu-price">¥600~</span>
+      </li>
+    </ul>
+  </div>
+
+  <div class="info-section">
+    <div class="info-title">영업 정보</div>
+    <div class="info-row"><span class="info-label">영업시간</span><span class="info-val">보통 18:00 – 02:00 (야타이마다 다름)</span></div>
+    <div class="info-row"><span class="info-label">위치</span><span class="info-val">지하철 中洲川端駅(나카스카와바타에키) 도보 3분 / 나카스 강변 일대</span></div>
+    <div class="info-row"><span class="info-label">예약</span><span class="info-val">기본적으로 줄 서서 입장 (만석 시 인근 야타이로 이동 가능)</span></div>
+    <div class="info-row"><span class="info-label">좌석</span><span class="info-val">야타이당 보통 8~15석. 작은 의자와 간이 탁자.</span></div>
+  </div>
+
+  <div class="warn-box">
+    ⚠️ <strong>주의:</strong> 雨天(우텐·우천) 시 영업 취소하는 야타이 있음 (4월 우기 주의). 현금만. 灯りが点いている(조명 켜짐)=영업 중, 消えている(조명 꺼짐)=준비 중 또는 마감. 4월은 의외로 쌀쌀하므로 겉옷 챙기기.
+  </div>
+  <div class="enjoy-box">
+    🏮 <strong>즐기는 법:</strong> ①어느 야타이든 "ラーメン 한 그릇 + 꼬치 2~3개 + 맥주" 정도로 가볍게 → ②마음에 들면 추가, 아니면 옆 야타이로 이동하는 "야타이 호핑(屋台ホッピング)" → ③점주에게 <span class="jp">「オススメは何ですか？(오스스메와 난데스카·추천이 뭔가요?)」</span>라고 물어보기. 이것이 야타이의 진짜 묘미.
+  </div>
+
+  <a class="map-btn" href="https://www.google.com/maps/search/中洲屋台+福岡+中洲川端" target="_blank">📍 구글맵에서 보기</a>
+</div>
+
+</div>
+</div>
+
+
+<!-- ======================================================
+     SCHEDULE 섹션
+     ====================================================== -->
+<div class="tip-section-header" id="schedule">
+  <span style="font-size:20px">📅</span>
+  <h2>추천 식사 일정 (4/8 수요일 ~ 4/10 금요일)</h2>
+</div>
+<div class="tip-body">
+
+  <div class="route-card">
+    <div class="route-title">🗓️ 4월 8일 (수요일) — 도착의 밤</div>
+    <div class="route-steps">
+      <div class="route-step"><span class="step-time">20:00</span><span class="step-content">후쿠오카 공항(福岡空港·후쿠오카 쿠코) 도착 → 하카타역 방면 지하철 2분</span></div>
+      <div class="route-step"><span class="step-time">21:00~</span><span class="step-content"><strong>#5 楽天地 天神総本店</strong> — 연중무휴 17시~자정. しょうゆもつ鍋(간장 내장 전골)로 하카타 첫날 입문</span></div>
+      <div class="route-step"><span class="step-time">또는</span><span class="step-content"><strong>#3 ShinShin 天神本店</strong> — 새벽 3시까지. 가볍고 깔끔한 돈코츠 라멘으로 도착 피로 풀기</span></div>
+      <div class="route-step"><span class="step-time">23:00~</span><span class="step-content"><strong>#12 中洲 야타이</strong> — 나카스 강변 야타이 거리에서 生ビール(생맥주) 한 잔. 수요일 영업 중.</span></div>
+      <div class="route-step"><span class="step-time">심야~</span><span class="step-content"><strong>#1 元祖長浜屋</strong> — 새벽 1시 45분까지. ¥500 라멘으로 마무리.</span></div>
+    </div>
+  </div>
+
+  <div class="route-card">
+    <div class="route-title">🗓️ 4월 9일 (목요일) — 하카타 완전 탐식</div>
+    <div class="route-steps">
+      <div class="route-step"><span class="step-time">10:00</span><span class="step-content"><strong>#11 因幡うどん</strong> 하카타데이토스점 — 가벼운 아침 우동. 土日祝 10시 오픈.</span></div>
+      <div class="route-step"><span class="step-time">11:30</span><span class="step-content"><strong>#2 博多一双</strong> — 오픈(11시) 직후 방문하거나 점심 피크 후 14시 이후 방문 권장</span></div>
+      <div class="route-step"><span class="step-time">15:00</span><span class="step-content">캐널시티 博多·나카스카와바타 산책 / 차(茶) 가이드 매장 투어</span></div>
+      <div class="route-step"><span class="step-time">17:00</span><span class="step-content"><strong>#8 かわ屋 祇園店</strong> — 오픈 직후 방문 (예약 없으면 오픈런). 鶏皮串(닭껍질 꼬치) + 맥주</span></div>
+      <div class="route-step"><span class="step-time">19:00</span><span class="step-content"><strong>#6 濱田屋</strong> 또는 <strong>#4 やま中</strong> — 저녁 나베 (요야쿠·예약 필수)</span></div>
+      <div class="route-step"><span class="step-time">21:30</span><span class="step-content"><strong>#10 はじめの一歩</strong> — ごまさば(참깨 고등어) + 活イカ(활오징어)로 이자카야 마무리 (L.O. 22:00)</span></div>
+    </div>
+  </div>
+
+  <div class="route-card">
+    <div class="route-title">🗓️ 4월 10일 (금요일) — 출발 전 마지막 한 끼</div>
+    <div class="route-steps">
+      <div class="route-step"><span class="step-time">11:30</span><span class="step-content"><strong>#7 博多祇園鉄なべ</strong> — 오픈(11:30) 맞춰 바로 ひとくち餃子(한 입 교자) 런치</span></div>
+      <div class="route-step"><span class="step-time">또는</span><span class="step-content"><strong>#9 とりかわ大臣</strong> KITTE博多 — 하카타역 직결이라 짐 들고도 편리</span></div>
+      <div class="route-step"><span class="step-time">14:30</span><span class="step-content">하카타역 → 후쿠오카 공항(福岡空港) 지하철 2분</span></div>
+      <div class="route-step"><span class="step-time">18:00</span><span class="step-content">후쿠오카 공항 출발</span></div>
+    </div>
+  </div>
+
+  <div style="background:rgba(180,60,20,0.08); border:1px solid rgba(180,80,50,0.2); border-radius:8px; padding:14px 16px; margin-top:4px;">
+    <div style="font-size:12px; font-weight:bold; color:var(--red-dark); margin-bottom:8px;">💡 하카타 식사 필수 상식</div>
+    <div style="font-size:12px; color:#444; line-height:1.9;">
+      • <strong>現金(겐킨·현금) 우선</strong> — 소규모 식당·야타이 대부분 현금만. 万札(만사츠·만 엔권)보다 千円·五千円(천·오천 엔권)으로 환전해두기<br>
+      • <strong>替玉(카에다마)</strong> — 라멘 면 추가 시스템. 비용 ¥100~150. スープ(스프)가 남으면 꼭 추가<br>
+      • <strong>화요일(火曜日·카요비) 정기휴무</strong> — やま中·鉄なべ 화요일 휴무. <strong>이번 일정 4/8~10은 수·목·금이라 모두 영업</strong><br>
+      • <strong>予約(요야쿠·예약) 필수</strong> — かわ屋·やま中·濱田屋는 예약 없으면 사실상 입장 불가. 지금 바로 예약<br>
+      • <strong>スープ売り切れ(스프 매진) 마감</strong> — 元祖長浜屋·博多一双는 스프 소진 시 조기 마감. 피크 직전 방문<br>
+      • <strong>においの付着(냄새 배임)</strong> — 鶏皮·もつ鍋 식당은 옷에 냄새 뱀. 냄새 배기 쉬운 옷 피하기
+    </div>
+  </div>
+
+</div>
+
+</div><!-- end container -->
+
+<footer>
+  <p>후쿠오카 하카타 현지 맛집 가이드 2026 · 정보는 방문 전 각 점포 최신 내용 확인 바랍니다</p>
+  <p style="margin-top:6px;"><a href="tea-guide.html">← 차(茶) 구입 가이드로 돌아가기</a></p>
+  <p style="margin-top:4px; font-size:10px; opacity:.5">사진 출처: Wikimedia Commons (CC 라이선스)</p>
+</footer>
+
+</body>
+</html>
