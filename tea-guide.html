@@ -136,6 +136,39 @@
 
   footer { text-align: center; padding: 24px; font-size: 12px; background: var(--green-dark); color: #ccc; }
 
+  /* 일본어 아래 한글 음차 */
+  .ko-read { display: block; font-size: 11px; color: #888; font-weight: normal; margin-top: 2px; }
+
+  /* 섹션 내 소제목 */
+  .sub-section-head { background: var(--green-light); border-left: 4px solid var(--green-mid); padding: 10px 20px; font-size: 14px; font-weight: bold; color: var(--green-dark); margin: 4px 0 0; }
+
+  /* 다기 카드 */
+  .teaware-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; padding: 20px; }
+  .teaware-card { border: 1px solid var(--border); border-radius: 10px; overflow: hidden; background: #fff; }
+  .teaware-card-head { background: var(--green-mid); color: #fff; padding: 10px 16px; display: flex; align-items: center; gap: 12px; }
+  .teaware-icon { font-size: 26px; flex-shrink: 0; }
+  .teaware-title-ja { font-size: 16px; font-weight: bold; }
+  .teaware-title-ko { font-size: 12px; opacity: .8; margin-top: 2px; }
+  .teaware-card-body { padding: 14px 16px; font-size: 13px; line-height: 1.7; }
+  .tw-row { display: flex; gap: 8px; margin-bottom: 4px; align-items: flex-start; }
+  .tw-label { font-weight: bold; color: var(--green-dark); min-width: 60px; flex-shrink: 0; font-size: 12px; padding-top: 1px; }
+  .tw-tag { display: inline-block; background: var(--green-light); color: var(--green-dark); border: 1px solid var(--green-mid); border-radius: 10px; padding: 1px 8px; font-size: 11px; margin: 1px 2px 1px 0; }
+  .tw-price { color: var(--gold); font-weight: bold; }
+  .tw-tip { background: #fffbe6; border-left: 3px solid #ffd700; padding: 6px 10px; font-size: 12px; margin-top: 8px; border-radius: 0 4px 4px 0; line-height: 1.6; }
+
+  /* 찻잎별 우리기 카드 */
+  .brew-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; padding: 20px; }
+  .brew-card { border: 1px solid var(--border); border-radius: 10px; overflow: hidden; background: #fff; }
+  .brew-card-head { background: linear-gradient(135deg, var(--green-dark) 0%, var(--green-mid) 100%); color: #fff; padding: 12px 16px; }
+  .brew-card-head .tea-ja { font-size: 18px; font-weight: bold; }
+  .brew-card-head .tea-ko { font-size: 12px; opacity: .8; margin-top: 2px; }
+  .brew-card-body { padding: 14px 16px; font-size: 13px; }
+  .brew-row { display: flex; gap: 8px; margin-bottom: 6px; align-items: flex-start; line-height: 1.5; }
+  .brew-row-icon { font-size: 15px; flex-shrink: 0; width: 20px; text-align: center; }
+  .brew-row-info { line-height: 1.55; }
+  .brew-row-info strong { color: var(--green-dark); }
+  .brew-tip { background: #fffbe6; border: 1px solid #ffd700; border-radius: 6px; padding: 7px 10px; font-size: 12px; margin-top: 8px; line-height: 1.6; }
+
   @media (max-width: 700px) {
     .hero h1 { font-size: 20px; }
   }
@@ -294,6 +327,10 @@
       flex-direction: column !important;
       gap: 12px !important;
     }
+    /* --- 다기 섹션 모바일 --- */
+    .teaware-grid { grid-template-columns: 1fr; padding: 12px; gap: 12px; }
+    .brew-grid { grid-template-columns: 1fr; padding: 12px; gap: 12px; }
+    .sub-section-head { padding: 10px 14px; font-size: 13px; }
   }
 </style>
 </head>
@@ -306,6 +343,7 @@
     <li><a href="#stores">🏪 구매 매장</a></li>
     <li><a href="#map">🗺 위치 약도</a></li>
     <li><a href="#tasting">☕ 시음 매장</a></li>
+    <li><a href="#teaware">🫖 다기 가이드</a></li>
     <li><a href="#tips">💡 여행 팁</a></li>
   </ul>
 </nav>
@@ -404,7 +442,7 @@
                 alt="星野玉露 特上"
                 onerror="this.outerHTML='<div class=\'prod-card-img-fallback\'>🍵</div>'">
               <div class="prod-card-body">
-                <div class="prod-name">星野玉露 ほしの秘園</div>
+                <div class="prod-name">星野玉露 ほしの秘園<span class="ko-read">호시노 교쿠로 호시노 히엔</span></div>
                 <div class="prod-co">🏭 星野製茶園 (호시노 세이차엔)</div>
                 <div class="prod-co-ja">八女市星野村 · 호시노마을 대표 명가</div>
                 <div class="prod-note">딥그린 화조 패턴 고급 캔 패키지.</div>
@@ -414,7 +452,7 @@
             <div class="prod-card">
               <div class="prod-card-img-fallback">🏡</div>
               <div class="prod-card-body">
-                <div class="prod-name">星野玉露 極選</div>
+                <div class="prod-name">星野玉露 極選<span class="ko-read">호시노 교쿠로 고쿠센</span></div>
                 <div class="prod-co">🏭 吉岡製茶 (요시오카 세이차)</div>
                 <div class="prod-co-ja">八女市星野 · 소규모 장인 제다</div>
                 <div class="prod-note">소량 한정 생산. 최상급 선물 아이템.</div>
@@ -447,7 +485,7 @@
                 alt="八女玉露 極上"
                 onerror="this.outerHTML='<div class=\'prod-card-img-fallback\'>🍵</div>'">
               <div class="prod-card-body">
-                <div class="prod-name">GI認証 八女伝統本玉露</div>
+                <div class="prod-name">GI認証 八女伝統本玉露<span class="ko-read">GI인증 야메 덴토혼 교쿠로</span></div>
                 <div class="prod-co">🏭 牛島製茶 (우시지마 세이차)</div>
                 <div class="prod-co-ja">창업 105년 · 야메 교쿠로 전통 명가</div>
                 <div class="prod-note">GI 지리적 표시 인증. 국내외 수상 경력.</div>
@@ -460,7 +498,7 @@
                 alt="玉露「匠」"
                 onerror="this.outerHTML='<div class=\'prod-card-img-fallback\'>🍵</div>'">
               <div class="prod-card-body">
-                <div class="prod-name">玉露「匠」陽の雫</div>
+                <div class="prod-name">玉露「匠」陽の雫<span class="ko-read">교쿠로 「타쿠미」 히노 시즈쿠</span></div>
                 <div class="prod-co">🏭 古賀製茶本舗 (코가 세이차혼포)</div>
                 <div class="prod-co-ja">창업 200년 · 야메 전통 명가</div>
                 <div class="prod-note">전통 금박 패키지. 선물 세트 구성.</div>
@@ -494,7 +532,7 @@
                 alt="奥八女かぶせ茶"
                 onerror="this.outerHTML='<div class=\'prod-card-img-fallback\'>🌿</div>'">
               <div class="prod-card-body">
-                <div class="prod-name">奥八女かぶせ茶 特上</div>
+                <div class="prod-name">奥八女かぶせ茶 特上<span class="ko-read">오쿠야메 가부세차 도쿠조</span></div>
                 <div class="prod-co">🏭 いりえ茶園 (이리에 차엔)</div>
                 <div class="prod-co-ja">八女市星野 · 무농약 재배 40년</div>
                 <div class="prod-note">무농약 고급 가부세차. 딥그린 패키지.</div>
@@ -507,7 +545,7 @@
                 alt="冠茶「翠」"
                 onerror="this.outerHTML='<div class=\'prod-card-img-fallback\'>🌿</div>'">
               <div class="prod-card-body">
-                <div class="prod-name">冠茶「翠」八媛の雫</div>
+                <div class="prod-name">冠茶「翠」八媛の雫<span class="ko-read">가부세차 「스이」 야히메노 시즈쿠</span></div>
                 <div class="prod-co">🏭 古賀製茶本舗 (코가 세이차혼포)</div>
                 <div class="prod-note">전통 제다법. 야메 현지 직송.</div>
                 <a class="prod-shop-link" href="https://shop.koganoyamecha.co.jp/" target="_blank">🛒 공식 쇼핑몰 →</a>
@@ -540,7 +578,7 @@
                 alt="深むし煎茶「薫」"
                 onerror="this.outerHTML='<div class=\'prod-card-img-fallback\'>🍵</div>'">
               <div class="prod-card-body">
-                <div class="prod-name">深むし煎茶「薫」八媛の碧</div>
+                <div class="prod-name">深むし煎茶「薫」八媛の碧<span class="ko-read">후카무시 센차 「카오루」 야히메노 아오이</span></div>
                 <div class="prod-co">🏭 古賀製茶本舗 (코가 세이차혼포)</div>
                 <div class="prod-note">야메의 대표 후카무시. 진녹색 패키지.</div>
                 <a class="prod-shop-link" href="https://shop.koganoyamecha.co.jp/view/category/sencha" target="_blank">🛒 공식 쇼핑몰 →</a>
@@ -552,7 +590,7 @@
                 alt="深むし煎茶「萌」"
                 onerror="this.outerHTML='<div class=\'prod-card-img-fallback\'>🍵</div>'">
               <div class="prod-card-body">
-                <div class="prod-name">深蒸し煎茶 特上</div>
+                <div class="prod-name">深蒸し煎茶 特上<span class="ko-read">후카무시 센차 도쿠조</span></div>
                 <div class="prod-co">🏭 牛島製茶 (우시지마 세이차)</div>
                 <div class="prod-co-ja">創業105年 · 야메차 전통 명가</div>
                 <div class="prod-note">금박 라벨 패키지. 선물용으로도 인기.</div>
@@ -586,7 +624,7 @@
                 alt="煎茶 奥八女の薫"
                 onerror="this.outerHTML='<div class=\'prod-card-img-fallback\'>🌱</div>'">
               <div class="prod-card-body">
-                <div class="prod-name">煎茶「薫」奥八女の煎茶</div>
+                <div class="prod-name">煎茶「薫」奥八女の煎茶<span class="ko-read">센차 「카오루」 오쿠야메노 센차</span></div>
                 <div class="prod-co">🏭 古賀製茶本舗 (코가 세이차혼포)</div>
                 <div class="prod-co-ja">福岡県八女市 · 창업 200년</div>
                 <div class="prod-note">야메 전통 센차. 선명한 녹색 패키지.</div>
@@ -599,7 +637,7 @@
                 alt="八女の銘茶"
                 onerror="this.outerHTML='<div class=\'prod-card-img-fallback\'>🌱</div>'">
               <div class="prod-card-body">
-                <div class="prod-name">八女上煎茶 (JAふくおか八女)</div>
+                <div class="prod-name">八女上煎茶<span class="ko-read">야메 조센차 (JAふくおか八女 · JA후쿠오카야메)</span></div>
                 <div class="prod-co">🏭 JAふくおか八女 직판</div>
                 <div class="prod-co-ja">農協 직판 · 신뢰도 높은 정품</div>
                 <div class="prod-note">농협 직판. 신뢰도 높은 정품.</div>
@@ -633,7 +671,7 @@
                 alt="玉緑茶"
                 onerror="this.outerHTML='<div class=\'prod-card-img-fallback\'>🫙</div>'">
               <div class="prod-card-body">
-                <div class="prod-name">玉緑茶 100g</div>
+                <div class="prod-name">玉緑茶 100g<span class="ko-read">타마료쿠차 100g</span></div>
                 <div class="prod-co">🏭 新緑園 (신록원)</div>
                 <div class="prod-co-ja">규슈 정통 타마료쿠차 전문</div>
                 <div class="prod-note">둥근 잎 그대로 보이는 투명 패키지.</div>
@@ -643,7 +681,7 @@
             <div class="prod-card">
               <div class="prod-card-img-fallback">🫙</div>
               <div class="prod-card-body">
-                <div class="prod-name">八女玉緑茶</div>
+                <div class="prod-name">八女玉緑茶<span class="ko-read">야메 타마료쿠차</span></div>
                 <div class="prod-co">🏭 八女茶の里 (야메차노사토)</div>
                 <div class="prod-co-ja">yamechanosato.com</div>
                 <div class="prod-note">야메 현지 직판. 신선한 찻잎.</div>
@@ -677,7 +715,7 @@
                 alt="特上釜炒り茶"
                 onerror="this.outerHTML='<div class=\'prod-card-img-fallback\'>🫖</div>'">
               <div class="prod-card-body">
-                <div class="prod-name">特上釜炒り茶</div>
+                <div class="prod-name">特上釜炒り茶<span class="ko-read">도쿠조 카마이리차</span></div>
                 <div class="prod-co">🏭 山輝園 (야마키엔)</div>
                 <div class="prod-co-ja">사가현 우레시노 · 카마이리 전통 장인</div>
                 <div class="prod-note">흙빛 도자기 이미지 패키지. 희귀 차.</div>
@@ -687,7 +725,7 @@
             <div class="prod-card">
               <div class="prod-card-img-fallback">🫖</div>
               <div class="prod-card-body">
-                <div class="prod-name">嬉野釜炒り茶</div>
+                <div class="prod-name">嬉野釜炒り茶<span class="ko-read">우레시노 카마이리차</span></div>
                 <div class="prod-co">🏭 嬉野茶屋 (우레시노 차야)</div>
                 <div class="prod-co-ja">嬉野茶 전문 직판 쇼핑몰</div>
                 <div class="prod-note">밝은 황색 패키지. 선물용.</div>
@@ -850,11 +888,11 @@
           </div>
           <div class="map-row">
             <span class="map-dir">🟡 도보 10분</span>
-            <div class="map-info"><b>茶舗ふりゅう</b><br>야쿠인 방향 · 清川1-6-9 2F<br><a href="https://maps.google.com/?q=福岡市中央区清川1丁目6-9" target="_blank">📍 지도 보기</a></div>
+            <div class="map-info"><b>茶舗ふりゅう</b> <span style="font-size:11px;color:#888">(차호 후류우)</span><br>야쿠인 방향 · 清川1-6-9 2F<br><a href="https://maps.google.com/?q=福岡市中央区清川1丁目6-9" target="_blank">📍 지도 보기</a></div>
           </div>
           <div class="map-row">
             <span class="map-dir">🔵 지하철 3분</span>
-            <div class="map-info"><b>大濠テラス</b><br>공항선 → 오호리공원역 하차 → 도보 5분<br><a href="https://maps.google.com/?q=大濠テラス+八女茶+福岡市中央区大濠公園" target="_blank">📍 지도 보기</a></div>
+            <div class="map-info"><b>大濠テラス</b> <span style="font-size:11px;color:#888">(오호리 테라스)</span><br>공항선 → 오호리공원역 하차 → 도보 5분<br><a href="https://maps.google.com/?q=大濠テラス+八女茶+福岡市中央区大濠公園" target="_blank">📍 지도 보기</a></div>
           </div>
           <div class="map-note">📌 <b>추천 동선:</b> XINFUCHA LAB → LUPICIA → 茶舗ふりゅう 순서로 이동하면 반나절에 모두 돌 수 있습니다.</div>
         </div>
@@ -870,7 +908,7 @@
           </div>
           <div class="map-row">
             <span class="map-dir">🟡 도보 10분</span>
-            <div class="map-info"><b>光安青霞園茶舗</b><br>하카타역 서쪽 출구 방향 · 창업 300년 노포<br><a href="https://maps.google.com/?q=光安青霞園茶舗+福岡市博多区" target="_blank">📍 지도 보기</a></div>
+            <div class="map-info"><b>光安青霞園茶舗</b> <span style="font-size:11px;color:#888">(미츠야스 세이카엔 차포)</span><br>하카타역 서쪽 출구 방향 · 창업 300년 노포<br><a href="https://maps.google.com/?q=光安青霞園茶舗+福岡市博多区" target="_blank">📍 지도 보기</a></div>
           </div>
           <div class="map-row">
             <span class="map-dir">🔵 지하철 2분</span>
@@ -891,7 +929,7 @@
             <div>
               <div class="map-row">
                 <span class="map-dir">🟢 야메 현지</span>
-                <div class="map-info"><b>茶の文化館</b><br>八女市星野村10816-5<br>호시노 교쿠로 시음 + 체험<br><a href="https://maps.google.com/?q=茶の文化館+福岡県八女市星野村" target="_blank">📍 지도 보기</a></div>
+                <div class="map-info"><b>茶の文化館</b> <span style="font-size:11px;color:#888">(차노 분카칸)</span><br>八女市星野村10816-5<br>호시노 교쿠로 시음 + 체험<br><a href="https://maps.google.com/?q=茶の文化館+福岡県八女市星野村" target="_blank">📍 지도 보기</a></div>
               </div>
               <div class="map-row" style="margin-top:8px">
                 <span class="map-dir">🌿 주변</span>
@@ -981,7 +1019,246 @@
   </div>
 </div>
 
-<!-- ====== SECTION 6: 팁 ====== -->
+<!-- ====== SECTION 6: 다기 구매 가이드 ====== -->
+<div class="section" id="teaware">
+  <div class="section-header"><span class="icon">🫖</span><h2>다기(茶器) 구매 가이드 &amp; 찻잎별 우리기</h2></div>
+  <div class="section-body">
+    <div class="tip-box">
+      🫖 <strong>다기 선택 팁:</strong> 좋은 차를 구매했다면 제대로 우리는 것이 맛의 절반! 급須(큐스) 하나만 있어도 충분하지만, 교쿠로는 <b>湯冷まし(유자마시)</b>가 필수입니다. 물 온도가 틀리면 아무리 비싼 교쿠로도 쓴맛만 남아요.
+    </div>
+
+    <div class="sub-section-head">🫖 다기 종류별 상세 가이드</div>
+    <div class="teaware-grid">
+
+      <div class="teaware-card">
+        <div class="teaware-card-head">
+          <span class="teaware-icon">🫖</span>
+          <div>
+            <div class="teaware-title-ja">急須 <small style="font-size:12px;font-weight:normal">(きゅうす · 큐스)</small></div>
+            <div class="teaware-title-ko">일본식 찻주전자</div>
+          </div>
+        </div>
+        <div class="teaware-card-body">
+          <div class="tw-row"><span class="tw-label">용도</span><span>센차·가부세차·후카무시 우리기 핵심 도구. 내장 여과망으로 찻잎 걸러냄</span></div>
+          <div class="tw-row"><span class="tw-label">추천 차</span><span><span class="tw-tag">센차</span><span class="tw-tag">후카무시</span><span class="tw-tag">가부세차</span><span class="tw-tag">타마료쿠차</span></span></div>
+          <div class="tw-row"><span class="tw-label">가격</span><span class="tw-price">2,000~30,000엔</span></div>
+          <div class="tw-row"><span class="tw-label">대표 산지</span><span>常滑焼 도코나메야키 · 萬古焼 반코야키</span></div>
+          <div class="tw-tip">⚠️ 후카무시 센차는 잎이 잘게 분쇄되어 있어 <b>세밀한 망(細目網)</b> 타입 필수. 일반 망으로는 잎이 빠져나옵니다.</div>
+        </div>
+      </div>
+
+      <div class="teaware-card">
+        <div class="teaware-card-head">
+          <span class="teaware-icon">🏺</span>
+          <div>
+            <div class="teaware-title-ja">朱泥急須 <small style="font-size:12px;font-weight:normal">(しゅでいきゅうす · 슈데이 큐스)</small></div>
+            <div class="teaware-title-ko">교쿠로 전용 소형 토기 찻주전자</div>
+          </div>
+        </div>
+        <div class="teaware-card-body">
+          <div class="tw-row"><span class="tw-label">용도</span><span>교쿠로 전용 소형(60~100ml) 주데이(붉은 점토) 토기 급須. 미세한 기공이 차맛을 부드럽게 함</span></div>
+          <div class="tw-row"><span class="tw-label">추천 차</span><span><span class="tw-tag">교쿠로</span><span class="tw-tag">호시노 교쿠로</span></span></div>
+          <div class="tw-row"><span class="tw-label">가격</span><span class="tw-price">5,000~80,000엔+</span></div>
+          <div class="tw-row"><span class="tw-label">대표 산지</span><span>常滑焼 朱泥 (도코나메 주데이)</span></div>
+          <div class="tw-tip">⭐ 사용할수록 차색이 배어들어 고유한 맛으로 숙성. 세제 미사용 권장. 교쿠로 마니아 필수품.</div>
+        </div>
+      </div>
+
+      <div class="teaware-card">
+        <div class="teaware-card-head">
+          <span class="teaware-icon">🥛</span>
+          <div>
+            <div class="teaware-title-ja">湯冷まし <small style="font-size:12px;font-weight:normal">(ゆざまし · 유자마시)</small></div>
+            <div class="teaware-title-ko">물 식힘 그릇 (교쿠로 필수!</div>
+          </div>
+        </div>
+        <div class="teaware-card-body">
+          <div class="tw-row"><span class="tw-label">용도</span><span>끓인 물(100°C)을 적정 온도로 낮추는 그릇. 1회 옮길 때마다 약 10~15°C 하강</span></div>
+          <div class="tw-row"><span class="tw-label">추천 차</span><span><span class="tw-tag" style="background:#fff3cd;border-color:#ffc107">교쿠로 필수!</span><span class="tw-tag">가부세차</span></span></div>
+          <div class="tw-row"><span class="tw-label">가격</span><span class="tw-price">1,500~8,000엔</span></div>
+          <div class="tw-row"><span class="tw-label">추천 용량</span><span>300~400ml</span></div>
+          <div class="tw-tip">💧 교쿠로 목표 온도 50~60°C: 끓인 물 → 유자마시 → 교쿠로 차완 → 급須 순서로 2~3회 옮겨 식히기.</div>
+        </div>
+      </div>
+
+      <div class="teaware-card">
+        <div class="teaware-card-head">
+          <span class="teaware-icon">🍵</span>
+          <div>
+            <div class="teaware-title-ja">湯飲み <small style="font-size:12px;font-weight:normal">(ゆのみ · 유노미)</small></div>
+            <div class="teaware-title-ko">센차용 원통형 찻잔</div>
+          </div>
+        </div>
+        <div class="teaware-card-body">
+          <div class="tw-row"><span class="tw-label">용도</span><span>센차 전용 기다란 원통형 찻잔. 세로로 길어 열이 식지 않게 설계됨</span></div>
+          <div class="tw-row"><span class="tw-label">추천 차</span><span><span class="tw-tag">센차</span><span class="tw-tag">후카무시</span><span class="tw-tag">가부세차</span><span class="tw-tag">카마이리차</span></span></div>
+          <div class="tw-row"><span class="tw-label">가격</span><span class="tw-price">500~5,000엔</span></div>
+          <div class="tw-row"><span class="tw-label">용량</span><span>120~200ml 일반 / 240ml 대형</span></div>
+          <div class="tw-tip">🎁 5개 세트 구매 시 경제적. 차+찻잔 세트로 선물하면 최고!</div>
+        </div>
+      </div>
+
+      <div class="teaware-card">
+        <div class="teaware-card-head">
+          <span class="teaware-icon">🍃</span>
+          <div>
+            <div class="teaware-title-ja">玉露茶碗 <small style="font-size:12px;font-weight:normal">(ぎょくろちゃわん · 교쿠로 차완)</small></div>
+            <div class="teaware-title-ko">교쿠로 전용 소형 찻잔</div>
+          </div>
+        </div>
+        <div class="teaware-card-body">
+          <div class="tw-row"><span class="tw-label">용도</span><span>교쿠로 전용 소형 찻잔(30~50ml). 소량의 진한 교쿠로를 찬찬히 음미</span></div>
+          <div class="tw-row"><span class="tw-label">추천 차</span><span><span class="tw-tag">교쿠로</span><span class="tw-tag">호시노 교쿠로</span></span></div>
+          <div class="tw-row"><span class="tw-label">가격</span><span class="tw-price">1,000~20,000엔</span></div>
+          <div class="tw-row"><span class="tw-label">특징</span><span>깊고 넓은 형태로 향을 가두어 복합적인 향미 감상 가능</span></div>
+          <div class="tw-tip">🫖 교쿠로는 40~60ml 소량으로 진하게 우려 마시는 것이 정석.</div>
+        </div>
+      </div>
+
+      <div class="teaware-card">
+        <div class="teaware-card-head">
+          <span class="teaware-icon">🥫</span>
+          <div>
+            <div class="teaware-title-ja">茶筒 <small style="font-size:12px;font-weight:normal">(ちゃづつ · 차즈츠)</small></div>
+            <div class="teaware-title-ko">차잎 보관 통 (선물용으로도 인기)</div>
+          </div>
+        </div>
+        <div class="teaware-card-body">
+          <div class="tw-row"><span class="tw-label">용도</span><span>차잎 보관 및 선물. 이중 뚜껑 구조로 밀봉·방습·방향 기능</span></div>
+          <div class="tw-row"><span class="tw-label">추천 차</span><span><span class="tw-tag">모든 차</span></span></div>
+          <div class="tw-row"><span class="tw-label">가격</span><span class="tw-price">1,500~30,000엔+</span></div>
+          <div class="tw-row"><span class="tw-label">유명 브랜드</span><span>開化堂 (카이카도) 교토 — 창업 150년 수제 차즈츠</span></div>
+          <div class="tw-tip">🎁 루피시아·각 차 전문점에서 구매 가능. 차잎과 함께 선물 세트로 구성하면 최고급 선물!</div>
+        </div>
+      </div>
+
+      <div class="teaware-card">
+        <div class="teaware-card-head">
+          <span class="teaware-icon">🥄</span>
+          <div>
+            <div class="teaware-title-ja">茶杓 <small style="font-size:12px;font-weight:normal">(ちゃしゃく · 차샤쿠)</small></div>
+            <div class="teaware-title-ko">차잎 계량 스쿠프</div>
+          </div>
+        </div>
+        <div class="teaware-card-body">
+          <div class="tw-row"><span class="tw-label">용도</span><span>차잎 계량 스쿠프. 1스쿠프 ≈ 2~3g</span></div>
+          <div class="tw-row"><span class="tw-label">추천 차</span><span><span class="tw-tag">모든 차</span></span></div>
+          <div class="tw-row"><span class="tw-label">가격</span><span class="tw-price">300~3,000엔</span></div>
+          <div class="tw-row"><span class="tw-label">소재</span><span>竹(대나무) 전통 / 스테인리스 실용적</span></div>
+          <div class="tw-tip">🎌 대나무 차샤쿠는 가볍고 저렴해 기념품으로도 좋습니다. 기내 반입 문제없음.</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="sub-section-head" style="margin-top:8px">🍵 찻잎별 추천 우리기 가이드</div>
+    <div class="brew-grid">
+
+      <div class="brew-card">
+        <div class="brew-card-head">
+          <div class="tea-ja">星野玉露 / 玉露</div>
+          <div class="tea-ko">호시노 교쿠로 / 교쿠로 &nbsp;<span class="grade-badge grade-1p" style="font-size:10px;padding:1px 7px">⭐ 최고급</span></div>
+        </div>
+        <div class="brew-card-body">
+          <div class="brew-row"><span class="brew-row-icon">🫖</span><div class="brew-row-info"><strong>다기:</strong> 朱泥急須(슈데이 큐스) 40~80ml 또는 蓋碗(가이완)</div></div>
+          <div class="brew-row"><span class="brew-row-icon">🌡</span><div class="brew-row-info"><strong>물 온도:</strong> <span style="color:#c00;font-weight:bold">50~60°C 필수!</span><br><small>끓인 물 → 유자마시 → 교쿠로 차완 → 급須 순 2~3회 옮겨 식히기</small></div></div>
+          <div class="brew-row"><span class="brew-row-icon">🍃</span><div class="brew-row-info"><strong>찻잎 양:</strong> 10g / 40~60ml (진하게)</div></div>
+          <div class="brew-row"><span class="brew-row-icon">⏱</span><div class="brew-row-info"><strong>우림 시간:</strong> 1분 30초~2분</div></div>
+          <div class="brew-row"><span class="brew-row-icon">🔄</span><div class="brew-row-info"><strong>우림 횟수:</strong> 3회 (2번째부터 65°C로 올려도 됨)</div></div>
+          <div class="brew-tip">💎 세계 최고급 교쿠로. 버터 같은 우마미와 단맛이 입 안에 녹아드는 것이 핵심. <b>물 온도가 틀리면 쓴맛만</b> 납니다 — 유자마시 필수!</div>
+        </div>
+      </div>
+
+      <div class="brew-card">
+        <div class="brew-card-head">
+          <div class="tea-ja">かぶせ茶</div>
+          <div class="tea-ko">가부세차 &nbsp;<span class="grade-badge grade-2" style="font-size:10px;padding:1px 7px">중~상급</span></div>
+        </div>
+        <div class="brew-card-body">
+          <div class="brew-row"><span class="brew-row-icon">🫖</span><div class="brew-row-info"><strong>다기:</strong> 중소형 급須 (150~200ml)</div></div>
+          <div class="brew-row"><span class="brew-row-icon">🌡</span><div class="brew-row-info"><strong>물 온도:</strong> <span style="color:#2D6A2D;font-weight:bold">65~70°C</span><br><small>유자마시 1회 이동으로 충분</small></div></div>
+          <div class="brew-row"><span class="brew-row-icon">🍃</span><div class="brew-row-info"><strong>찻잎 양:</strong> 5g / 120ml</div></div>
+          <div class="brew-row"><span class="brew-row-icon">⏱</span><div class="brew-row-info"><strong>우림 시간:</strong> 60~90초</div></div>
+          <div class="brew-row"><span class="brew-row-icon">🔄</span><div class="brew-row-info"><strong>우림 횟수:</strong> 3회</div></div>
+          <div class="brew-tip">✨ 교쿠로의 감칠맛 + 센차의 신선함을 동시에. 첫 우림은 단맛, 두 번째 우림은 향이 더 풍부해집니다.</div>
+        </div>
+      </div>
+
+      <div class="brew-card">
+        <div class="brew-card-head">
+          <div class="tea-ja">深蒸し煎茶</div>
+          <div class="tea-ko">후카무시 센차 &nbsp;<span class="grade-badge grade-2" style="font-size:10px;padding:1px 7px">중~상급</span></div>
+        </div>
+        <div class="brew-card-body">
+          <div class="brew-row"><span class="brew-row-icon">🫖</span><div class="brew-row-info"><strong>다기:</strong> <span style="color:#c00;font-weight:bold">세밀한 망 急須 필수!</span><br><small>일반 망으로는 잘게 분쇄된 잎이 빠져나옴</small></div></div>
+          <div class="brew-row"><span class="brew-row-icon">🌡</span><div class="brew-row-info"><strong>물 온도:</strong> <span style="color:#2D6A2D;font-weight:bold">70~75°C</span></div></div>
+          <div class="brew-row"><span class="brew-row-icon">🍃</span><div class="brew-row-info"><strong>찻잎 양:</strong> 5g / 200ml</div></div>
+          <div class="brew-row"><span class="brew-row-icon">⏱</span><div class="brew-row-info"><strong>우림 시간:</strong> <span style="color:#c00;font-weight:bold">30~60초 (짧게!)</span></div></div>
+          <div class="brew-row"><span class="brew-row-icon">🔄</span><div class="brew-row-info"><strong>우림 횟수:</strong> 2~3회</div></div>
+          <div class="brew-tip">⭐ 초보자 강력 추천! 진한 녹색 수색이 정상입니다. 시간을 짧게 유지해야 쓴맛 없이 진한 단맛만 즐길 수 있습니다.</div>
+        </div>
+      </div>
+
+      <div class="brew-card">
+        <div class="brew-card-head">
+          <div class="tea-ja">煎茶</div>
+          <div class="tea-ko">센차 &nbsp;<span class="grade-badge grade-3" style="font-size:10px;padding:1px 7px">중급</span></div>
+        </div>
+        <div class="brew-card-body">
+          <div class="brew-row"><span class="brew-row-icon">🫖</span><div class="brew-row-info"><strong>다기:</strong> 일반 急須 (200~300ml)</div></div>
+          <div class="brew-row"><span class="brew-row-icon">🌡</span><div class="brew-row-info"><strong>물 온도:</strong> <span style="color:#2D6A2D;font-weight:bold">75~80°C</span><br><small>끓인 물을 유자마시에 1회 옮기면 적정 온도</small></div></div>
+          <div class="brew-row"><span class="brew-row-icon">🍃</span><div class="brew-row-info"><strong>찻잎 양:</strong> 4~5g / 200ml</div></div>
+          <div class="brew-row"><span class="brew-row-icon">⏱</span><div class="brew-row-info"><strong>우림 시간:</strong> 45~90초</div></div>
+          <div class="brew-row"><span class="brew-row-icon">🔄</span><div class="brew-row-info"><strong>우림 횟수:</strong> 3회</div></div>
+          <div class="brew-tip">🌿 일본 녹차 입문에 최적. 물 온도만 지키면 누구나 맛있게 우릴 수 있습니다. 100°C 끓는 물 사용은 절대 금지!</div>
+        </div>
+      </div>
+
+      <div class="brew-card">
+        <div class="brew-card-head">
+          <div class="tea-ja">玉緑茶 (ぐり茶)</div>
+          <div class="tea-ko">타마료쿠차 (구리차) &nbsp;<span class="grade-badge grade-3" style="font-size:10px;padding:1px 7px">중급</span></div>
+        </div>
+        <div class="brew-card-body">
+          <div class="brew-row"><span class="brew-row-icon">🫖</span><div class="brew-row-info"><strong>다기:</strong> 일반 急須 (투명 유리 급須 추천 — 잎 펼쳐지는 모습 감상 가능)</div></div>
+          <div class="brew-row"><span class="brew-row-icon">🌡</span><div class="brew-row-info"><strong>물 온도:</strong> <span style="color:#2D6A2D;font-weight:bold">75~80°C</span></div></div>
+          <div class="brew-row"><span class="brew-row-icon">🍃</span><div class="brew-row-info"><strong>찻잎 양:</strong> 5g / 200ml</div></div>
+          <div class="brew-row"><span class="brew-row-icon">⏱</span><div class="brew-row-info"><strong>우림 시간:</strong> 60초</div></div>
+          <div class="brew-row"><span class="brew-row-icon">🔄</span><div class="brew-row-info"><strong>우림 횟수:</strong> 3회 (우릴수록 향이 변화)</div></div>
+          <div class="brew-tip">👁 둥글게 말린 찻잎이 천천히 펼쳐지는 시각적 즐거움이 특징. 여러 번 우릴수록 다른 향미가 나타납니다.</div>
+        </div>
+      </div>
+
+      <div class="brew-card">
+        <div class="brew-card-head">
+          <div class="tea-ja">釜炒り茶</div>
+          <div class="tea-ko">카마이리차 &nbsp;<span class="grade-badge grade-3" style="font-size:10px;padding:1px 7px">중급</span></div>
+        </div>
+        <div class="brew-card-body">
+          <div class="brew-row"><span class="brew-row-icon">🫖</span><div class="brew-row-info"><strong>다기:</strong> 일반 急須 또는 土瓶(도빈 · 토키 대형 주전자)</div></div>
+          <div class="brew-row"><span class="brew-row-icon">🌡</span><div class="brew-row-info"><strong>물 온도:</strong> <span style="color:#2D6A2D;font-weight:bold">85~90°C</span><br><small>일본 녹차 중 가장 높은 온도 — 솥 볶음 향 살리기 위해</small></div></div>
+          <div class="brew-row"><span class="brew-row-icon">🍃</span><div class="brew-row-info"><strong>찻잎 양:</strong> 4g / 200ml</div></div>
+          <div class="brew-row"><span class="brew-row-icon">⏱</span><div class="brew-row-info"><strong>우림 시간:</strong> 60~90초</div></div>
+          <div class="brew-row"><span class="brew-row-icon">🔄</span><div class="brew-row-info"><strong>우림 횟수:</strong> 3회</div></div>
+          <div class="brew-tip">☕ 솥 볶음 특유의 釜香(카마코 — 고소한 아몬드 향)을 즐기려면 높은 온도 필수. 중국 녹차(炒青 · 차오칭)와 같은 방식.</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="tip-box" style="margin-top:0">
+      🛒 <strong>후쿠오카 다기 구매 장소:</strong><br>
+      · <b>岩田屋 이와타야 백화점 텐진 본점</b> — 고급 다기 전문 코너. 常滑焼·萬古焼 급須 취급<br>
+      · <b>博多駅 JR하카타시티 B1</b> — 후쿠오카·규슈 공예품·다기 선물 세트 다수<br>
+      · <b>루피시아 텐진점</b> — 茶筒(차즈츠), 茶杓(차샤쿠) 등 소품 다기<br>
+      · <b>茶の文化館 (야메 현지)</b> — 호시노 교쿠로용 小型急須·玉露茶碗 세트 구매 최적<br>
+      · <b>온라인 (귀국 후):</b> 楽天市場·Amazon Japan에서 「常滑焼 急須」 「朱泥 急須」 검색 추천
+    </div>
+
+  </div>
+</div>
+
+<!-- ====== SECTION 7: 팁 ====== -->
 <div class="section" id="tips">
   <div class="section-header"><span class="icon">💡</span><h2>여행 팁 &amp; 빠른 참고 가이드</h2></div>
   <div class="section-body">
