@@ -138,8 +138,162 @@
 
   @media (max-width: 700px) {
     .hero h1 { font-size: 20px; }
-    table { font-size: 12px; }
-    th, td { padding: 7px 8px; }
+  }
+
+  /* ===== 모바일 최적화: iPhone 15 (390px) ===== */
+  @media (max-width: 430px) {
+
+    /* --- 내비게이션: 가로 스크롤 (줄바꿈→행 가림 버그 수정) --- */
+    :root { --nav-h: 44px; }
+    nav { height: 44px; overflow: hidden; }
+    nav ul {
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      width: 100%;
+      padding: 5px 10px;
+    }
+    nav ul::-webkit-scrollbar { display: none; }
+    nav a { white-space: nowrap; font-size: 12px; padding: 5px 10px; }
+
+    /* --- 공통 레이아웃 --- */
+    .hero h1 { font-size: 18px; }
+    .hero p { font-size: 13px; }
+    .hero .badges { gap: 6px; }
+    .badge { font-size: 11px; padding: 3px 10px; }
+    .container { padding: 14px 10px; }
+    .tip-box { margin: 12px 10px; font-size: 12px; }
+    .cards { grid-template-columns: 1fr; padding: 12px; gap: 12px; }
+    .store-grid { grid-template-columns: 1fr; padding: 12px; gap: 12px; }
+    .quick-grid { grid-template-columns: 1fr; padding: 12px; gap: 10px; }
+    .section-header h2 { font-size: 14px; }
+    .section { margin-bottom: 32px; }
+
+    /* --- 차 종류 테이블 → 카드 레이아웃 --- */
+    #teas .tbl-wrap { overflow-x: visible; }
+    #teas table, #teas tbody { display: block; }
+    #teas thead { display: none; }
+    #teas tr {
+      display: block;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      margin-bottom: 20px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,.07);
+      background: #fff;
+    }
+    #teas tr:nth-child(even) td { background: transparent; }
+    #teas tr:hover td { background: transparent; }
+    #teas td {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 9px 14px;
+      border-bottom: 1px solid #efefef;
+      font-size: 13px;
+      line-height: 1.55;
+    }
+    #teas td:last-child { border-bottom: none; }
+    #teas td[data-label]::before {
+      content: attr(data-label);
+      font-weight: bold;
+      color: var(--green-dark);
+      font-size: 11px;
+      min-width: 60px;
+      flex-shrink: 0;
+      padding-top: 1px;
+      line-height: 1.5;
+    }
+    /* 첫 번째 셀: 이미지 + 이름 */
+    #teas td:first-child {
+      flex-direction: column;
+      padding: 0;
+      border-bottom: 2px solid var(--green-mid);
+      background: var(--green-light) !important;
+    }
+    #teas td:first-child::before { display: none; }
+    #teas .tea-main-img {
+      width: 100%; height: 180px;
+      border-radius: 0; border: none;
+      border-bottom: 1px solid var(--border); margin: 0;
+    }
+    #teas .tea-main-img-fallback {
+      width: 100%; height: 120px;
+      border-radius: 0; border: none; margin: 0; font-size: 48px;
+    }
+    #teas td:first-child .ja { font-size: 20px; padding: 10px 14px 2px; }
+    #teas td:first-child .ko { padding: 0 14px 10px; }
+    /* 등급 셀: 레이블 없이 중앙 정렬 */
+    #teas td:nth-child(8) {
+      justify-content: center;
+      padding: 10px 14px;
+      background: var(--green-pale) !important;
+    }
+    #teas td:nth-child(8)::before { display: none; }
+    /* 마지막 셀: 제품 카드 */
+    #teas td:last-child {
+      flex-direction: column;
+      padding: 12px 14px;
+      background: #f9fdf9 !important;
+    }
+    #teas td:last-child::before { display: none; }
+    #teas .prod-card { width: 100%; }
+    #teas .prod-card-img { height: 150px; }
+
+    /* --- 시음 테이블 → 카드 레이아웃 --- */
+    #tasting .tbl-wrap { overflow-x: visible; }
+    #tasting table, #tasting tbody { display: block; }
+    #tasting thead { display: none; }
+    #tasting tr {
+      display: block;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      margin-bottom: 20px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,.07);
+      background: #fff;
+    }
+    #tasting tr:nth-child(even) td { background: transparent; }
+    #tasting tr:hover td { background: transparent; }
+    #tasting td {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 9px 14px;
+      border-bottom: 1px solid #efefef;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+    #tasting td:last-child { border-bottom: none; }
+    #tasting td[data-label]::before {
+      content: attr(data-label);
+      font-weight: bold;
+      color: var(--green-dark);
+      font-size: 11px;
+      min-width: 60px;
+      flex-shrink: 0;
+      padding-top: 1px;
+    }
+    /* 첫 번째 셀: 매장명 헤더 */
+    #tasting td:first-child {
+      flex-direction: column;
+      background: var(--green-dark) !important;
+      color: #fff;
+      padding: 12px 16px;
+      border-bottom: none;
+    }
+    #tasting td:first-child::before { display: none; }
+    #tasting td:first-child b { color: #fff; font-size: 16px; display: block; }
+    #tasting td:first-child span { color: rgba(255,255,255,.75) !important; }
+    #tasting td:first-child a { color: #9dcfff !important; }
+
+    /* --- 야메 3열 그리드 → 1열 --- */
+    .area-map-body > div[style*="1fr 1fr 1fr"] {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 12px !important;
+    }
   }
 </style>
 </head>
@@ -236,12 +390,12 @@
             <div class="ja">星野玉露</div>
             <div class="ko">ホシノギョクロ</div>
           </td>
-          <td class="nowrap ko" style="font-size:14px;font-weight:bold">호시노<br>교쿠로</td>
-          <td>강 차광 재배<br>(호시노마을 특산)</td>
-          <td>야메시 호시노마을(星野村) 생산. 아침저녁 안개로 천연 차광 효과. 2014년 일본의 아름다운 마을 선정.</td>
-          <td>교쿠로 중 최고급. 녹아드는 부드러운 단맛, 해양성 감칠맛. 버터 같은 고급스러운 향.<br><small style="color:#c00">※ 물 온도 50~60°C 필수!</small></td>
-          <td>최고급 교쿠로<br>최상 선물용</td>
-          <td class="price nowrap">50~120엔/g<br><span style="font-size:11px;color:#888">(80g 4,000~9,600엔)</span></td>
+          <td data-label="한글" class="nowrap ko" style="font-size:14px;font-weight:bold">호시노<br>교쿠로</td>
+          <td data-label="재배">강 차광 재배<br>(호시노마을 특산)</td>
+          <td data-label="역사·산지">야메시 호시노마을(星野村) 생산. 아침저녁 안개로 천연 차광 효과. 2014년 일본의 아름다운 마을 선정.</td>
+          <td data-label="맛·향">교쿠로 중 최고급. 녹아드는 부드러운 단맛, 해양성 감칠맛. 버터 같은 고급스러운 향.<br><small style="color:#c00">※ 물 온도 50~60°C 필수!</small></td>
+          <td data-label="추천">최고급 교쿠로<br>최상 선물용</td>
+          <td data-label="가격" class="price nowrap">50~120엔/g<br><span style="font-size:11px;color:#888">(80g 4,000~9,600엔)</span></td>
           <td><span class="grade-badge grade-1p">⭐ 최고급</span></td>
           <td>
             <div class="prod-card">
@@ -279,12 +433,12 @@
             <div class="ja">玉露</div>
             <div class="ko">ギョクロ</div>
           </td>
-          <td class="nowrap ko" style="font-size:14px;font-weight:bold">교쿠로</td>
-          <td>강 차광 재배<br>(수확 20~30일 전<br>90% 이상 차광)</td>
-          <td>야메 지역이 일본 교쿠로 생산 1위. 2007년 전국 경연대회 상위 26개 브랜드 전부 야메산. 최고급 일본 녹차.</td>
-          <td>강력한 우마미(감칠맛) + 자연스러운 단맛. 쓴맛 거의 없음. 버터 같은 부드럽고 고소한 향.<br><small style="color:#c00">※ 물 온도 50~60°C 필수!</small></td>
-          <td>일본 차 마니아<br>최고급 선물</td>
-          <td class="price nowrap">30~80엔/g<br><span style="font-size:11px;color:#888">(100g 3,000~8,000엔)</span></td>
+          <td data-label="한글" class="nowrap ko" style="font-size:14px;font-weight:bold">교쿠로</td>
+          <td data-label="재배">강 차광 재배<br>(수확 20~30일 전<br>90% 이상 차광)</td>
+          <td data-label="역사·산지">야메 지역이 일본 교쿠로 생산 1위. 2007년 전국 경연대회 상위 26개 브랜드 전부 야메산. 최고급 일본 녹차.</td>
+          <td data-label="맛·향">강력한 우마미(감칠맛) + 자연스러운 단맛. 쓴맛 거의 없음. 버터 같은 부드럽고 고소한 향.<br><small style="color:#c00">※ 물 온도 50~60°C 필수!</small></td>
+          <td data-label="추천">일본 차 마니아<br>최고급 선물</td>
+          <td data-label="가격" class="price nowrap">30~80엔/g<br><span style="font-size:11px;color:#888">(100g 3,000~8,000엔)</span></td>
           <td><span class="grade-badge grade-1">고급~최고급</span></td>
           <td>
             <div class="prod-card">
@@ -326,12 +480,12 @@
             <div class="ja">かぶせ茶</div>
             <div class="ko">カブセチャ</div>
           </td>
-          <td class="nowrap ko" style="font-size:14px;font-weight:bold">가부세차</td>
-          <td>부분 차광 재배<br>(수확 2주 전<br>차광막 설치)</td>
-          <td>야메 지역 특산. 수확 2주 전 차광으로 테아닌(감칠맛 성분) 생산 촉진. 센차와 교쿠로의 중간 등급.</td>
-          <td>센차의 신선함 + 교쿠로의 감칠맛 조화. 단맛과 우마미 모두 강함. 진한 녹색 향기, 약간 해초향.</td>
-          <td>가성비 고급 차<br>센차~교쿠로 중간</td>
-          <td class="price nowrap">20~35엔/g<br><span style="font-size:11px;color:#888">(100g 2,000~3,500엔)</span></td>
+          <td data-label="한글" class="nowrap ko" style="font-size:14px;font-weight:bold">가부세차</td>
+          <td data-label="재배">부분 차광 재배<br>(수확 2주 전<br>차광막 설치)</td>
+          <td data-label="역사·산지">야메 지역 특산. 수확 2주 전 차광으로 테아닌(감칠맛 성분) 생산 촉진. 센차와 교쿠로의 중간 등급.</td>
+          <td data-label="맛·향">센차의 신선함 + 교쿠로의 감칠맛 조화. 단맛과 우마미 모두 강함. 진한 녹색 향기, 약간 해초향.</td>
+          <td data-label="추천">가성비 고급 차<br>센차~교쿠로 중간</td>
+          <td data-label="가격" class="price nowrap">20~35엔/g<br><span style="font-size:11px;color:#888">(100g 2,000~3,500엔)</span></td>
           <td><span class="grade-badge grade-2">중~상급</span></td>
           <td>
             <div class="prod-card">
@@ -372,12 +526,12 @@
             <div class="ja">深蒸し煎茶</div>
             <div class="ko">フカムシセンチャ</div>
           </td>
-          <td class="nowrap ko" style="font-size:14px;font-weight:bold">후카무시<br>센차</td>
-          <td>비차광 재배<br>(장시간 증제)</td>
-          <td>야메 지역 대표 센차. 일반 센차보다 2~3배 길게 증제하여 진하고 부드러운 맛 완성.</td>
-          <td>진하고 부드러운 맛. 쓴맛 적고 단맛·감칠맛 강함. 잎이 미세 분쇄되어 진한 녹색 수색. ⭐ 초보자 강력 추천!</td>
-          <td>진한 녹차 맛 선호<br>⭐ 가장 추천!</td>
-          <td class="price nowrap">13~25엔/g<br><span style="font-size:11px;color:#888">(100g 1,350~2,500엔)</span></td>
+          <td data-label="한글" class="nowrap ko" style="font-size:14px;font-weight:bold">후카무시<br>센차</td>
+          <td data-label="재배">비차광 재배<br>(장시간 증제)</td>
+          <td data-label="역사·산지">야메 지역 대표 센차. 일반 센차보다 2~3배 길게 증제하여 진하고 부드러운 맛 완성.</td>
+          <td data-label="맛·향">진하고 부드러운 맛. 쓴맛 적고 단맛·감칠맛 강함. 잎이 미세 분쇄되어 진한 녹색 수색. ⭐ 초보자 강력 추천!</td>
+          <td data-label="추천">진한 녹차 맛 선호<br>⭐ 가장 추천!</td>
+          <td data-label="가격" class="price nowrap">13~25엔/g<br><span style="font-size:11px;color:#888">(100g 1,350~2,500엔)</span></td>
           <td><span class="grade-badge grade-2">중~상급</span></td>
           <td>
             <div class="prod-card">
@@ -418,12 +572,12 @@
             <div class="ja">煎茶</div>
             <div class="ko">センチャ</div>
           </td>
-          <td class="nowrap ko" style="font-size:14px;font-weight:bold">센차</td>
-          <td>비차광 재배<br>(증제)</td>
-          <td>야메차의 기본. 야메 지역 후쿠오카현 남부 생산. 에도시대부터 재배, 약 600년 역사.</td>
-          <td>신선하고 청량한 풀 향. 균형 잡힌 단맛·감칠맛·쓴맛. 맑은 황록색 수색. 초보자도 부담 없이 즐길 수 있음.</td>
-          <td>처음 일본 차 접하는 분<br>일상 음용</td>
-          <td class="price nowrap">10~20엔/g<br><span style="font-size:11px;color:#888">(100g 1,000~2,000엔)</span></td>
+          <td data-label="한글" class="nowrap ko" style="font-size:14px;font-weight:bold">센차</td>
+          <td data-label="재배">비차광 재배<br>(증제)</td>
+          <td data-label="역사·산지">야메차의 기본. 야메 지역 후쿠오카현 남부 생산. 에도시대부터 재배, 약 600년 역사.</td>
+          <td data-label="맛·향">신선하고 청량한 풀 향. 균형 잡힌 단맛·감칠맛·쓴맛. 맑은 황록색 수색. 초보자도 부담 없이 즐길 수 있음.</td>
+          <td data-label="추천">처음 일본 차 접하는 분<br>일상 음용</td>
+          <td data-label="가격" class="price nowrap">10~20엔/g<br><span style="font-size:11px;color:#888">(100g 1,000~2,000엔)</span></td>
           <td><span class="grade-badge grade-3">중급</span></td>
           <td>
             <div class="prod-card">
@@ -465,12 +619,12 @@
             <div class="ja">玉緑茶・ぐり茶</div>
             <div class="ko">タマリョクチャ</div>
           </td>
-          <td class="nowrap ko" style="font-size:14px;font-weight:bold">타마료쿠차<br>(구리차)</td>
-          <td>비차광 재배<br>(증제 + 특수<br>마무리)</td>
-          <td>규슈 특유의 차 종류. 마무리 비틀기를 하지 않아 둥그스름한 곱슬 모양의 찻잎. 사가 우레시노와 후쿠오카 생산.</td>
-          <td>강한 감칠맛 + 우마미. 우릴수록 변화하는 층층이 깊은 맛. 찻잎이 서서히 펼쳐지는 시각적 즐거움.</td>
-          <td>특이한 모양 원하는 분<br>규슈 특산 선물</td>
-          <td class="price nowrap">15~30엔/g<br><span style="font-size:11px;color:#888">(100g 1,500~3,000엔)</span></td>
+          <td data-label="한글" class="nowrap ko" style="font-size:14px;font-weight:bold">타마료쿠차<br>(구리차)</td>
+          <td data-label="재배">비차광 재배<br>(증제 + 특수<br>마무리)</td>
+          <td data-label="역사·산지">규슈 특유의 차 종류. 마무리 비틀기를 하지 않아 둥그스름한 곱슬 모양의 찻잎. 사가 우레시노와 후쿠오카 생산.</td>
+          <td data-label="맛·향">강한 감칠맛 + 우마미. 우릴수록 변화하는 층층이 깊은 맛. 찻잎이 서서히 펼쳐지는 시각적 즐거움.</td>
+          <td data-label="추천">특이한 모양 원하는 분<br>규슈 특산 선물</td>
+          <td data-label="가격" class="price nowrap">15~30엔/g<br><span style="font-size:11px;color:#888">(100g 1,500~3,000엔)</span></td>
           <td><span class="grade-badge grade-3">중급</span></td>
           <td>
             <div class="prod-card">
@@ -509,12 +663,12 @@
             <div class="ja">釜炒り茶</div>
             <div class="ko">カマイリチャ</div>
           </td>
-          <td class="nowrap ko" style="font-size:14px;font-weight:bold">카마이리차</td>
-          <td>비차광 재배<br>(솥 볶기 방식,<br>증제 아님)</td>
-          <td>일본 전통 제다법. 사가현 우레시노(嬉野)가 대표 산지. 전체 일본 차 중 약 5%만 생산되는 희귀 차.</td>
-          <td>약한 쓴맛 + 상큼한 청량감. 카마코(釜香): 솥 볶음 특유의 고소한 아몬드 향. 밝은 황금빛 수색.</td>
-          <td>독특한 향 원하는 분<br>중국 녹차 좋아하는 분</td>
-          <td class="price nowrap">15~35엔/g<br><span style="font-size:11px;color:#888">(100g 1,500~3,500엔)</span></td>
+          <td data-label="한글" class="nowrap ko" style="font-size:14px;font-weight:bold">카마이리차</td>
+          <td data-label="재배">비차광 재배<br>(솥 볶기 방식,<br>증제 아님)</td>
+          <td data-label="역사·산지">일본 전통 제다법. 사가현 우레시노(嬉野)가 대표 산지. 전체 일본 차 중 약 5%만 생산되는 희귀 차.</td>
+          <td data-label="맛·향">약한 쓴맛 + 상큼한 청량감. 카마코(釜香): 솥 볶음 특유의 고소한 아몬드 향. 밝은 황금빛 수색.</td>
+          <td data-label="추천">독특한 향 원하는 분<br>중국 녹차 좋아하는 분</td>
+          <td data-label="가격" class="price nowrap">15~35엔/g<br><span style="font-size:11px;color:#888">(100g 1,500~3,500엔)</span></td>
           <td><span class="grade-badge grade-3">중급</span></td>
           <td>
             <div class="prod-card">
@@ -778,48 +932,48 @@
       <tbody>
         <tr>
           <td><b>茶舗ふりゅう</b><br><span style="color:#666;font-size:12px">차호 후류우</span><br><a href="https://maps.google.com/?q=福岡市中央区清川1丁目6-9" target="_blank" style="font-size:11px;color:#4285F4">📍 지도</a></td>
-          <td>텐진역 도보 10분<br>福岡市中央区清川1-6-9 2F</td>
-          <td>카운터에서 스태프와 함께 복수 차 비교 시음</td>
-          <td>야메 교쿠로, 가부세차, 고급 야메 센차</td>
-          <td class="ok">무료<br>(구매 전 시음)</td>
-          <td>11:00~18:00<br>화·수 휴무</td>
-          <td>교쿠로&amp;가부세차 비교 시음 가능. 소규모 고급 전문점 분위기.</td>
+          <td data-label="📍 위치">텐진역 도보 10분<br>福岡市中央区清川1-6-9 2F</td>
+          <td data-label="시음방식">카운터에서 스태프와 함께 복수 차 비교 시음</td>
+          <td data-label="시음 차">야메 교쿠로, 가부세차, 고급 야메 센차</td>
+          <td data-label="💰 비용" class="ok">무료<br>(구매 전 시음)</td>
+          <td data-label="🕐 영업">11:00~18:00<br>화·수 휴무</td>
+          <td data-label="⭐ 추천">교쿠로&amp;가부세차 비교 시음 가능. 소규모 고급 전문점 분위기.</td>
         </tr>
         <tr>
           <td><b>XINFUCHA LAB</b><br><span style="color:#666;font-size:12px">신푸차 랩</span><br><a href="https://maps.google.com/?q=福岡市中央区天神2-2-43+ソラリアプラザ" target="_blank" style="font-size:11px;color:#4285F4">📍 지도</a></td>
-          <td>텐진역 직결<br>소라리아 플라자 B2F</td>
-          <td>매장 내 시음 코너에서 오리지널 블렌드 차 시음</td>
-          <td>규슈 오리지널 블렌드 센차, 야메 센차, 미야자키 카마이리차, 야쿠시마 홍차</td>
-          <td class="ok">무료~소액</td>
-          <td>11:00~20:00</td>
-          <td>텐진 쇼핑 중 부담 없이 들를 수 있음. 규슈 각지 차 한번에 비교 가능.</td>
+          <td data-label="📍 위치">텐진역 직결<br>소라리아 플라자 B2F</td>
+          <td data-label="시음방식">매장 내 시음 코너에서 오리지널 블렌드 차 시음</td>
+          <td data-label="시음 차">규슈 오리지널 블렌드 센차, 야메 센차, 미야자키 카마이리차, 야쿠시마 홍차</td>
+          <td data-label="💰 비용" class="ok">무료~소액</td>
+          <td data-label="🕐 영업">11:00~20:00</td>
+          <td data-label="⭐ 추천">텐진 쇼핑 중 부담 없이 들를 수 있음. 규슈 각지 차 한번에 비교 가능.</td>
         </tr>
         <tr>
           <td><b>大濠テラス</b><br><span style="color:#666;font-size:12px">대호 테라스</span><br><a href="https://maps.google.com/?q=大濠テラス+八女茶+福岡市中央区大濠公園" target="_blank" style="font-size:11px;color:#4285F4">📍 지도</a></td>
-          <td>지하철 오호리공원역<br>도보 5분</td>
-          <td>카페 형식 (테이블에서 음식과 함께 주문)</td>
-          <td>야메차 각종 (센차·교쿠로·가부세차)<br>계절 한정 차</td>
-          <td>300~800엔<br>(음료 주문)</td>
-          <td>10:00~21:00</td>
-          <td>일본 정원+오호리공원 경치 감상하며 야메차 천천히 즐기기. 화과자와 함께.</td>
+          <td data-label="📍 위치">지하철 오호리공원역<br>도보 5분</td>
+          <td data-label="시음방식">카페 형식 (테이블에서 음식과 함께 주문)</td>
+          <td data-label="시음 차">야메차 각종 (센차·교쿠로·가부세차)<br>계절 한정 차</td>
+          <td data-label="💰 비용">300~800엔<br>(음료 주문)</td>
+          <td data-label="🕐 영업">10:00~21:00</td>
+          <td data-label="⭐ 추천">일본 정원+오호리공원 경치 감상하며 야메차 천천히 즐기기. 화과자와 함께.</td>
         </tr>
         <tr>
           <td><b>茶の文化館</b><br><span style="color:#666;font-size:12px">차의 문화관</span><br><a href="https://maps.google.com/?q=茶の文化館+福岡県八女市星野村" target="_blank" style="font-size:11px;color:#4285F4">📍 지도</a></td>
-          <td>야메시 호시노마을<br>(텐진에서 차로 약 1시간)</td>
-          <td>체험 프로그램 참가 + 자유 시음</td>
-          <td>호시노 교쿠로(最高급), 야메차 전 종류, 말차</td>
-          <td>입장 무료<br>말차 갈기: 500엔<br>녹차 만들기: 1,000엔</td>
-          <td>10:00~17:00<br>화요일 휴관</td>
-          <td>⭐ 강력 추천! 야메 현지에서 최고급 호시노 교쿠로 시음. 당일치기 필수 방문.</td>
+          <td data-label="📍 위치">야메시 호시노마을<br>(텐진에서 차로 약 1시간)</td>
+          <td data-label="시음방식">체험 프로그램 참가 + 자유 시음</td>
+          <td data-label="시음 차">호시노 교쿠로(最高급), 야메차 전 종류, 말차</td>
+          <td data-label="💰 비용">입장 무료<br>말차 갈기: 500엔<br>녹차 만들기: 1,000엔</td>
+          <td data-label="🕐 영업">10:00~17:00<br>화요일 휴관</td>
+          <td data-label="⭐ 추천">⭐ 강력 추천! 야메 현지에서 최고급 호시노 교쿠로 시음. 당일치기 필수 방문.</td>
         </tr>
         <tr>
           <td><b>LUPICIA</b><br><span style="color:#666;font-size:12px">루피시아 텐진점</span><br><a href="https://maps.google.com/?q=ルピシア+福岡天神店+ソラリアステージ" target="_blank" style="font-size:11px;color:#4285F4">📍 지도</a></td>
-          <td>텐진역 도보 3~5분<br>텐진 쇼핑몰 내</td>
-          <td>계절별 무료 시음 코너</td>
-          <td>계절 추천 일본 녹차<br>세계 각지 홍차·우롱차</td>
-          <td class="ok">무료</td>
-          <td>10:00~20:00</td>
-          <td>200종 이상 중 선택 가능. 예쁜 패키지로 선물 구매 최적. 영어 안내 가능.</td>
+          <td data-label="📍 위치">텐진역 도보 3~5분<br>텐진 쇼핑몰 내</td>
+          <td data-label="시음방식">계절별 무료 시음 코너</td>
+          <td data-label="시음 차">계절 추천 일본 녹차<br>세계 각지 홍차·우롱차</td>
+          <td data-label="💰 비용" class="ok">무료</td>
+          <td data-label="🕐 영업">10:00~20:00</td>
+          <td data-label="⭐ 추천">200종 이상 중 선택 가능. 예쁜 패키지로 선물 구매 최적. 영어 안내 가능.</td>
         </tr>
       </tbody>
     </table>
