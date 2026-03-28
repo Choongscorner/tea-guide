@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>일본 차 구입 가이드 – 후쿠오카 (2026.4.8~10)</title>
+<title>일본 차 구입 가이드 – 후쿠오카 텐진·하카타·야메</title>
 <style>
   :root {
     --green-dark: #2D6A2D;
@@ -14,39 +14,104 @@
     --text: #1a1a1a;
     --border: #C8DFC8;
     --nav-h: 42px;
+    --g-light: rgba(255,255,255,0.72);
+    --g-card: rgba(255,255,255,0.65);
+    --g-dark: rgba(18,50,18,0.88);
+    --g-mid: rgba(40,90,40,0.82);
+    --g-border: rgba(255,255,255,0.35);
+    --g-shadow: 0 8px 32px rgba(0,0,0,0.20);
+    --blur: blur(14px);
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif; background: #f0f5f0; color: var(--text); }
+  body {
+    font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif;
+    color: var(--text);
+    min-height: 100vh;
+    background:
+      radial-gradient(ellipse at 25% 15%, rgba(74,140,74,0.22) 0%, transparent 55%),
+      radial-gradient(ellipse at 78% 80%, rgba(45,106,45,0.18) 0%, transparent 50%),
+      linear-gradient(150deg, #071407 0%, #0f2010 35%, #091a0e 65%, #0d1f0d 100%);
+    background-attachment: fixed;
+  }
 
-  nav { background: var(--green-dark); position: sticky; top: 0; z-index: 200; height: var(--nav-h); }
+  nav {
+    background: var(--g-dark);
+    backdrop-filter: var(--blur);
+    -webkit-backdrop-filter: var(--blur);
+    border-bottom: 1px solid var(--g-border);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.35);
+    position: sticky; top: 0; z-index: 200; height: var(--nav-h);
+  }
   nav ul { display: flex; flex-wrap: wrap; list-style: none; gap: 2px; padding: 5px 16px; }
-  nav a { color: #d4edda; text-decoration: none; font-size: 13px; padding: 6px 14px; border-radius: 4px; display: block; transition: background .2s; }
-  nav a:hover { background: rgba(255,255,255,.2); color: #fff; }
+  nav a { color: rgba(255,255,255,0.88); text-decoration: none; font-size: 13px; padding: 6px 14px; border-radius: 20px; display: block; transition: background .2s; }
+  nav a:hover { background: rgba(255,255,255,0.18); color: #fff; }
 
   .section { scroll-margin-top: calc(var(--nav-h) + 12px); margin-bottom: 48px; }
 
-  .hero { background: linear-gradient(135deg, #1A4A1A 0%, #3A7A3A 60%, #5A9A5A 100%); color: #fff; padding: 40px 20px 32px; text-align: center; }
-  .hero h1 { font-size: 28px; letter-spacing: 1px; margin-bottom: 8px; }
+  .hero {
+    background: linear-gradient(135deg, rgba(10,30,10,0.92) 0%, rgba(40,95,40,0.88) 60%, rgba(70,135,70,0.82) 100%);
+    backdrop-filter: var(--blur);
+    -webkit-backdrop-filter: var(--blur);
+    color: #fff;
+    padding: 48px 20px 36px;
+    text-align: center;
+    border-bottom: 1px solid var(--g-border);
+  }
+  .hero h1 { font-size: 28px; letter-spacing: 1px; margin-bottom: 8px; text-shadow: 0 2px 10px rgba(0,0,0,0.45); }
   .hero p { font-size: 14px; opacity: .85; }
   .hero .badges { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-top: 16px; }
-  .badge { background: rgba(255,255,255,.18); border: 1px solid rgba(255,255,255,.3); border-radius: 20px; padding: 4px 14px; font-size: 12px; }
+  .badge {
+    background: rgba(255,255,255,0.14);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,0.28);
+    border-radius: 20px; padding: 4px 14px; font-size: 12px;
+  }
 
   .container { max-width: 1240px; margin: 0 auto; padding: 24px 16px; }
 
-  .section-header { background: var(--green-dark); color: #fff; padding: 12px 20px; border-radius: 8px 8px 0 0; display: flex; align-items: center; gap: 10px; }
+  .section-header {
+    background: var(--g-dark);
+    backdrop-filter: var(--blur);
+    -webkit-backdrop-filter: var(--blur);
+    color: #fff;
+    padding: 12px 20px;
+    border-radius: 10px 10px 0 0;
+    display: flex; align-items: center; gap: 10px;
+    border: 1px solid var(--g-border);
+    border-bottom: none;
+  }
   .section-header .icon { font-size: 20px; }
   .section-header h2 { font-size: 17px; }
-  .section-body { background: #fff; border: 1px solid var(--border); border-top: none; border-radius: 0 0 8px 8px; }
+  .section-body {
+    background: var(--g-light);
+    backdrop-filter: var(--blur);
+    -webkit-backdrop-filter: var(--blur);
+    border: 1px solid var(--g-border);
+    border-top: none;
+    border-radius: 0 0 10px 10px;
+    box-shadow: var(--g-shadow);
+  }
 
   .tbl-wrap { overflow-x: auto; border-radius: 0 0 8px 8px; }
 
   /* sticky 제거 — 헤더 겹침 버그 수정 */
   table { width: 100%; border-collapse: collapse; font-size: 13px; }
-  th { background: var(--green-mid); color: #fff; padding: 10px 12px; text-align: center; font-size: 12px; white-space: nowrap; }
-  td { padding: 10px 12px; vertical-align: top; border-bottom: 1px solid var(--border); line-height: 1.65; }
+  th {
+    background: rgba(40,90,40,0.88);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    color: #fff; padding: 10px 12px;
+    text-align: center; font-size: 12px; white-space: nowrap;
+  }
+  td {
+    padding: 10px 12px; vertical-align: top;
+    border-bottom: 1px solid rgba(200,230,200,0.50);
+    line-height: 1.65; background: transparent;
+  }
   tr:last-child td { border-bottom: none; }
-  tr:nth-child(even) td { background: var(--green-pale); }
-  tr:hover td { background: #dff0df; }
+  tr:nth-child(even) td { background: rgba(255,255,255,0.28); }
+  tr:hover td { background: rgba(200,240,200,0.45); }
 
   .nowrap { white-space: nowrap; }
   .ja { font-size: 15px; font-weight: bold; color: var(--green-dark); }
@@ -77,7 +142,15 @@
   }
 
   /* 제품 카드 */
-  .prod-card { background: #f8fcf8; border: 1px solid var(--border); border-radius: 6px; overflow: hidden; font-size: 12px; line-height: 1.6; margin-bottom: 8px; }
+  .prod-card {
+    background: rgba(255,255,255,0.62);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,0.45);
+    border-radius: 8px; overflow: hidden;
+    font-size: 12px; line-height: 1.6; margin-bottom: 8px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  }
   .prod-card-img { width: 100%; height: 90px; object-fit: cover; display: block; }
   .prod-card-img-fallback { width: 100%; height: 90px; background: var(--green-light); display: flex; align-items: center; justify-content: center; font-size: 28px; }
   .prod-card-body { padding: 8px 10px; }
@@ -89,91 +162,214 @@
   .prod-shop-link:hover { background: #4285F4; color: #fff; }
 
   .ok { color: #2D6A2D; font-weight: bold; }
-  .tasting-tag { display: inline-block; background: #d4edda; color: var(--green-dark); border: 1px solid var(--green-mid); border-radius: 12px; padding: 2px 10px; font-size: 11px; font-weight: bold; margin-top: 4px; }
+  .tasting-tag { display: inline-block; background: rgba(212,237,218,0.75); color: var(--green-dark); border: 1px solid var(--green-mid); border-radius: 12px; padding: 2px 10px; font-size: 11px; font-weight: bold; margin-top: 4px; }
   .tasting-tag-no { background: #f8d7da; color: #721c24; border-color: #f5c6cb; }
 
   .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; padding: 20px; }
-  .card { border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
-  .card-head { background: var(--green-mid); color: #fff; padding: 8px 14px; font-size: 13px; font-weight: bold; }
-  .card-body { padding: 12px 14px; font-size: 13px; line-height: 1.7; background: var(--green-pale); }
+  .card {
+    background: var(--g-card);
+    backdrop-filter: var(--blur);
+    -webkit-backdrop-filter: var(--blur);
+    border: 1px solid var(--g-border);
+    border-radius: 12px; overflow: hidden;
+    box-shadow: var(--g-shadow);
+    transition: transform .2s, box-shadow .2s;
+  }
+  .card:hover { transform: translateY(-2px); box-shadow: 0 14px 44px rgba(0,0,0,0.25); }
+  .card-head {
+    background: var(--g-mid);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    color: #fff; padding: 10px 14px; font-size: 13px; font-weight: bold;
+  }
+  .card-body { padding: 12px 14px; font-size: 13px; line-height: 1.7; background: transparent; }
   .card-body b { color: var(--green-dark); }
 
-  .tip-box { background: #fffbe6; border: 1px solid #ffd700; border-left: 4px solid #ffd700; border-radius: 6px; padding: 12px 16px; margin: 16px 20px; font-size: 13px; line-height: 1.7; }
+  .tip-box {
+    background: rgba(255,251,230,0.75);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,215,0,0.45);
+    border-left: 4px solid #ffd700;
+    border-radius: 8px; padding: 12px 16px; margin: 16px 20px;
+    font-size: 13px; line-height: 1.7;
+  }
   .tip-box strong { color: #856404; }
 
   .store-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 16px; padding: 20px; }
-  .store-card { border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
-  .store-card-head { background: var(--green-dark); color: #fff; padding: 10px 16px; }
+  .store-card {
+    background: var(--g-card);
+    backdrop-filter: var(--blur);
+    -webkit-backdrop-filter: var(--blur);
+    border: 1px solid var(--g-border);
+    border-radius: 12px; overflow: hidden;
+    box-shadow: var(--g-shadow);
+    transition: transform .2s, box-shadow .2s;
+  }
+  .store-card:hover { transform: translateY(-2px); box-shadow: 0 14px 44px rgba(0,0,0,0.25); }
+  .store-card-head {
+    background: var(--g-dark);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color: #fff; padding: 10px 16px;
+    border-bottom: 1px solid var(--g-border);
+  }
   .store-card-head .sname-ja { font-size: 15px; font-weight: bold; }
   .store-card-head .sname-ko { font-size: 12px; opacity: .8; }
   .store-card-head .sname-ko::before { content: "("; }
   .store-card-head .sname-ko::after { content: ")"; }
-  .store-card-body { padding: 12px 16px; font-size: 13px; line-height: 1.7; }
+  .store-card-body { padding: 12px 16px; font-size: 13px; line-height: 1.7; background: transparent; }
   .store-card-body .row { display: flex; gap: 8px; margin-bottom: 4px; }
   .store-card-body .label { color: var(--green-dark); font-weight: bold; min-width: 64px; white-space: nowrap; }
-  .store-name-origin { background: #f0f8e8; border-left: 3px solid var(--green-mid); padding: 7px 10px; font-size: 12px; color: #444; line-height: 1.75; margin-bottom: 8px; border-radius: 0 4px 4px 0; }
+  .store-name-origin {
+    background: rgba(236,252,236,0.72);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-left: 3px solid var(--green-mid);
+    padding: 7px 10px; font-size: 12px; color: #334;
+    line-height: 1.75; margin-bottom: 8px; border-radius: 0 6px 6px 0;
+  }
   .store-name-origin b { color: var(--green-dark); }
-  .map-link { display: inline-flex; align-items: center; gap: 4px; margin-top: 8px; background: #4285F4; color: #fff; padding: 5px 14px; border-radius: 6px; font-size: 12px; font-weight: bold; text-decoration: none; }
-  .map-link:hover { background: #2563eb; }
+  .map-link {
+    background: rgba(66,133,244,0.85);
+    backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+    color: #fff; padding: 5px 16px; border-radius: 20px;
+    font-size: 12px; font-weight: bold; text-decoration: none;
+    display: inline-flex; align-items: center; gap: 4px; margin-top: 8px;
+    box-shadow: 0 2px 10px rgba(66,133,244,0.30);
+  }
+  .map-link:hover { background: rgba(37,99,235,0.92); }
 
   .area-map-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; padding: 20px; }
   @media (max-width: 700px) { .area-map-grid { grid-template-columns: 1fr; } }
-  .area-map-box { border: 2px solid var(--green-mid); border-radius: 10px; overflow: hidden; }
-  .area-map-title { background: var(--green-mid); color: #fff; padding: 8px 16px; font-size: 14px; font-weight: bold; }
-  .area-map-body { padding: 16px; background: #f8fcf8; font-size: 13px; }
-  .station-box { background: var(--green-dark); color: #fff; padding: 6px 14px; border-radius: 20px; font-size: 13px; font-weight: bold; text-align: center; display: inline-block; margin: 4px auto 12px; }
+  .area-map-box {
+    background: var(--g-card);
+    backdrop-filter: var(--blur); -webkit-backdrop-filter: var(--blur);
+    border: 1px solid var(--g-border);
+    border-radius: 12px; overflow: hidden; box-shadow: var(--g-shadow);
+  }
+  .area-map-title {
+    background: var(--g-mid);
+    backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+    color: #fff; padding: 8px 16px; font-size: 14px; font-weight: bold;
+  }
+  .area-map-body { padding: 16px; background: transparent; font-size: 13px; }
+  .station-box {
+    background: var(--g-dark);
+    backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+    color: #fff; padding: 6px 18px; border-radius: 20px;
+    font-size: 13px; font-weight: bold; text-align: center; display: inline-block;
+    margin: 4px auto 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.25);
+  }
   .map-row { display: flex; align-items: flex-start; gap: 8px; margin: 8px 0; border-left: 3px solid var(--green-mid); padding-left: 10px; }
   .map-dir { color: var(--green-dark); font-weight: bold; font-size: 12px; min-width: 80px; white-space: nowrap; }
   .map-info { font-size: 12px; line-height: 1.5; }
   .map-info a { color: #4285F4; text-decoration: none; font-size: 11px; }
-  .map-note { background: #fffbe6; border: 1px solid #ffd700; border-radius: 6px; padding: 8px 12px; font-size: 12px; margin-top: 12px; }
+  .map-note {
+    background: rgba(255,251,230,0.72);
+    backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,215,0,0.38); border-radius: 8px;
+    padding: 8px 12px; font-size: 12px; margin-top: 12px;
+  }
   .map-center { text-align: center; }
 
   .quick-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; padding: 20px; }
-  .quick-card { border-radius: 8px; padding: 14px; border: 1px solid var(--border); }
-  .quick-card.rank { background: #fffef0; border-color: #ffd700; }
-  .quick-card.price-info { background: #f0f8ff; border-color: #a8d0e6; }
-  .quick-card.route { background: #f0fff4; border-color: var(--green-mid); }
-  .quick-card.tip { background: #fff5f5; border-color: #f5a0a0; }
+  .quick-card {
+    background: var(--g-card);
+    backdrop-filter: var(--blur); -webkit-backdrop-filter: var(--blur);
+    border: 1px solid var(--g-border);
+    border-radius: 12px; padding: 14px; box-shadow: var(--g-shadow);
+    transition: transform .2s;
+  }
+  .quick-card:hover { transform: translateY(-2px); }
+  .quick-card.rank { background: rgba(255,254,240,0.78); border-color: rgba(255,215,0,0.45); }
+  .quick-card.price-info { background: rgba(240,248,255,0.76); border-color: rgba(168,208,230,0.50); }
+  .quick-card.route { background: rgba(240,255,244,0.76); border-color: rgba(74,140,74,0.38); }
+  .quick-card.tip { background: rgba(255,245,245,0.76); border-color: rgba(245,160,160,0.42); }
   .quick-card h4 { font-size: 13px; font-weight: bold; margin-bottom: 8px; color: var(--green-dark); }
   .quick-card ul { padding-left: 16px; font-size: 12px; line-height: 1.8; }
 
-  footer { text-align: center; padding: 24px; font-size: 12px; background: var(--green-dark); color: #ccc; }
+  footer {
+    text-align: center; padding: 28px; font-size: 12px;
+    background: var(--g-dark);
+    backdrop-filter: var(--blur); -webkit-backdrop-filter: var(--blur);
+    color: rgba(255,255,255,0.80);
+    border-top: 1px solid var(--g-border);
+  }
 
   /* 일본어 아래 한글 음차 */
   .ko-read { display: block; font-size: 11px; color: #888; font-weight: normal; margin-top: 2px; }
 
   /* 섹션 내 소제목 */
-  .sub-section-head { background: var(--green-light); border-left: 4px solid var(--green-mid); padding: 10px 20px; font-size: 14px; font-weight: bold; color: var(--green-dark); margin: 4px 0 0; }
+  .sub-section-head {
+    background: rgba(212,237,218,0.70);
+    backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+    border-left: 4px solid var(--green-mid);
+    padding: 10px 20px; font-size: 14px; font-weight: bold;
+    color: var(--green-dark); margin: 4px 0 0;
+  }
 
   /* 다기 카드 */
   .teaware-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; padding: 20px; }
-  .teaware-card { border: 1px solid var(--border); border-radius: 10px; overflow: hidden; background: #fff; }
-  .teaware-card-img { width: 100%; height: 160px; object-fit: cover; display: block; border-bottom: 1px solid var(--border); }
-  .teaware-card-img-fallback { width: 100%; height: 100px; background: var(--green-light); display: flex; align-items: center; justify-content: center; font-size: 36px; border-bottom: 1px solid var(--border); }
-  .teaware-card-head { background: var(--green-mid); color: #fff; padding: 10px 16px; }
+  .teaware-card {
+    background: var(--g-card);
+    backdrop-filter: var(--blur); -webkit-backdrop-filter: var(--blur);
+    border: 1px solid var(--g-border);
+    border-radius: 12px; overflow: hidden; box-shadow: var(--g-shadow);
+    transition: transform .2s, box-shadow .2s;
+  }
+  .teaware-card:hover { transform: translateY(-2px); box-shadow: 0 14px 44px rgba(0,0,0,0.22); }
+  .teaware-card-img { width: 100%; height: 160px; object-fit: cover; display: block; border-bottom: 1px solid var(--g-border); }
+  .teaware-card-img-fallback { width: 100%; height: 100px; background: rgba(212,237,218,0.60); display: flex; align-items: center; justify-content: center; font-size: 36px; border-bottom: 1px solid var(--g-border); }
+  .teaware-card-head {
+    background: var(--g-mid);
+    backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+    color: #fff; padding: 10px 16px;
+  }
   .teaware-title-ja { font-size: 17px; font-weight: bold; }
   .teaware-title-ruby { font-size: 13px; color: rgba(255,255,255,.85); margin-top: 1px; }
   .teaware-title-desc { font-size: 12px; opacity: .7; margin-top: 3px; }
-  .teaware-card-body { padding: 14px 16px; font-size: 13px; line-height: 1.7; }
+  .teaware-card-body { padding: 14px 16px; font-size: 13px; line-height: 1.7; background: transparent; }
   .tw-row { display: flex; gap: 8px; margin-bottom: 4px; align-items: flex-start; }
   .tw-label { font-weight: bold; color: var(--green-dark); min-width: 60px; flex-shrink: 0; font-size: 12px; padding-top: 1px; }
-  .tw-tag { display: inline-block; background: var(--green-light); color: var(--green-dark); border: 1px solid var(--green-mid); border-radius: 10px; padding: 1px 8px; font-size: 11px; margin: 1px 2px 1px 0; }
+  .tw-tag { display: inline-block; background: rgba(212,237,218,0.70); color: var(--green-dark); border: 1px solid var(--green-mid); border-radius: 10px; padding: 1px 8px; font-size: 11px; margin: 1px 2px 1px 0; }
   .tw-price { color: var(--gold); font-weight: bold; }
-  .tw-tip { background: #fffbe6; border-left: 3px solid #ffd700; padding: 6px 10px; font-size: 12px; margin-top: 8px; border-radius: 0 4px 4px 0; line-height: 1.6; }
+  .tw-tip {
+    background: rgba(255,251,230,0.72);
+    backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+    border-left: 3px solid #ffd700;
+    padding: 6px 10px; font-size: 12px; margin-top: 8px;
+    border-radius: 0 6px 6px 0; line-height: 1.6;
+  }
 
   /* 찻잎별 우리기 카드 */
   .brew-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; padding: 20px; }
-  .brew-card { border: 1px solid var(--border); border-radius: 10px; overflow: hidden; background: #fff; }
-  .brew-card-head { background: linear-gradient(135deg, var(--green-dark) 0%, var(--green-mid) 100%); color: #fff; padding: 12px 16px; }
+  .brew-card {
+    background: var(--g-card);
+    backdrop-filter: var(--blur); -webkit-backdrop-filter: var(--blur);
+    border: 1px solid var(--g-border);
+    border-radius: 12px; overflow: hidden; box-shadow: var(--g-shadow);
+    transition: transform .2s;
+  }
+  .brew-card:hover { transform: translateY(-2px); }
+  .brew-card-head {
+    background: linear-gradient(135deg, rgba(18,50,18,0.90) 0%, rgba(40,90,40,0.87) 100%);
+    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    color: #fff; padding: 12px 16px;
+    border-bottom: 1px solid var(--g-border);
+  }
   .brew-card-head .tea-ja { font-size: 18px; font-weight: bold; }
   .brew-card-head .tea-ko { font-size: 12px; opacity: .8; margin-top: 2px; }
-  .brew-card-body { padding: 14px 16px; font-size: 13px; }
+  .brew-card-body { padding: 14px 16px; font-size: 13px; background: transparent; }
   .brew-row { display: flex; gap: 8px; margin-bottom: 6px; align-items: flex-start; line-height: 1.5; }
   .brew-row-icon { font-size: 15px; flex-shrink: 0; width: 20px; text-align: center; }
   .brew-row-info { line-height: 1.55; }
   .brew-row-info strong { color: var(--green-dark); }
-  .brew-tip { background: #fffbe6; border: 1px solid #ffd700; border-radius: 6px; padding: 7px 10px; font-size: 12px; margin-top: 8px; line-height: 1.6; }
+  .brew-tip {
+    background: rgba(255,251,230,0.72);
+    border: 1px solid rgba(255,215,0,0.40);
+    border-radius: 8px; padding: 7px 10px; font-size: 12px; margin-top: 8px; line-height: 1.6;
+  }
 
   @media (max-width: 700px) {
     .hero h1 { font-size: 20px; }
@@ -356,11 +552,11 @@
 
 <div class="hero">
   <h1>🍵 일본 차 구입 가이드</h1>
-  <p>후쿠오카 (텐진 숙소 · 하카타역 관광) · 2026년 4월 8~10일</p>
+  <p>후쿠오카 텐진·하카타·야메 지역 완벽 가이드</p>
   <div class="badges">
     <span class="badge">📍 텐진 · 하카타</span>
     <span class="badge">🌿 야메차(八女茶) 특화</span>
-    <span class="badge">🗓 신차 시즌 직전 방문!</span>
+    <span class="badge">🌿 신차(新茶) 시즌: 4~5월</span>
     <span class="badge">🇰🇷 한국인 여행자용</span>
   </div>
 </div>
@@ -372,7 +568,7 @@
   <div class="section-header"><span class="icon">🌿</span><h2>일본 차 문화 개요 &amp; 후쿠오카(야메차) 특색</h2></div>
   <div class="section-body">
     <div class="tip-box">
-      ⭐ <strong>4월 방문 팁:</strong> 4월 8~10일은 신차(新茶) 시즌 직전! 전년도 최고급 야메차를 풍부하게 구할 수 있는 최적 타이밍. 매장에서 신차 예약 판매 여부도 꼭 확인하세요.
+      ⭐ <strong>봄 방문 팁:</strong> 신차(新茶) 시즌은 4월 말~5월 초. 이 시기 전후로 방문하면 최고급 야메차를 풍부하게 구할 수 있습니다. 매장에서 신차 예약 판매 여부도 꼭 확인하세요.
     </div>
     <div class="cards">
       <div class="card">
@@ -762,6 +958,7 @@
           <div class="store-name-origin">
             <b>이름 풀이:</b> 茶舗(ちゃほ·차호) = 차 가게. ふりゅう = 風流(풍류) — 일본 전통 미학의 핵심 개념으로 '세련된 여유와 우아함'을 뜻함. 차 한 잔에 담긴 여유와 풍취를 즐기자는 철학에서 유래. 야메차 전문 소규모 고급 차 전문점.
           </div>
+          <div class="row"><span class="label">⭐ 주력</span><span>야메 교쿠로·가부세차 비교 시음, 호시노 교쿠로 단독 취급</span></div>
           <div class="row"><span class="label">📍 주소</span><span>福岡市中央区清川1丁目6-9 2F</span></div>
           <div class="row"><span class="label">🚶 접근</span><span>텐진역 도보 10분 / 와타나베도리역 도보 3분</span></div>
           <div class="row"><span class="label">🕐 영업</span><span>11:00~18:00 (월 ~17:00)</span></div>
@@ -782,6 +979,7 @@
           <div class="store-name-origin">
             <b>이름 풀이:</b> 新(しん·신=새로울) + 福(ふく·복=행복) + 茶(ちゃ·차=차) + ラボ(lab=연구소) = "새로운 행복을 여는 차 연구소". 규슈의 차를 현대적 감각으로 재해석하는 컨셉으로 2024년 12월 텐진 소라리아 플라자에 오픈.
           </div>
+          <div class="row"><span class="label">⭐ 주력</span><span>규슈 오리지널 블렌드 센차, 야쿠시마 홍차, 미야자키 카마이리차</span></div>
           <div class="row"><span class="label">📍 주소</span><span>福岡市中央区天神2-2-43 ソラリアプラザ B2F</span></div>
           <div class="row"><span class="label">🚶 접근</span><span>텐진역 직결 · 소라리아 플라자 지하 2층</span></div>
           <div class="row"><span class="label">🕐 영업</span><span>11:00~20:00</span></div>
@@ -803,6 +1001,7 @@
             <b>이름 풀이:</b> 光安(みつやす·광안) = 창업 가문 성씨 '미츠야스'. 青霞(せいか·청하) = 푸를 청(青) + 안개·노을 하(霞) — 차밭을 뒤덮는 새벽 안개를 시적으로 표현. 園(えん·원) = 정원. 茶舗(ちゃほ·차포) = 차 가게.<br>
             <b>역사:</b> 에도 시대 창업, 하카타 창업 300년 이상의 최고(最古)급 노포. 후쿠오카 하카타구에서 야메차 전통을 이어오고 있는 대표 차 전문점.
           </div>
+          <div class="row"><span class="label">⭐ 주력</span><span>에도 시대 전통 제다 야메 교쿠로·센차, 노포 전통 블렌딩 차</span></div>
           <div class="row"><span class="label">📍 주소</span><span>福岡市博多区網場町4-60</span></div>
           <div class="row"><span class="label">🚶 접근</span><span>하카타역에서 도보 약 10분</span></div>
           <div class="row"><span class="label">🍵 취급</span><span>야메차 전반, 센차, 교쿠로</span></div>
@@ -815,12 +1014,13 @@
       <div class="store-card">
         <div class="store-card-head">
           <div class="sname-ja">大濠テラス「八女茶と日本庭園」</div>
-          <div class="sname-ko">오호리 테라스 · 대호 테라스 &amp;「야메차와 일본정원」</div>
+          <div class="sname-ko">오호리 테라스 · 대호 테라스「야메차와 일본정원」</div>
         </div>
         <div class="store-card-body">
           <div class="store-name-origin">
             <b>大濠(おおほり·대호)란?</b> 大(대=클) + 濠(호=해자·못) = '큰 해자'. 1601년 구로다 나가마사(黒田長政)가 후쿠오카성(福岡城) 축성 시 성을 두르기 위해 판 외호(外濠)가 기원. 메이지 유신 후 성이 폐쇄되며 해자는 공원화 작업이 시작, <b>1927년 大濠公園으로 정식 개장.</b> 현재는 둘레 約2km, 면적 约39만㎡의 호수를 중심으로 한 후쿠오카 최대 도심 공원. 공원 이름 = 옛 성의 큰 해자 이름을 그대로 계승한 것.
           </div>
+          <div class="row"><span class="label">⭐ 주력</span><span>야메차 시음 카페 세트 (정원 뷰), 야메차 각종 상품</span></div>
           <div class="row"><span class="label">📍 주소</span><span>福岡市中央区大濠公園 南側</span></div>
           <div class="row"><span class="label">🚶 접근</span><span>텐진역 → 지하철 오호리공원역 도보 5분</span></div>
           <div class="row"><span class="label">🕐 영업</span><span>10:00~21:00 (계절 변동)</span></div>
@@ -840,6 +1040,7 @@
           <div class="store-name-origin">
             <b>브랜드 풀이:</b> LUPICIA = 1994년 도쿄에서 창업한 일본 티 브랜드. 브랜드명은 라틴어에서 착안한 창작 조어. 세계 30여 개국 600종 이상의 차를 취급하며, 특히 계절 한정 블렌딩 차와 아름다운 패키지 디자인으로 유명. 선물용으로 가장 대중적인 선택.
           </div>
+          <div class="row"><span class="label">⭐ 주력</span><span>계절 한정 블렌딩 차, 선물용 고급 패키지 차</span></div>
           <div class="row"><span class="label">📍 주소</span><span>福岡市中央区天神2-11-3 ソラリアステージ B1F</span></div>
           <div class="row"><span class="label">🚶 접근</span><span>텐진역에서 도보 3~5분</span></div>
           <div class="row"><span class="label">🕐 영업</span><span>10:00~20:00 (쇼핑몰 준함)</span></div>
@@ -859,6 +1060,7 @@
           <div class="store-name-origin">
             <b>博多(はかた·하카타·박다)란?</b> 博(박=넓을) + 多(다=많을) — '넓고 풍요로운 땅'. 고대 야마토 조정 시대부터 대륙(당나라·조선)과의 무역·외교 거점으로 번성한 일본 최고(最古)급 항구 지역. 에도 시대까지는 무역 상인의 도시 '博多'와 무사의 성읍 '福岡'이 따로 존재했으며, 1889년 합병되어 현재 福岡市 博多区로 편입됨.
           </div>
+          <div class="row"><span class="label">⭐ 주력</span><span>후쿠오카·규슈 특산 차 선물 세트, 귀국 전 쇼핑 특화</span></div>
           <div class="row"><span class="label">📍 주소</span><span>福岡市博多区博多駅中央街1-1</span></div>
           <div class="row"><span class="label">🚶 접근</span><span>하카타역 직결 (역 건물 내)</span></div>
           <div class="row"><span class="label">🕐 영업</span><span>10:00~21:00 · 연중무휴</span></div>
@@ -877,8 +1079,9 @@
         <div class="store-card-body">
           <div class="store-name-origin">
             <b>이름 풀이:</b> 茶の文化館(ちゃのぶんかかん·차노 분카칸) = '차의 문화관'. 茶(차) + の(의) + 文化館(문화관) = 차 문화 전시·체험 공간.<br>
-            <b>星野村(ほしのむら·호시노무라·성야촌)란?</b> 星(ほし·호시=별 성) + 野(の·노=들판 야) + 村(むら·무라=마을 촌) = '별이 반짝이는 들판 마을'. 야메시(八女市) 남부 산간 분지 지형으로 낮에는 기온이 높고 밤에는 급격히 냉각되어 안개가 자욱함. 이 지형 덕분에 밤하늘 별이 유독 잘 보여 붙여진 이름. 동시에 이 기후 조건이 교쿠로(玉露) 찻잎의 테아닌(감칠맛) 성분을 극대화시켜 일본 최고 교쿠로 산지가 됨.
+            <b>星野村(ほしのむら)</b> = 별마을. 산간 분지로 밤하늘 별이 아름다워 붙여진 이름. 이 기후 조건이 교쿠로(玉露) 최고 산지를 만들었습니다.
           </div>
+          <div class="row"><span class="label">⭐ 주력</span><span>호시노 교쿠로 현지 시음·체험, 말차 갈기 체험</span></div>
           <div class="row"><span class="label">📍 주소</span><span>福岡県八女市星野村10816-5</span></div>
           <div class="row"><span class="label">🚶 접근</span><span>텐진에서 차(자동차)로 약 1시간</span></div>
           <div class="row"><span class="label">🕐 영업</span><span>10:00~17:00 (화요일 휴관)</span></div>
@@ -973,7 +1176,7 @@
                 11:30 호시노마을 차원 직구매<br>
                 12:30 점심 (야메 향토 요리)<br>
                 14:00 귀환 이동 시작<br>15:30 텐진 도착<br><br>
-                📌 4월은 신차 시즌 직전!
+                📌 4~5월은 신차(新茶) 시즌!
               </div>
             </div>
           </div>
@@ -1342,7 +1545,7 @@
 </div><!-- end .container -->
 
 <footer>
-  🍵 일본 차 구입 가이드 – 후쿠오카 (텐진·하카타) · 2026년 4월 8~10일<br>
+  🍵 일본 차 구입 가이드 – 후쿠오카 텐진·하카타·야메<br>
   야메차(八女茶) 전문 정보 기반 · 한국인 여행자용<br>
   <small style="opacity:.6;margin-top:6px;display:block">상품 이미지 출처: 古賀製茶本舗 · 牛島製茶 · 星野製茶園 · いりえ茶園 · 山輝園 각 공식 쇼핑몰</small>
 </footer>
