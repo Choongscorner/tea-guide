@@ -106,6 +106,8 @@
   .store-card-head { background: var(--green-dark); color: #fff; padding: 10px 16px; }
   .store-card-head .sname-ja { font-size: 15px; font-weight: bold; }
   .store-card-head .sname-ko { font-size: 12px; opacity: .8; }
+  .store-card-head .sname-ko::before { content: "("; }
+  .store-card-head .sname-ko::after { content: ")"; }
   .store-card-body { padding: 12px 16px; font-size: 13px; line-height: 1.7; }
   .store-card-body .row { display: flex; gap: 8px; margin-bottom: 4px; }
   .store-card-body .label { color: var(--green-dark); font-weight: bold; min-width: 64px; white-space: nowrap; }
@@ -145,10 +147,12 @@
   /* 다기 카드 */
   .teaware-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; padding: 20px; }
   .teaware-card { border: 1px solid var(--border); border-radius: 10px; overflow: hidden; background: #fff; }
-  .teaware-card-head { background: var(--green-mid); color: #fff; padding: 10px 16px; display: flex; align-items: center; gap: 12px; }
-  .teaware-icon { font-size: 26px; flex-shrink: 0; }
-  .teaware-title-ja { font-size: 16px; font-weight: bold; }
-  .teaware-title-ko { font-size: 12px; opacity: .8; margin-top: 2px; }
+  .teaware-card-img { width: 100%; height: 160px; object-fit: cover; display: block; border-bottom: 1px solid var(--border); }
+  .teaware-card-img-fallback { width: 100%; height: 100px; background: var(--green-light); display: flex; align-items: center; justify-content: center; font-size: 36px; border-bottom: 1px solid var(--border); }
+  .teaware-card-head { background: var(--green-mid); color: #fff; padding: 10px 16px; }
+  .teaware-title-ja { font-size: 17px; font-weight: bold; }
+  .teaware-title-ruby { font-size: 13px; color: rgba(255,255,255,.85); margin-top: 1px; }
+  .teaware-title-desc { font-size: 12px; opacity: .7; margin-top: 3px; }
   .teaware-card-body { padding: 14px 16px; font-size: 13px; line-height: 1.7; }
   .tw-row { display: flex; gap: 8px; margin-bottom: 4px; align-items: flex-start; }
   .tw-label { font-weight: bold; color: var(--green-dark); min-width: 60px; flex-shrink: 0; font-size: 12px; padding-top: 1px; }
@@ -1031,12 +1035,11 @@
     <div class="teaware-grid">
 
       <div class="teaware-card">
+        <img class="teaware-card-img" src="https://www.tezumi.com/cdn/shop/products/il_fullxfull.2411072913_j3zb.jpg?v=1762198335" alt="急須" onerror="this.outerHTML='<div class=\'teaware-card-img-fallback\'>🫖</div>'">
         <div class="teaware-card-head">
-          <span class="teaware-icon">🫖</span>
-          <div>
-            <div class="teaware-title-ja">急須 <small style="font-size:12px;font-weight:normal">(きゅうす · 큐스)</small></div>
-            <div class="teaware-title-ko">일본식 찻주전자</div>
-          </div>
+          <div class="teaware-title-ja">急須</div>
+          <div class="teaware-title-ruby">(큐스)</div>
+          <div class="teaware-title-desc">일본식 찻주전자</div>
         </div>
         <div class="teaware-card-body">
           <div class="tw-row"><span class="tw-label">용도</span><span>센차·가부세차·후카무시 우리기 핵심 도구. 내장 여과망으로 찻잎 걸러냄</span></div>
@@ -1048,12 +1051,11 @@
       </div>
 
       <div class="teaware-card">
+        <img class="teaware-card-img" src="https://www.tezumi.com/cdn/shop/products/1nbG5HRTv0fHaNiDOUw_uOMwnMXcM0u5o.jpg?v=1762390986" alt="朱泥急須" onerror="this.outerHTML='<div class=\'teaware-card-img-fallback\'>🏺</div>'">
         <div class="teaware-card-head">
-          <span class="teaware-icon">🏺</span>
-          <div>
-            <div class="teaware-title-ja">朱泥急須 <small style="font-size:12px;font-weight:normal">(しゅでいきゅうす · 슈데이 큐스)</small></div>
-            <div class="teaware-title-ko">교쿠로 전용 소형 토기 찻주전자</div>
-          </div>
+          <div class="teaware-title-ja">朱泥急須</div>
+          <div class="teaware-title-ruby">(슈데이 큐스)</div>
+          <div class="teaware-title-desc">교쿠로 전용 소형 토기 찻주전자</div>
         </div>
         <div class="teaware-card-body">
           <div class="tw-row"><span class="tw-label">용도</span><span>교쿠로 전용 소형(60~100ml) 주데이(붉은 점토) 토기 급須. 미세한 기공이 차맛을 부드럽게 함</span></div>
@@ -1065,12 +1067,11 @@
       </div>
 
       <div class="teaware-card">
+        <img class="teaware-card-img" src="https://www.sazentea.com/content/products/mid/20/KTW076-1.webp" alt="湯冷まし" onerror="this.outerHTML='<div class=\'teaware-card-img-fallback\'>🥛</div>'">
         <div class="teaware-card-head">
-          <span class="teaware-icon">🥛</span>
-          <div>
-            <div class="teaware-title-ja">湯冷まし <small style="font-size:12px;font-weight:normal">(ゆざまし · 유자마시)</small></div>
-            <div class="teaware-title-ko">물 식힘 그릇 (교쿠로 필수!</div>
-          </div>
+          <div class="teaware-title-ja">湯冷まし</div>
+          <div class="teaware-title-ruby">(유자마시)</div>
+          <div class="teaware-title-desc">물 식힘 그릇 — 교쿠로 필수!</div>
         </div>
         <div class="teaware-card-body">
           <div class="tw-row"><span class="tw-label">용도</span><span>끓인 물(100°C)을 적정 온도로 낮추는 그릇. 1회 옮길 때마다 약 10~15°C 하강</span></div>
@@ -1082,12 +1083,11 @@
       </div>
 
       <div class="teaware-card">
+        <img class="teaware-card-img" src="https://www.sazentea.com/content/products/mid/0/TDY046-1.webp" alt="湯飲み" onerror="this.outerHTML='<div class=\'teaware-card-img-fallback\'>🍵</div>'">
         <div class="teaware-card-head">
-          <span class="teaware-icon">🍵</span>
-          <div>
-            <div class="teaware-title-ja">湯飲み <small style="font-size:12px;font-weight:normal">(ゆのみ · 유노미)</small></div>
-            <div class="teaware-title-ko">센차용 원통형 찻잔</div>
-          </div>
+          <div class="teaware-title-ja">湯飲み</div>
+          <div class="teaware-title-ruby">(유노미)</div>
+          <div class="teaware-title-desc">센차용 원통형 찻잔</div>
         </div>
         <div class="teaware-card-body">
           <div class="tw-row"><span class="tw-label">용도</span><span>센차 전용 기다란 원통형 찻잔. 세로로 길어 열이 식지 않게 설계됨</span></div>
@@ -1099,12 +1099,11 @@
       </div>
 
       <div class="teaware-card">
+        <img class="teaware-card-img" src="https://makeshop-multi-images.akamaized.net/minoruen/itemimages/000000000074_7p9pcxF.jpg" alt="玉露茶碗" onerror="this.outerHTML='<div class=\'teaware-card-img-fallback\'>🍃</div>'">
         <div class="teaware-card-head">
-          <span class="teaware-icon">🍃</span>
-          <div>
-            <div class="teaware-title-ja">玉露茶碗 <small style="font-size:12px;font-weight:normal">(ぎょくろちゃわん · 교쿠로 차완)</small></div>
-            <div class="teaware-title-ko">교쿠로 전용 소형 찻잔</div>
-          </div>
+          <div class="teaware-title-ja">玉露茶碗</div>
+          <div class="teaware-title-ruby">(교쿠로 차완)</div>
+          <div class="teaware-title-desc">교쿠로 전용 소형 찻잔</div>
         </div>
         <div class="teaware-card-body">
           <div class="tw-row"><span class="tw-label">용도</span><span>교쿠로 전용 소형 찻잔(30~50ml). 소량의 진한 교쿠로를 찬찬히 음미</span></div>
@@ -1116,12 +1115,11 @@
       </div>
 
       <div class="teaware-card">
+        <img class="teaware-card-img" src="https://www.tezumi.com/cdn/shop/products/1-48b04Ul8yMh-02wySK2BMlodcL40U2I.jpg?v=1762363079" alt="茶筒" onerror="this.outerHTML='<div class=\'teaware-card-img-fallback\'>🥫</div>'">
         <div class="teaware-card-head">
-          <span class="teaware-icon">🥫</span>
-          <div>
-            <div class="teaware-title-ja">茶筒 <small style="font-size:12px;font-weight:normal">(ちゃづつ · 차즈츠)</small></div>
-            <div class="teaware-title-ko">차잎 보관 통 (선물용으로도 인기)</div>
-          </div>
+          <div class="teaware-title-ja">茶筒</div>
+          <div class="teaware-title-ruby">(차즈츠)</div>
+          <div class="teaware-title-desc">차잎 보관 통 — 선물용으로도 인기</div>
         </div>
         <div class="teaware-card-body">
           <div class="tw-row"><span class="tw-label">용도</span><span>차잎 보관 및 선물. 이중 뚜껑 구조로 밀봉·방습·방향 기능</span></div>
@@ -1133,12 +1131,11 @@
       </div>
 
       <div class="teaware-card">
+        <img class="teaware-card-img" src="https://www.tezumi.com/cdn/shop/products/1Zzhr2XELkAdmKjoQjIdoQmnMiwvaSdCr.jpg?v=1762200707" alt="茶杓" onerror="this.outerHTML='<div class=\'teaware-card-img-fallback\'>🥄</div>'">
         <div class="teaware-card-head">
-          <span class="teaware-icon">🥄</span>
-          <div>
-            <div class="teaware-title-ja">茶杓 <small style="font-size:12px;font-weight:normal">(ちゃしゃく · 차샤쿠)</small></div>
-            <div class="teaware-title-ko">차잎 계량 스쿠프</div>
-          </div>
+          <div class="teaware-title-ja">茶杓</div>
+          <div class="teaware-title-ruby">(차샤쿠)</div>
+          <div class="teaware-title-desc">차잎 계량 스쿠프</div>
         </div>
         <div class="teaware-card-body">
           <div class="tw-row"><span class="tw-label">용도</span><span>차잎 계량 스쿠프. 1스쿠프 ≈ 2~3g</span></div>
@@ -1157,7 +1154,7 @@
       <div class="brew-card">
         <div class="brew-card-head">
           <div class="tea-ja">星野玉露 / 玉露</div>
-          <div class="tea-ko">호시노 교쿠로 / 교쿠로 &nbsp;<span class="grade-badge grade-1p" style="font-size:10px;padding:1px 7px">⭐ 최고급</span></div>
+          <div class="tea-ko">(호시노 교쿠로 / 교쿠로) &nbsp;<span class="grade-badge grade-1p" style="font-size:10px;padding:1px 7px">⭐ 최고급</span></div>
         </div>
         <div class="brew-card-body">
           <div class="brew-row"><span class="brew-row-icon">🫖</span><div class="brew-row-info"><strong>다기:</strong> 朱泥急須(슈데이 큐스) 40~80ml 또는 蓋碗(가이완)</div></div>
@@ -1172,7 +1169,7 @@
       <div class="brew-card">
         <div class="brew-card-head">
           <div class="tea-ja">かぶせ茶</div>
-          <div class="tea-ko">가부세차 &nbsp;<span class="grade-badge grade-2" style="font-size:10px;padding:1px 7px">중~상급</span></div>
+          <div class="tea-ko">(가부세차) &nbsp;<span class="grade-badge grade-2" style="font-size:10px;padding:1px 7px">중~상급</span></div>
         </div>
         <div class="brew-card-body">
           <div class="brew-row"><span class="brew-row-icon">🫖</span><div class="brew-row-info"><strong>다기:</strong> 중소형 급須 (150~200ml)</div></div>
@@ -1187,7 +1184,7 @@
       <div class="brew-card">
         <div class="brew-card-head">
           <div class="tea-ja">深蒸し煎茶</div>
-          <div class="tea-ko">후카무시 센차 &nbsp;<span class="grade-badge grade-2" style="font-size:10px;padding:1px 7px">중~상급</span></div>
+          <div class="tea-ko">(후카무시 센차) &nbsp;<span class="grade-badge grade-2" style="font-size:10px;padding:1px 7px">중~상급</span></div>
         </div>
         <div class="brew-card-body">
           <div class="brew-row"><span class="brew-row-icon">🫖</span><div class="brew-row-info"><strong>다기:</strong> <span style="color:#c00;font-weight:bold">세밀한 망 急須 필수!</span><br><small>일반 망으로는 잘게 분쇄된 잎이 빠져나옴</small></div></div>
@@ -1202,7 +1199,7 @@
       <div class="brew-card">
         <div class="brew-card-head">
           <div class="tea-ja">煎茶</div>
-          <div class="tea-ko">센차 &nbsp;<span class="grade-badge grade-3" style="font-size:10px;padding:1px 7px">중급</span></div>
+          <div class="tea-ko">(센차) &nbsp;<span class="grade-badge grade-3" style="font-size:10px;padding:1px 7px">중급</span></div>
         </div>
         <div class="brew-card-body">
           <div class="brew-row"><span class="brew-row-icon">🫖</span><div class="brew-row-info"><strong>다기:</strong> 일반 急須 (200~300ml)</div></div>
@@ -1217,7 +1214,7 @@
       <div class="brew-card">
         <div class="brew-card-head">
           <div class="tea-ja">玉緑茶 (ぐり茶)</div>
-          <div class="tea-ko">타마료쿠차 (구리차) &nbsp;<span class="grade-badge grade-3" style="font-size:10px;padding:1px 7px">중급</span></div>
+          <div class="tea-ko">(타마료쿠차 · 구리차) &nbsp;<span class="grade-badge grade-3" style="font-size:10px;padding:1px 7px">중급</span></div>
         </div>
         <div class="brew-card-body">
           <div class="brew-row"><span class="brew-row-icon">🫖</span><div class="brew-row-info"><strong>다기:</strong> 일반 急須 (투명 유리 급須 추천 — 잎 펼쳐지는 모습 감상 가능)</div></div>
@@ -1232,7 +1229,7 @@
       <div class="brew-card">
         <div class="brew-card-head">
           <div class="tea-ja">釜炒り茶</div>
-          <div class="tea-ko">카마이리차 &nbsp;<span class="grade-badge grade-3" style="font-size:10px;padding:1px 7px">중급</span></div>
+          <div class="tea-ko">(카마이리차) &nbsp;<span class="grade-badge grade-3" style="font-size:10px;padding:1px 7px">중급</span></div>
         </div>
         <div class="brew-card-body">
           <div class="brew-row"><span class="brew-row-icon">🫖</span><div class="brew-row-info"><strong>다기:</strong> 일반 急須 또는 土瓶(도빈 · 토키 대형 주전자)</div></div>
@@ -1248,11 +1245,11 @@
 
     <div class="tip-box" style="margin-top:0">
       🛒 <strong>후쿠오카 다기 구매 장소:</strong><br>
-      · <b>岩田屋 이와타야 백화점 텐진 본점</b> — 고급 다기 전문 코너. 常滑焼·萬古焼 급須 취급<br>
-      · <b>博多駅 JR하카타시티 B1</b> — 후쿠오카·규슈 공예품·다기 선물 세트 다수<br>
-      · <b>루피시아 텐진점</b> — 茶筒(차즈츠), 茶杓(차샤쿠) 등 소품 다기<br>
-      · <b>茶の文化館 (야메 현지)</b> — 호시노 교쿠로용 小型急須·玉露茶碗 세트 구매 최적<br>
-      · <b>온라인 (귀국 후):</b> 楽天市場·Amazon Japan에서 「常滑焼 急須」 「朱泥 急須」 검색 추천
+      · <b>岩田屋<span style="font-weight:normal;font-size:12px">(이와타야)</span> 백화점 텐진 본점</b> — 고급 다기 전문 코너. 常滑焼<span style="font-size:11px;color:#856404">(도코나메야키)</span>·萬古焼<span style="font-size:11px;color:#856404">(반코야키)</span> 급須 취급<br>
+      · <b>博多駅<span style="font-weight:normal;font-size:12px">(하카타에키)</span> JR博多シティ<span style="font-weight:normal;font-size:12px">(JR하카타 시티)</span> B1</b> — 후쿠오카·규슈 공예품·다기 선물 세트 다수<br>
+      · <b>루피시아 텐진점</b> — 茶筒<span style="font-size:11px;color:#856404">(차즈츠)</span>, 茶杓<span style="font-size:11px;color:#856404">(차샤쿠)</span> 등 소품 다기<br>
+      · <b>茶の文化館<span style="font-weight:normal;font-size:12px">(차노 분카칸)</span> (야메 현지)</b> — 호시노 교쿠로용 小型急須<span style="font-size:11px;color:#856404">(소가타 큐스)</span>·玉露茶碗<span style="font-size:11px;color:#856404">(교쿠로 차완)</span> 세트 구매 최적<br>
+      · <b>온라인 (귀국 후):</b> 楽天市場<span style="font-size:11px;color:#856404">(라쿠텐 이치바)</span>·Amazon Japan에서 「常滑焼 急須<span style="font-size:11px;color:#856404">(도코나메야키 큐스)</span>」 「朱泥 急須<span style="font-size:11px;color:#856404">(슈데이 큐스)</span>」 검색 추천
     </div>
 
   </div>
@@ -1283,17 +1280,17 @@
       <div class="quick-card route">
         <h4>🗺 추천 쇼핑 코스</h4>
         <ul>
-          <li><b>코스 A (텐진 반나절)</b><br>XINFUCHA LAB → 茶舗ふりゅう → 大濠テラス</li>
-          <li><b>코스 B (하카타역)</b><br>JR하카타시티 → 광안 청하원 차포</li>
-          <li><b>코스 C (야메 당일치기)</b><br>텐진 → (차 1시간) → 차의 문화관 → 호시노마을</li>
+          <li><b>코스 A (텐진 반나절)</b><br>XINFUCHA LAB → 茶舗ふりゅう<span style="font-size:11px;color:#888">(차호 후류우)</span> → 大濠テラス<span style="font-size:11px;color:#888">(오호리 테라스)</span></li>
+          <li><b>코스 B (하카타역)</b><br>JR博多シティ<span style="font-size:11px;color:#888">(JR하카타 시티)</span> → 光安青霞園茶舗<span style="font-size:11px;color:#888">(미츠야스 세이카엔 차포)</span></li>
+          <li><b>코스 C (야메 당일치기)</b><br>텐진 → (차 1시간) → 茶の文化館<span style="font-size:11px;color:#888">(차노 분카칸)</span> → 星野村<span style="font-size:11px;color:#888">(호시노무라)</span></li>
         </ul>
       </div>
       <div class="quick-card tip">
         <h4>🗣 차 매장에서 쓸 일본어</h4>
         <ul>
-          <li>시음 가능한가요?<br><b>「試飲できますか？」</b></li>
-          <li>추천은 어느 것인가요?<br><b>「おすすめはどれですか？」</b></li>
-          <li>선물용으로 포장해주세요<br><b>「贈り物用に包んでください」</b></li>
+          <li>시음 가능한가요?<br><b>「試飲できますか？」</b><br><span style="font-size:11px;color:#888">(시인 데키마스카?)</span></li>
+          <li>추천은 어느 것인가요?<br><b>「おすすめはどれですか？」</b><br><span style="font-size:11px;color:#888">(오스스메와 도레데스카?)</span></li>
+          <li>선물용으로 포장해주세요<br><b>「贈り物用に包んでください」</b><br><span style="font-size:11px;color:#888">(오쿠리모노요니 츠츠ん데 쿠다사이)</span></li>
         </ul>
       </div>
       <div class="quick-card price-info">
