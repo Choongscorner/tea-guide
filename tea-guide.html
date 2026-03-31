@@ -1540,5 +1540,42 @@
   <small style="opacity:.6;margin-top:6px;display:block">상품 이미지 출처: 古賀製茶本舗 · 牛島製茶 · 星野製茶園 · いりえ茶園 · 山輝園 각 공식 쇼핑몰</small>
 </footer>
 
+<button id="top-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="맨 위로">▲</button>
+
+<style>
+  #top-btn {
+    position: fixed;
+    bottom: 28px;
+    right: 24px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--g-dark);
+    color: rgba(255,255,255,0.85);
+    border: 1px solid var(--g-border);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.40);
+    font-size: 16px;
+    cursor: pointer;
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity .3s, transform .3s, background .2s;
+    z-index: 500;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    line-height: 1;
+  }
+  #top-btn.visible { opacity: 1; transform: translateY(0); }
+  #top-btn:hover { background: var(--g-mid); color: #fff; }
+</style>
+
+<script>
+  (function(){
+    var btn = document.getElementById('top-btn');
+    window.addEventListener('scroll', function(){
+      btn.classList.toggle('visible', window.scrollY > 300);
+    }, {passive: true});
+  })();
+</script>
+
 </body>
 </html>
