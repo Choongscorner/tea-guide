@@ -1,0 +1,2425 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>후쿠오카 현지인 추천 맛집 가이드 – 34선</title>
+<style>
+  :root {
+    --red-dark: #7a1a1a;
+    --red-mid: #a33030;
+    --gold: #B8860B;
+    --text: #1a1a1a;
+    --nav-h: 44px;
+    --g-light: rgba(255,255,255,0.94);
+    --g-dark: rgba(50,12,12,0.97);
+    --g-border: rgba(255,255,255,0.28);
+    --g-shadow: 0 8px 32px rgba(0,0,0,0.22);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Malgun Gothic','Apple SD Gothic Neo',sans-serif;
+    color: var(--text); min-height: 100vh;
+    background: transparent; font-size: 14px; line-height: 1.7;
+  }
+  body::before {
+    content: ''; position: fixed; top:0; left:0; width:100%; height:100%;
+    z-index: -1;
+    background:
+      radial-gradient(ellipse at 20% 20%, rgba(160,60,30,0.18) 0%, transparent 55%),
+      radial-gradient(ellipse at 80% 75%, rgba(120,40,20,0.15) 0%, transparent 50%),
+      linear-gradient(150deg, #140707 0%, #200e0e 35%, #180a0a 65%, #1a0d0d 100%);
+  }
+
+  /* NAV */
+  nav {
+    background: var(--g-dark);
+    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--g-border);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.40);
+    position: sticky; top:0; z-index:200; height:var(--nav-h); overflow:hidden;
+  }
+  nav ul {
+    display:flex; flex-wrap:nowrap; list-style:none; gap:2px;
+    padding:5px 12px; overflow-x:auto; -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+  }
+  nav ul::-webkit-scrollbar { display:none; }
+  nav a {
+    color:rgba(255,255,255,0.88); text-decoration:none;
+    font-size:12px; padding:6px 12px; border-radius:20px;
+    display:block; transition:background .2s; white-space:nowrap;
+  }
+  nav a:hover { background:rgba(255,255,255,0.18); color:#fff; }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, rgba(20,5,5,0.97) 0%, rgba(100,25,25,0.92) 55%, rgba(160,60,30,0.84) 100%);
+    color:#fff; padding:52px 20px 40px; text-align:center;
+    border-bottom:1px solid var(--g-border);
+  }
+  .hero h1 { font-size:24px; letter-spacing:1px; margin-bottom:8px; text-shadow:0 2px 12px rgba(0,0,0,.5); line-height:1.4; }
+  .hero p { font-size:13px; opacity:.82; margin-top:6px; }
+  .hero .badges { display:flex; justify-content:center; gap:8px; flex-wrap:wrap; margin-top:18px; }
+  .badge {
+    background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.25);
+    border-radius:20px; padding:4px 14px; font-size:11px; white-space:nowrap;
+  }
+  .schedule-bar {
+    display:flex; justify-content:center; flex-wrap:wrap; margin-top:20px;
+    border:1px solid rgba(255,255,255,0.2); border-radius:10px; overflow:hidden;
+    max-width:580px; margin-left:auto; margin-right:auto;
+  }
+  .sch-item {
+    flex:1; min-width:160px; padding:10px 14px;
+    border-right:1px solid rgba(255,255,255,0.18);
+    background:rgba(255,255,255,0.06);
+  }
+  .sch-item:last-child { border-right:none; }
+  .sch-date { font-size:11px; opacity:.7; margin-bottom:4px; }
+  .sch-note { font-size:12px; font-weight:bold; }
+
+  /* LAYOUT */
+  .container { max-width:1240px; margin:0 auto; padding:28px 16px; }
+
+  /* SECTION HEADER */
+  .section-header {
+    background:var(--g-dark); color:#fff; padding:12px 20px;
+    border-radius:10px 10px 0 0; display:flex; align-items:center; gap:10px;
+    border:1px solid var(--g-border); border-bottom:none; margin-top:36px;
+  }
+  .section-header h2 { font-size:17px; }
+  .section-header .sub { font-size:12px; opacity:.7; margin-left:4px; }
+  .section-body {
+    background:var(--g-light); border:1px solid var(--g-border);
+    border-top:none; border-radius:0 0 10px 10px;
+    box-shadow:var(--g-shadow);
+  }
+
+  /* RESTAURANT CARD GRID */
+  .rest-grid {
+    display:grid; grid-template-columns:repeat(auto-fill, minmax(340px,1fr));
+  }
+  .rest-card {
+    padding:22px 20px 24px;
+    border-bottom:1px solid rgba(200,170,170,0.35);
+    border-right:1px solid rgba(200,170,170,0.35);
+  }
+
+  /* Card header */
+  .rest-head { display:flex; align-items:flex-start; gap:10px; margin-bottom:14px; }
+  .rest-num {
+    display:inline-flex; align-items:center; justify-content:center;
+    width:28px; height:28px; border-radius:50%;
+    background:var(--red-dark); color:#fff;
+    font-size:13px; font-weight:bold; flex-shrink:0;
+  }
+  .rest-names { flex:1; }
+  .rest-ja { font-size:17px; font-weight:bold; color:var(--red-dark); line-height:1.3; }
+  .rest-phonetic { font-size:12px; color:#666; margin-top:2px; }
+  .rest-meaning { font-size:11px; color:#999; margin-top:1px; font-style:italic; }
+  .rest-category {
+    display:inline-block; padding:2px 10px; border-radius:12px;
+    font-size:11px; font-weight:bold; white-space:nowrap; margin-top:6px;
+    background:#fff3cd; color:#7a5800; border:1px solid #f0c050;
+  }
+
+  /* Food photo */
+  .food-photo {
+    width:100%; height:200px; object-fit:cover; border-radius:8px;
+    margin-bottom:14px; display:block;
+    background:#e8d0c8;
+  }
+
+  /* Info boxes */
+  .special-box {
+    background:rgba(180,60,20,0.07); border-left:3px solid var(--red-dark);
+    padding:8px 12px; border-radius:0 6px 6px 0;
+    font-size:12px; color:#333; line-height:1.65; margin-bottom:12px;
+  }
+  .warn-box {
+    background:rgba(200,150,0,0.09); border-left:3px solid var(--gold);
+    padding:8px 12px; border-radius:0 6px 6px 0;
+    font-size:12px; color:#555; line-height:1.65; margin-bottom:12px;
+  }
+  .enjoy-box {
+    background:rgba(30,80,30,0.07); border-left:3px solid #4a7a4a;
+    padding:8px 12px; border-radius:0 6px 6px 0;
+    font-size:12px; color:#333; line-height:1.65; margin-bottom:12px;
+  }
+
+  /* Info section */
+  .info-section { margin-bottom:12px; }
+  .info-title {
+    font-size:11px; font-weight:bold; color:var(--red-dark);
+    letter-spacing:.5px; border-bottom:1px solid rgba(180,100,100,0.25);
+    padding-bottom:4px; margin-bottom:8px;
+  }
+  .info-row { display:flex; gap:8px; margin-bottom:5px; align-items:flex-start; }
+  .info-label { font-size:11px; color:#888; white-space:nowrap; min-width:54px; padding-top:1px; }
+  .info-val { font-size:13px; color:#222; flex:1; line-height:1.6; }
+
+  /* Menu list */
+  .menu-list { list-style:none; }
+  .menu-item {
+    display:flex; justify-content:space-between; align-items:baseline;
+    padding:5px 0; border-bottom:1px dashed rgba(200,180,180,0.35); gap:8px;
+    flex-wrap:wrap;
+  }
+  .menu-item:last-child { border-bottom:none; }
+  .menu-name { font-size:13px; }
+  .menu-phonetic { font-size:11px; color:#888; margin-left:4px; }
+  .menu-price { font-size:12px; font-weight:bold; color:var(--gold); white-space:nowrap; }
+  .menu-desc { font-size:11px; color:#666; flex-basis:100%; padding-left:0; line-height:1.5; }
+
+  /* Hours badge */
+  .hours-badge {
+    display:inline-block; padding:1px 8px; border-radius:10px; font-size:11px;
+  }
+  .open24 { background:#d4edda; color:#155724; border:1px solid #c3e6cb; }
+  .closed-day { background:#f8d7da; color:#721c24; border:1px solid #f5c6cb; margin-left:6px; }
+
+  /* Map button */
+  .map-btn {
+    display:inline-flex; align-items:center; gap:6px;
+    background:var(--red-dark); color:#fff;
+    padding:7px 16px; border-radius:20px;
+    text-decoration:none; font-size:12px; font-weight:bold;
+    transition:background .2s; margin-top:4px;
+  }
+  .map-btn:hover { background:var(--red-mid); }
+
+  /* TIPS / SCHEDULE */
+  .tip-section-header {
+    background:var(--g-dark); color:#fff; padding:12px 20px;
+    border-radius:10px 10px 0 0; display:flex; align-items:center; gap:10px;
+    border:1px solid var(--g-border); border-bottom:none; margin-top:36px;
+  }
+  .tip-section-header h2 { font-size:17px; }
+  .tip-body {
+    background:var(--g-light); border:1px solid var(--g-border); border-top:none;
+    border-radius:0 0 10px 10px; box-shadow:var(--g-shadow); padding:20px;
+  }
+  .route-card {
+    background:rgba(255,255,255,0.7); border:1px solid rgba(200,170,170,0.4);
+    border-radius:8px; padding:14px 16px; margin-bottom:12px;
+  }
+  .route-title { font-size:13px; font-weight:bold; color:var(--red-dark); margin-bottom:10px; }
+  .route-step { font-size:12px; display:flex; gap:8px; align-items:flex-start; margin-bottom:7px; }
+  .step-time { color:#888; min-width:50px; font-size:11px; padding-top:1px; }
+  .step-content { flex:1; }
+  .step-content strong { color:var(--red-dark); }
+
+  /* Phonetics helper: inline ruby-like style */
+  .jp { font-weight:bold; color:var(--red-dark); }
+  .ph { font-size:11px; color:#888; }
+
+  footer {
+    text-align:center; padding:32px 16px 20px;
+    color:rgba(255,255,255,0.45); font-size:11px;
+  }
+  footer a { color:rgba(255,200,180,0.6); text-decoration:none; }
+
+  /* MOBILE */
+  @media (max-width:700px) {
+    .hero h1 { font-size:20px; }
+    .rest-grid { grid-template-columns:1fr; }
+    .rest-card { border-right:none; }
+    .sch-item { min-width:130px; }
+    .schedule-bar { max-width:100%; }
+    .food-photo { height:170px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <ul>
+    <li><a href="#ramen">🍜 라멘</a></li>
+    <li><a href="#udon">🍵 우동·소바</a></li>
+    <li><a href="#yakitori">🍢 야키토리·토리카와</a></li>
+    <li><a href="#yakiniku">🥩 야키니쿠</a></li>
+    <li><a href="#kaisenwa">🐟 해산물·와쇼쿠</a></li>
+    <li><a href="#nabe">🫕 나베·샤부샤부</a></li>
+    <li><a href="#etc">🎯 기타</a></li>
+  </ul>
+</nav>
+
+<div class="hero">
+  <h1>후쿠오카 현지인 추천 맛집 가이드</h1>
+  <p>라멘부터 야키토리까지 — 현지인이 실제 가는 하카타 34선</p>
+  <div class="badges">
+    <span class="badge">🇯🇵 현지인 추천</span>
+    <span class="badge">📍 하카타·텐진 중심</span>
+    <span class="badge">✅ 2025–2026 영업 확인</span>
+    <span class="badge">💴 엔화 현금 필수</span>
+  </div>
+</div>
+
+<div class="container">
+
+
+<!-- ======================================================
+     라멘 섹션
+     ====================================================== -->
+<div class="section-header" id="ramen">
+  <span style="font-size:20px">🍜</span>
+  <h2>라멘</h2>
+</div>
+<div class="section-body">
+<div class="rest-grid">
+
+<!-- 4. 麺酒場 朱拉 -->
+<div class="rest-card">
+  <div class="rest-head">
+    <span class="rest-num">4</span>
+    <div class="rest-names">
+      <div class="rest-ja">麺酒場 朱拉</div>
+      <div class="rest-phonetic">멘사카바 슈라 (Mensakaba Shura)</div>
+      <div class="rest-meaning">麺(면)=면, 酒場(사카바)=술집, 朱拉(슈라)=붉은 나선</div>
+      <span class="rest-category">醤油ラーメン(쇼유 라멘) · 酸辣湯麺(산라탕면) 전문</span>
+    </div>
+  </div>
+
+  <img class="food-photo"
+    src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Shoyu_Ramen.jpg/600px-Shoyu_Ramen.jpg"
+    alt="麺酒場 朱拉"
+    loading="lazy"
+    onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Japanese_set_meal_001.jpg/600px-Japanese_set_meal_001.jpg'">
+
+  <div class="special-box">
+    <strong>왜 특별한가:</strong> 낮은 라멘 + 밤에는 이자카야 겸업. 극상 차슈가 유명. 맛집 미디어 다수 소개
+  </div>
+
+  <div class="info-section">
+    <div class="info-title">시그니처 메뉴</div>
+    <ul class="menu-list">
+      
+      <li class="menu-item">
+        <span class="menu-name">酸辣湯麺 <span class="menu-phonetic">(산라탕멘·새콤매운탕면)</span></span>
+        <span class="menu-price">¥780</span>
+        <span class="menu-desc">닭뼈+겐코츠 8시간 육수, 달걀 풀기</span>
+      </li>
+      <li class="menu-item">
+        <span class="menu-name">中華そば <span class="menu-phonetic">(추카소바·중화소바)</span></span>
+        <span class="menu-price">¥750</span>
+        <span class="menu-desc">간장 계열</span>
+      </li>
+      <li class="menu-item">
+        <span class="menu-name">替玉 <span class="menu-phonetic">(카에다마·면 추가)</span></span>
+        <span class="menu-price">¥100</span>
+        
+      </li>
+    </ul>
+  </div>
+
+  <div class="info-section">
+    <div class="info-title">영업 정보</div>
+    <div class="info-row"><span class="info-label">영업시간</span><span class="info-val">11:00–14:00 / 17:30–21:00</span></div>
+    <div class="info-row"><span class="info-label">정기휴무</span><span class="info-val">일요일</span></div>
+    <div class="info-row"><span class="info-label">주소</span><span class="info-val">福岡市博多区神屋町3-24</span></div>
+    <div class="info-row"><span class="info-label">교통</span><span class="info-val">지하철 呉服町駅(고후쿠마치에키) 도보 3분</span></div>
+    <div class="info-row"><span class="info-label">전화</span><span class="info-val">092-986-4812</span></div>
+  </div>
+
+  <div class="warn-box">
+    ⚠️ <strong>주의:</strong> 런치 인기로 소진 조기 마감 가능. 현금 권장
+  </div>
+
+  <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:8px;">
+    <a class="map-btn" href="https://www.google.com/maps/search/%E9%BA%BA%E9%85%92%E5%A0%B4%20%E6%9C%B1%E6%8B%89+%E7%A6%8F%E5%B2%A1%E5%B8%82%E5%8D%9A%E5%A4%9A%E5%8C%BA%E7%A5%9E%E5%B1%8B%E7%94%BA3-24" target="_blank">📍 구글맵</a>
+    <a class="map-btn" style="background:#2a5a8a;" href="https://syura-fukuoka.com/" target="_blank">🌐 홈페이지</a>
+  </div>
+</div>
+
+<!-- 8. やひろ屋 -->
+<div class="rest-card">
+  <div class="rest-head">
+    <span class="rest-num">8</span>
+    <div class="rest-names">
+      <div class="rest-ja">やひろ屋</div>
+      <div class="rest-phonetic">야히로야 (Yahiroya)</div>
+      <div class="rest-meaning">八(야)=여덟, 廣(히로)=넓을, 屋(야)=가게</div>
+      <span class="rest-category">鶏白湯ラーメン(도리 시로탕 라멘)</span>
+    </div>
+  </div>
+
+  <img class="food-photo"
+    src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Tori-paitan-ramen.jpg/600px-Tori-paitan-ramen.jpg"
+    alt="やひろ屋"
+    loading="lazy"
+    onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Japanese_set_meal_001.jpg/600px-Japanese_set_meal_001.jpg'">
+
+  <div class="special-box">
+    <strong>왜 특별한가:</strong> 평일 런치만 영업. 2년 공백 후 이전 재오픈. 줄 서는 인기. 돈코츠 NO, 비돈코츠 계열
+  </div>
+
+  <div class="info-section">
+    <div class="info-title">시그니처 메뉴</div>
+    <ul class="menu-list">
+      
+      <li class="menu-item">
+        <span class="menu-name">鶏そば <span class="menu-phonetic">(토리소바·닭소바)</span></span>
+        
+        <span class="menu-desc">닭 백탕 기반 맑은 국물</span>
+      </li>
+      <li class="menu-item">
+        <span class="menu-name">中華そば <span class="menu-phonetic">(추카소바)</span></span>
+        
+        <span class="menu-desc">두 번째 옵션</span>
+      </li>
+    </ul>
+  </div>
+
+  <div class="info-section">
+    <div class="info-title">영업 정보</div>
+    <div class="info-row"><span class="info-label">영업시간</span><span class="info-val">11:30–14:30 (런치 전용)</span></div>
+    <div class="info-row"><span class="info-label">정기휴무</span><span class="info-val">토·일·공휴일</span></div>
+    <div class="info-row"><span class="info-label">주소</span><span class="info-val">福岡市博多区綱場町4-14</span></div>
+    <div class="info-row"><span class="info-label">교통</span><span class="info-val">지하철 中洲川端駅 7번 출구 도보 2분</span></div>
+    <div class="info-row"><span class="info-label">전화</span><span class="info-val">미확인</span></div>
+  </div>
+
+  <div class="warn-box">
+    ⚠️ <strong>주의:</strong> 토·일 완전 휴무. 12석 소규모, 웨이팅 필수
+  </div>
+
+  <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:8px;">
+    <a class="map-btn" href="https://www.google.com/maps/search/%E3%82%84%E3%81%B2%E3%82%8D%E5%B1%8B+%E7%A6%8F%E5%B2%A1%E5%B8%82%E5%8D%9A%E5%A4%9A%E5%8C%BA%E7%B6%B1%E5%A0%B4%E7%94%BA4-14" target="_blank">📍 구글맵</a>
+    <a class="map-btn" style="background:#2a5a8a;" href="https://tabelog.com/en/fukuoka/A4001/A400106/40064236/" target="_blank">🌐 홈페이지</a>
+  </div>
+</div>
+
+<!-- 9. とら食堂 福岡分店 -->
+<div class="rest-card">
+  <div class="rest-head">
+    <span class="rest-num">9</span>
+    <div class="rest-names">
+      <div class="rest-ja">とら食堂 福岡分店</div>
+      <div class="rest-phonetic">토라쇼쿠도 후쿠오카 분점 (Tora Shokudo Fukuoka)</div>
+      <div class="rest-meaning">虎(토라)=호랑이, 食堂(쇼쿠도)=식당, 分店(분텐)=분점</div>
+      <span class="rest-category">中華そば(추카소바) · 手打ち麺(테우치멘 · 수타면)</span>
+    </div>
+  </div>
+
+  <img class="food-photo"
+    src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Tonkotsu_ramen.JPG/600px-Tonkotsu_ramen.JPG"
+    alt="とら食堂 福岡分店"
+    loading="lazy"
+    onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Japanese_set_meal_001.jpg/600px-Japanese_set_meal_001.jpg'">
+
+  <div class="special-box">
+    <strong>왜 특별한가:</strong> 후쿠시마현 시라카와(白河)의 전국구 명점 「とら食堂」 규슈 유일 분점. 수타 중화소바는 교내에서만 맛볼 수 있음. RKB TV 소개
+  </div>
+
+  <div class="info-section">
+    <div class="info-title">시그니처 메뉴</div>
+    <ul class="menu-list">
+      
+      <li class="menu-item">
+        <span class="menu-name">中華そば <span class="menu-phonetic">(추카소바)</span></span>
+        
+        <span class="menu-desc">후쿠시마 시라카와 원조 맛을 계승한 수타 중화소바</span>
+      </li>
+      <li class="menu-item">
+        <span class="menu-name">チャーシュー麺 <span class="menu-phonetic">(차슈멘)</span></span>
+        
+        
+      </li>
+    </ul>
+  </div>
+
+  <div class="info-section">
+    <div class="info-title">영업 정보</div>
+    <div class="info-row"><span class="info-label">영업시간</span><span class="info-val">11:30–21:00 (매진 시 조기 종료)</span></div>
+    <div class="info-row"><span class="info-label">정기휴무</span><span class="info-val">없음</span></div>
+    <div class="info-row"><span class="info-label">주소</span><span class="info-val">福岡市中央区六本松4-9-10</span></div>
+    <div class="info-row"><span class="info-label">교통</span><span class="info-val">지하철 六本松駅(롯폰마츠에키) 도보 5분</span></div>
+    <div class="info-row"><span class="info-label">전화</span><span class="info-val">092-707-1015</span></div>
+  </div>
+
+  <div class="warn-box">
+    ⚠️ <strong>주의:</strong> 매진 조기 마감 잦음. 카운터 7석+테이블 16석 소규모
+  </div>
+
+  <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:8px;">
+    <a class="map-btn" href="https://www.google.com/maps/search/%E3%81%A8%E3%82%89%E9%A3%9F%E5%A0%82%20%E7%A6%8F%E5%B2%A1%E5%88%86%E5%BA%97+%E7%A6%8F%E5%B2%A1%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E5%85%AD%E6%9C%AC%E6%9D%BE4-9-10" target="_blank">📍 구글맵</a>
+    <a class="map-btn" style="background:#2a5a8a;" href="https://tabelog.com/en/fukuoka/A4001/A400105/40044618/" target="_blank">🌐 홈페이지</a>
+  </div>
+</div>
+
+<!-- 22. 味噌蔵ふくべえ -->
+<div class="rest-card">
+  <div class="rest-head">
+    <span class="rest-num">22</span>
+    <div class="rest-names">
+      <div class="rest-ja">味噌蔵ふくべえ</div>
+      <div class="rest-phonetic">미소구라 후쿠베 (Misogura Fukube)</div>
+      <div class="rest-meaning">味噌蔵(미소구라)=된장 창고, ふくべえ=복스러운 아저씨(애칭)</div>
+      <span class="rest-category">本格味噌ラーメン(혼카쿠 미소 라멘) 전문</span>
+    </div>
+  </div>
+
+  <img class="food-photo"
+    src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Sapporo_Miso_Ramen.jpg/600px-Sapporo_Miso_Ramen.jpg"
+    alt="味噌蔵ふくべえ"
+    loading="lazy"
+    onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Japanese_set_meal_001.jpg/600px-Japanese_set_meal_001.jpg'">
+
+  <div class="special-box">
+    <strong>왜 특별한가:</strong> 대명(大名) 골목의 미소 라멘 전문점. 진한 된장 국물에 자가제면
+  </div>
+
+  <div class="info-section">
+    <div class="info-title">시그니처 메뉴</div>
+    <ul class="menu-list">
+      
+      <li class="menu-item">
+        <span class="menu-name">味噌ラーメン <span class="menu-phonetic">(미소 라멘)</span></span>
+        
+        <span class="menu-desc">진하고 구수한 된장 수프</span>
+      </li>
+      <li class="menu-item">
+        <span class="menu-name">つけ麺 <span class="menu-phonetic">(츠케멘·찍어 먹는 라멘)</span></span>
+        
+        
+      </li>
+    </ul>
+  </div>
+
+  <div class="info-section">
+    <div class="info-title">영업 정보</div>
+    <div class="info-row"><span class="info-label">영업시간</span><span class="info-val">상세 미확인 (방문 전 전화 확인 권장)</span></div>
+    <div class="info-row"><span class="info-label">정기휴무</span><span class="info-val">일요일</span></div>
+    <div class="info-row"><span class="info-label">주소</span><span class="info-val">福岡市中央区大名1-9-24 マザーハウス1-A</span></div>
+    <div class="info-row"><span class="info-label">교통</span><span class="info-val">지하철 天神駅 도보 5분 / 大名 거리 내</span></div>
+    <div class="info-row"><span class="info-label">전화</span><span class="info-val">092-202-1924</span></div>
+  </div>
+
+  <div class="warn-box">
+    ⚠️ <strong>주의:</strong> 일요일 휴무 확인 필요
+  </div>
+
+  <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:8px;">
+    <a class="map-btn" href="https://www.google.com/maps/search/%E5%91%B3%E5%99%8C%E8%94%B5%E3%81%B5%E3%81%8F%E3%81%B9%E3%81%88+%E7%A6%8F%E5%B2%A1%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E5%A4%A7%E5%90%8D1-9-24%20%E3%83%9E%E3%82%B6%E3%83%BC%E3%83%8F%E3%82%A6%E3%82%B91-A" target="_blank">📍 구글맵</a>
+    <a class="map-btn" style="background:#2a5a8a;" href="https://tabelog.com/en/fukuoka/A4001/A400104/40043468/" target="_blank">🌐 홈페이지</a>
+  </div>
+</div>
+
+<!-- 23. 博多一幸舎 総本店 -->
+<div class="rest-card">
+  <div class="rest-head">
+    <span class="rest-num">23</span>
+    <div class="rest-names">
+      <div class="rest-ja">博多一幸舎 総本店</div>
+      <div class="rest-phonetic">하카타 잇코샤 소혼텐 (Hakata Ikkosha Sohonten)</div>
+      <div class="rest-meaning">博多(하카타)=지명, 一幸舎(잇코샤)=한 사람의 행복을 담은 가게, 総本店(소혼텐)=총본점</div>
+      <span class="rest-category">博多豚骨ラーメン(하카타 돈코츠 라멘)</span>
+    </div>
+  </div>
+
+  <img class="food-photo"
+    src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Tonkotsu_ramen.JPG/600px-Tonkotsu_ramen.JPG"
+    alt="博多一幸舎 総本店"
+    loading="lazy"
+    onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Japanese_set_meal_001.jpg/600px-Japanese_set_meal_001.jpg'">
+
+  <div class="special-box">
+    <strong>왜 특별한가:</strong> 2018년 리뉴얼된 총본점. 해외에도 분점 다수인 글로벌 브랜드의 발원지. 맑고 진한 하카타 돈코츠의 정석
+  </div>
+
+  <div class="info-section">
+    <div class="info-title">시그니처 메뉴</div>
+    <ul class="menu-list">
+      
+      <li class="menu-item">
+        <span class="menu-name">博多豚骨ラーメン <span class="menu-phonetic">(하카타 돈코츠 라멘)</span></span>
+        
+        <span class="menu-desc">장인이 만드는 진정한 돈코츠</span>
+      </li>
+      <li class="menu-item">
+        <span class="menu-name">替玉 <span class="menu-phonetic">(카에다마)</span></span>
+        <span class="menu-price">¥100</span>
+        
+      </li>
+      <li class="menu-item">
+        <span class="menu-name">特製チャーシュー麺 <span class="menu-phonetic">(특제 차슈멘)</span></span>
+        
+        
+      </li>
+    </ul>
+  </div>
+
+  <div class="info-section">
+    <div class="info-title">영업 정보</div>
+    <div class="info-row"><span class="info-label">영업시간</span><span class="info-val">11:00–23:30 (일요일 ~21:00)</span></div>
+    <div class="info-row"><span class="info-label">정기휴무</span><span class="info-val">연말연시</span></div>
+    <div class="info-row"><span class="info-label">주소</span><span class="info-val">福岡市博多区博多駅前3-23-12</span></div>
+    <div class="info-row"><span class="info-label">교통</span><span class="info-val">JR 博多駅 도보 5분</span></div>
+    <div class="info-row"><span class="info-label">전화</span><span class="info-val">092-432-1190</span></div>
+  </div>
+
+  <div class="warn-box">
+    ⚠️ <strong>주의:</strong> 박다역 근처라 관광객도 많지만 현지인도 애용. 야간 영업 길어 늦게도 OK
+  </div>
+
+  <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:8px;">
+    <a class="map-btn" href="https://www.google.com/maps/search/%E5%8D%9A%E5%A4%9A%E4%B8%80%E5%B9%B8%E8%88%8E%20%E7%B7%8F%E6%9C%AC%E5%BA%97+%E7%A6%8F%E5%B2%A1%E5%B8%82%E5%8D%9A%E5%A4%9A%E5%8C%BA%E5%8D%9A%E5%A4%9A%E9%A7%85%E5%89%8D3-23-12" target="_blank">📍 구글맵</a>
+    <a class="map-btn" style="background:#2a5a8a;" href="https://www.ikkousha.com/" target="_blank">🌐 홈페이지</a>
+  </div>
+</div>
+
+<!-- 24. らぁ麺 なお人 -->
+<div class="rest-card">
+  <div class="rest-head">
+    <span class="rest-num">24</span>
+    <div class="rest-names">
+      <div class="rest-ja">らぁ麺 なお人</div>
+      <div class="rest-phonetic">라멘 나오토 (Ramen Naoto)</div>
+      <div class="rest-meaning">らぁ麺(라멘), 直人(나오토)=점주 이름</div>
+      <span class="rest-category">非豚骨(히돈코츠) · 鶏白湯(토리 시로탕) 라멘</span>
+    </div>
+  </div>
+
+  <img class="food-photo"
+    src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Tori-paitan-ramen.jpg/600px-Tori-paitan-ramen.jpg"
+    alt="らぁ麺 なお人"
+    loading="lazy"
+    onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Japanese_set_meal_001.jpg/600px-Japanese_set_meal_001.jpg'">
+
+  <div class="special-box">
+    <strong>왜 특별한가:</strong> 도쿄에서 내려온 라멘 브랜드. 후쿠오카에서 비돈코츠 열풍을 이끔. 맑고 우아한 국물. 후쿠오카 나비 소개
+  </div>
+
+  <div class="info-section">
+    <div class="info-title">시그니처 메뉴</div>
+    <ul class="menu-list">
+      
+      <li class="menu-item">
+        <span class="menu-name">のどぐろらぁ麺 <span class="menu-phonetic">(노도구로 라멘·흰볼락 라멘)</span></span>
+        
+        <span class="menu-desc">비돈코츠 생선 베이스</span>
+      </li>
+      <li class="menu-item">
+        <span class="menu-name">鶏白湯らぁ麺 <span class="menu-phonetic">(닭 백탕 라멘)</span></span>
+        
+        
+      </li>
+    </ul>
+  </div>
+
+  <div class="info-section">
+    <div class="info-title">영업 정보</div>
+    <div class="info-row"><span class="info-label">영업시간</span><span class="info-val">11:00–15:00 / 18:00–21:00</span></div>
+    <div class="info-row"><span class="info-label">정기휴무</span><span class="info-val">수요일</span></div>
+    <div class="info-row"><span class="info-label">주소</span><span class="info-val">福岡市中央区渡辺通5-10-28</span></div>
+    <div class="info-row"><span class="info-label">교통</span><span class="info-val">지하철 七隈線 天神南駅 도보 3분</span></div>
+    <div class="info-row"><span class="info-label">전화</span><span class="info-val">092-401-1540</span></div>
+  </div>
+
+  <div class="warn-box">
+    ⚠️ <strong>주의:</strong> 수요일 휴무. 인기로 웨이팅 가능
+  </div>
+
+  <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:8px;">
+    <a class="map-btn" href="https://www.google.com/maps/search/%E3%82%89%E3%81%81%E9%BA%BA%20%E3%81%AA%E3%81%8A%E4%BA%BA+%E7%A6%8F%E5%B2%A1%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E6%B8%A1%E8%BE%BA%E9%80%9A5-10-28" target="_blank">📍 구글맵</a>
+    <a class="map-btn" style="background:#2a5a8a;" href="https://tabelog.com/en/fukuoka/A4001/A400103/40053501/" target="_blank">🌐 홈페이지</a>
+  </div>
+</div>
+
+</div><!-- end grid -->
+</div><!-- end section-body -->
+
+<!-- ======================================================
+     우동·소바 섹션
+     ====================================================== -->
+<div class="section-header" id="udon">
+  <span style="font-size:20px">🍵</span>
+  <h2>우동·소바</h2>
+</div>
+<div class="section-body">
+<div class="rest-grid">
+
+<!-- 1. 麺工房なか -->
+<div class="rest-card">
+  <div class="rest-head">
+    <span class="rest-num">1</span>
+    <div class="rest-names">
+      <div class="rest-ja">麺工房なか</div>
+      <div class="rest-phonetic">멘코보 나카 (Menkobo Naka)</div>
+      <div class="rest-meaning">麺(멘)=면, 工房(코보)=공방·작업장, なか=중간/이름</div>
+      <span class="rest-category">手打ちうどん(테우치 우동 · 수타 우동) · 筑後うどん(치쿠고 우동)</span>
+    </div>
+  </div>
+
+  <img class="food-photo"
+    src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Gobouten_udon.jpg/600px-Gobouten_udon.jpg"
+    alt="麺工房なか"
+    loading="lazy"
+    onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Japanese_set_meal_001.jpg/600px-Japanese_set_meal_001.jpg'">
+
+  <div class="special-box">
+    <strong>왜 특별한가:</strong> 카운터 12석 소규모. 수타 우동으로 탱글한 면발. 타베로그 평점 3.53. 예약 불가. 현금만
+  </div>
+
+  <div class="info-section">
+    <div class="info-title">시그니처 메뉴</div>
+    <ul class="menu-list">
+      
+      <li class="menu-item">
+        <span class="menu-name">ごぼう天うどん <span class="menu-phonetic">(고보텐 우동·우엉튀김 우동)</span></span>
+        
+        
+      </li>
+      <li class="menu-item">
+        <span class="menu-name">いなり <span class="menu-phonetic">(이나리 유부초밥)</span></span>
+        <span class="menu-price">¥180</span>
+        
+      </li>
+    </ul>
+  </div>
+
+  <div class="info-section">
+    <div class="info-title">영업 정보</div>
+    <div class="info-row"><span class="info-label">영업시간</span><span class="info-val">화–토 11:00–15:00</span></div>
+    <div class="info-row"><span class="info-label">정기휴무</span><span class="info-val">월요일·일요일</span></div>
+    <div class="info-row"><span class="info-label">주소</span><span class="info-val">福岡市中央区大名2-11-10 1F</span></div>
+    <div class="info-row"><span class="info-label">교통</span><span class="info-val">지하철 赤坂駅 도보 5분</span></div>
+    <div class="info-row"><span class="info-label">전화</span><span class="info-val">092-714-0210</span></div>
+  </div>
+
+  <div class="warn-box">
+    ⚠️ <strong>주의:</strong> 화~토 런치만. 품절 조기 마감. 카드 불가, 현금만
+  </div>
+
+  <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:8px;">
+    <a class="map-btn" href="https://www.google.com/maps/search/%E9%BA%BA%E5%B7%A5%E6%88%BF%E3%81%AA%E3%81%8B+%E7%A6%8F%E5%B2%A1%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E5%A4%A7%E5%90%8D2-11-10%201F" target="_blank">📍 구글맵</a>
+    <a class="map-btn" style="background:#2a5a8a;" href="https://tabelog.com/en/fukuoka/A4001/A400104/40000485/" target="_blank">🌐 홈페이지</a>
+  </div>
+</div>
+
+<!-- 3. 手打ち蕎麦 やぶ金 -->
+<div class="rest-card">
+  <div class="rest-head">
+    <span class="rest-num">3</span>
+    <div class="rest-names">
+      <div class="rest-ja">手打ち蕎麦 やぶ金</div>
+      <div class="rest-phonetic">테우치 소바 야부킨 (Teuchi Soba Yabukin)</div>
+      <div class="rest-meaning">手打ち(테우치)=손으로 치다·수타, 蕎麦(소바)=메밀, やぶ金(야부킨)=덤불 금</div>
+      <span class="rest-category">手打ちそば(수타 소바) · 江戸前そば(에도 소바)</span>
+    </div>
+  </div>
+
+  <img class="food-photo"
+    src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Udon.jpg/600px-Udon.jpg"
+    alt="手打ち蕎麦 やぶ金"
+    loading="lazy"
+    onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Japanese_set_meal_001.jpg/600px-Japanese_set_meal_001.jpg'">
+
+  <div class="special-box">
+    <strong>왜 특별한가:</strong> 1950년 창업, 1936년 지어진 목조 건물(2014년 국가 지정 유형문화재). 건물 자체가 볼거리. 수십 년째 이어온 수타 소바의 맛
+  </div>
+
+  <div class="info-section">
+    <div class="info-title">시그니처 메뉴</div>
+    <ul class="menu-list">
+      
+      <li class="menu-item">
+        <span class="menu-name">もりそば <span class="menu-phonetic">(모리소바·냉소바)</span></span>
+        
+        <span class="menu-desc">수타 메밀면, 진한 츠유</span>
+      </li>
+      <li class="menu-item">
+        <span class="menu-name">天ぷらそば <span class="menu-phonetic">(텐푸라소바)</span></span>
+        
+        <span class="menu-desc">새우튀김 올린 소바</span>
+      </li>
+      <li class="menu-item">
+        <span class="menu-name">そばセット <span class="menu-phonetic">(소바 세트)</span></span>
+        
+        
+      </li>
+    </ul>
+  </div>
+
+  <div class="info-section">
+    <div class="info-title">영업 정보</div>
+    <div class="info-row"><span class="info-label">영업시간</span><span class="info-val">11:30–15:00 / 17:00–22:00 (소진 시 조기 마감)</span></div>
+    <div class="info-row"><span class="info-label">정기휴무</span><span class="info-val">불정기 (전화 확인 권장)</span></div>
+    <div class="info-row"><span class="info-label">주소</span><span class="info-val">福岡市中央区大名2丁目 (정확 번지 현장 확인 권장)</span></div>
+    <div class="info-row"><span class="info-label">교통</span><span class="info-val">지하철 赤坂駅·天神駅 도보권</span></div>
+    <div class="info-row"><span class="info-label">전화</span><span class="info-val">050-5494-0840</span></div>
+  </div>
+
+  <div class="warn-box">
+    ⚠️ <strong>주의:</strong> 소진 조기 마감. 문화재 건물이므로 음식보다 공간 자체도 즐길 것
+  </div>
+
+  <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:8px;">
+    <a class="map-btn" href="https://www.google.com/maps/search/%E6%89%8B%E6%89%93%E3%81%A1%E8%95%8E%E9%BA%A6%20%E3%82%84%E3%81%B6%E9%87%91+%E7%A6%8F%E5%B2%A1%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E5%A4%A7%E5%90%8D2%E4%B8%81%E7%9B%AE%20%28%EC%A0%95%ED%99%95%20%EB%B2%88%EC%A7%80%20%ED%98%84%EC%9E%A5%20%ED%99%95%EC%9D%B8%20%EA%B6%8C%EC%9E%A5%29" target="_blank">📍 구글맵</a>
+    <a class="map-btn" style="background:#2a5a8a;" href="https://fbrt700.gorp.jp/" target="_blank">🌐 홈페이지</a>
+  </div>
+</div>
+
+<!-- 17. 因幡うどん デイトス店 -->
+<div class="rest-card">
+  <div class="rest-head">
+    <span class="rest-num">17</span>
+    <div class="rest-names">
+      <div class="rest-ja">因幡うどん デイトス店</div>
+      <div class="rest-phonetic">이나바 우동 데이토스텐 (Inaba Udon Deitosu-ten)</div>
+      <div class="rest-meaning">因幡(이나바)=지명(돗토리현), うどん(우동)=밀면, デイトス=DEITOSU(박다역 쇼핑몰)</div>
+      <span class="rest-category">博多うどん(하카타 우동) · 昭和26年創業(1951년 창업)</span>
+    </div>
+  </div>
+
+  <img class="food-photo"
+    src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Udon.jpg/600px-Udon.jpg"
+    alt="因幡うどん デイトス店"
+    loading="lazy"
+    onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Japanese_set_meal_001.jpg/600px-Japanese_set_meal_001.jpg'">
+
+  <div class="special-box">
+    <strong>왜 특별한가:</strong> 1951년 창업 하카타 우동 노포. 박다역 직결 접근 최고. 보들보들한 면발과 맑은 국물이 하카타 우동의 정석
+  </div>
+
+  <div class="info-section">
+    <div class="info-title">시그니처 메뉴</div>
+    <ul class="menu-list">
+      
+      <li class="menu-item">
+        <span class="menu-name">ごぼう天うどん <span class="menu-phonetic">(고보텐 우동·우엉튀김 우동)</span></span>
+        
+        
+      </li>
+      <li class="menu-item">
+        <span class="menu-name">丸天うどん <span class="menu-phonetic">(마루텐 우동·어묵튀김 우동)</span></span>
+        
+        
+      </li>
+      <li class="menu-item">
+        <span class="menu-name">かしわめし <span class="menu-phonetic">(카시와메시·닭고기 밥)</span></span>
+        
+        <span class="menu-desc">세트 추천</span>
+      </li>
+    </ul>
+  </div>
+
+  <div class="info-section">
+    <div class="info-title">영업 정보</div>
+    <div class="info-row"><span class="info-label">영업시간</span><span class="info-val">11:00–22:30 (L.O. 22:30)</span></div>
+    <div class="info-row"><span class="info-label">정기휴무</span><span class="info-val">시설 휴업일에 준함 (사실상 연중무휴)</span></div>
+    <div class="info-row"><span class="info-label">주소</span><span class="info-val">福岡市博多区博多駅中央街1-1 博多デイトス B1F「博多のごはん処」</span></div>
+    <div class="info-row"><span class="info-label">교통</span><span class="info-val">JR 博多駅 직결</span></div>
+    <div class="info-row"><span class="info-label">전화</span><span class="info-val">092-441-7851</span></div>
+  </div>
+
+  <div class="warn-box">
+    ⚠️ <strong>주의:</strong> 박다역 내 위치라 언제든 접근 쉬움. 관광객 多
+  </div>
+
+  <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:8px;">
+    <a class="map-btn" href="https://www.google.com/maps/search/%E5%9B%A0%E5%B9%A1%E3%81%86%E3%81%A9%E3%82%93%20%E3%83%87%E3%82%A4%E3%83%88%E3%82%B9%E5%BA%97+%E7%A6%8F%E5%B2%A1%E5%B8%82%E5%8D%9A%E5%A4%9A%E5%8C%BA%E5%8D%9A%E5%A4%9A%E9%A7%85%E4%B8%AD%E5%A4%AE%E8%A1%971-1%20%E5%8D%9A%E5%A4%9A%E3%83%87%E3%82%A4%E3%83%88%E3%82%B9%20B1F%E3%80%8C%E5%8D%9A%E5%A4%9A%E3%81%AE%E3%81%94%E3%81%AF%E3%82%93%E5%87%A6%E3%80%8D" target="_blank">📍 구글맵</a>
+    <a class="map-btn" style="background:#2a5a8a;" href="https://inabaudon.com/" target="_blank">🌐 홈페이지</a>
+  </div>
+</div>
+
+<!-- 25. 麦衛門 -->
+<div class="rest-card">
+  <div class="rest-head">
+    <span class="rest-num">25</span>
+    <div class="rest-names">
+      <div class="rest-ja">麦衛門</div>
+      <div class="rest-phonetic">무기에몬 (Mugiemon)</div>
+      <div class="rest-meaning">麦(무기)=밀·보리, 衛門(에몬)=옛 일본 이름 접미사 (문지기)</div>
+      <span class="rest-category">讃岐うどん居酒屋(사누키 우동 이자카야)</span>
+    </div>
+  </div>
+
+  <img class="food-photo"
+    src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Udon.jpg/600px-Udon.jpg"
+    alt="麦衛門"
+    loading="lazy"
+    onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Japanese_set_meal_001.jpg/600px-Japanese_set_meal_001.jpg'">
+
+  <div class="special-box">
+    <strong>왜 특별한가:</strong> 우동과 이자카야 메뉴를 함께 즐길 수 있는 독특한 조합. 낮에는 우동 정식, 밤에는 술자리 겸용. 지역 주민 단골
+  </div>
+
+  <div class="info-section">
+    <div class="info-title">시그니처 메뉴</div>
+    <ul class="menu-list">
+      
+      <li class="menu-item">
+        <span class="menu-name">自家製讃岐うどん <span class="menu-phonetic">(지카세이 사누키 우동·자가제 우동)</span></span>
+        
+        
+      </li>
+      <li class="menu-item">
+        <span class="menu-name">刺身 <span class="menu-phonetic">(사시미·생선회)</span></span>
+        
+        <span class="menu-desc">이자카야 메뉴</span>
+      </li>
+      <li class="menu-item">
+        <span class="menu-name">串天ぷら <span class="menu-phonetic">(꼬치 텐푸라)</span></span>
+        
+        
+      </li>
+    </ul>
+  </div>
+
+  <div class="info-section">
+    <div class="info-title">영업 정보</div>
+    <div class="info-row"><span class="info-label">영업시간</span><span class="info-val">평일 11:30–15:00 / 18:00–23:00 (L.O. 22:30) / 토일공 11:00–21:00 (L.O. 20:30)</span></div>
+    <div class="info-row"><span class="info-label">정기휴무</span><span class="info-val">불정기</span></div>
+    <div class="info-row"><span class="info-label">주소</span><span class="info-val">福岡市中央区春吉1-7-18</span></div>
+    <div class="info-row"><span class="info-label">교통</span><span class="info-val">지하철 七隈線 渡辺通駅 도보 3분</span></div>
+    <div class="info-row"><span class="info-label">전화</span><span class="info-val">092-776-7712</span></div>
+  </div>
+
+  <div class="warn-box">
+    ⚠️ <strong>주의:</strong> 저녁 늦게 방문 시 이자카야 분위기
+  </div>
+
+  <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:8px;">
+    <a class="map-btn" href="https://www.google.com/maps/search/%E9%BA%A6%E8%A1%9B%E9%96%80+%E7%A6%8F%E5%B2%A1%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E6%98%A5%E5%90%891-7-18" target="_blank">📍 구글맵</a>
+    <a class="map-btn" style="background:#2a5a8a;" href="https://www.mugiemon.com/" target="_blank">🌐 홈페이지</a>
+  </div>
+</div>
+
+<!-- 26. 葉隠うどん -->
+<div class="rest-card">
+  <div class="rest-head">
+    <span class="rest-num">26</span>
+    <div class="rest-names">
+      <div class="rest-ja">葉隠うどん</div>
+      <div class="rest-phonetic">하가쿠레 우동 (Hagakure Udon)</div>
+      <div class="rest-meaning">葉隠(하가쿠레)=잎사귀 속에 숨다 (사무라이 정신서 「葉隠」에서 유래), うどん=밀면</div>
+      <span class="rest-category">博多うどん(하카타 우동)</span>
+    </div>
+  </div>
+
+  <img class="food-photo"
+    src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Udon.jpg/600px-Udon.jpg"
+    alt="葉隠うどん"
+    loading="lazy"
+    onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Japanese_set_meal_001.jpg/600px-Japanese_set_meal_001.jpg'">
+
+  <div class="special-box">
+    <strong>왜 특별한가:</strong> 창업 37년 노포. 博多의 인기 우동점에서 수행 후 창업. 납작하고 부드러운 면발과 다시(出汁) 국물이 특징
+  </div>
+
+  <div class="info-section">
+    <div class="info-title">시그니처 메뉴</div>
+    <ul class="menu-list">
+      
+      <li class="menu-item">
+        <span class="menu-name">ごぼう天うどん <span class="menu-phonetic">(고보텐 우동·우엉튀김 우동)</span></span>
+        
+        <span class="menu-desc">명물</span>
+      </li>
+      <li class="menu-item">
+        <span class="menu-name">平打ち麺 <span class="menu-phonetic">(히라우치멘·납작 면)</span></span>
+        
+        <span class="menu-desc">부드러운 식감</span>
+      </li>
+    </ul>
+  </div>
+
+  <div class="info-section">
+    <div class="info-title">영업 정보</div>
+    <div class="info-row"><span class="info-label">영업시간</span><span class="info-val">상세 미확인 (현지 확인 권장)</span></div>
+    <div class="info-row"><span class="info-label">정기휴무</span><span class="info-val">미확인</span></div>
+    <div class="info-row"><span class="info-label">주소</span><span class="info-val">福岡市博多区博多駅南2-3-32</span></div>
+    <div class="info-row"><span class="info-label">교통</span><span class="info-val">JR 博多駅 남쪽 출구 도보 5분</span></div>
+    <div class="info-row"><span class="info-label">전화</span><span class="info-val">092-431-3889</span></div>
+  </div>
+
+  <div class="warn-box">
+    ⚠️ <strong>주의:</strong> 영업시간 방문 전 전화 확인 권장
+  </div>
+
+  <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:8px;">
+    <a class="map-btn" href="https://www.google.com/maps/search/%E8%91%89%E9%9A%A0%E3%81%86%E3%81%A9%E3%82%93+%E7%A6%8F%E5%B2%A1%E5%B8%82%E5%8D%9A%E5%A4%9A%E5%8C%BA%E5%8D%9A%E5%A4%9A%E9%A7%85%E5%8D%972-3-32" target="_blank">📍 구글맵</a>
+    <a class="map-btn" style="background:#2a5a8a;" href="https://tabelog.com/en/fukuoka/A4001/A400101/40004342/" target="_blank">🌐 홈페이지</a>
+  </div>
+</div>
+
+</div><!-- end grid -->
+</div><!-- end section-body -->
+
+<!-- ======================================================
+     야키토리·토리카와 섹션
+     ====================================================== -->
+<div class="section-header" id="yakitori">
+  <span style="font-size:20px">🍢</span>
+  <h2>야키토리·토리카와</h2>
+</div>
+<div class="section-body">
+<div class="rest-grid">
+
+<!-- 13. とり乃屋 -->
+<div class="rest-card">
+  <div class="rest-head">
+    <span class="rest-num">13</span>
+    <div class="rest-names">
+      <div class="rest-ja">とり乃屋</div>
+      <div class="rest-phonetic">토리노야 (Torinoya)</div>
+      <div class="rest-meaning">鳥(토리)=닭, 乃(노)=의, 屋(야)=가게</div>
+      <span class="rest-category">焼き鳥(야키토리) · 鶏料理(토리료리·닭요리) 전문</span>
+    </div>
+  </div>
+
+  <img class="food-photo"
+    src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Cooking_yakitori.jpg/600px-Cooking_yakitori.jpg"
+    alt="とり乃屋"
+    loading="lazy"
+    onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Japanese_set_meal_001.jpg/600px-Japanese_set_meal_001.jpg'">
+
+  <div class="special-box">
+    <strong>왜 특별한가:</strong> 미야자키(宮崎) 프리미엄 닭 사용. 단 4가지 메뉴만 존재하는 심플함. 어른을 위한 닭 전문 공간. 타베로그 게재
+  </div>
+
+  <div class="info-section">
+    <div class="info-title">시그니처 메뉴</div>
+    <ul class="menu-list">
+      
+      <li class="menu-item">
+        <span class="menu-name">もも塩焼き <span class="menu-phonetic">(모모시오야키·닭다리 소금구이)</span></span>
+        
+        
+      </li>
+      <li class="menu-item">
+        <span class="menu-name">もも味噌焼き <span class="menu-phonetic">(모모미소야키·닭다리 된장구이)</span></span>
+        
+        
+      </li>
+      <li class="menu-item">
+        <span class="menu-name">たたき <span class="menu-phonetic">(타타키·살짝 구운 닭)</span></span>
+        
+        
+      </li>
+    </ul>
+  </div>
+
+  <div class="info-section">
+    <div class="info-title">영업 정보</div>
+    <div class="info-row"><span class="info-label">영업시간</span><span class="info-val">상세 미확인 (전화 확인 권장)</span></div>
+    <div class="info-row"><span class="info-label">정기휴무</span><span class="info-val">미확인</span></div>
+    <div class="info-row"><span class="info-label">주소</span><span class="info-val">福岡市中央区西中洲5-15 セントラルパークタワー 2F</span></div>
+    <div class="info-row"><span class="info-label">교통</span><span class="info-val">지하철 天神南駅·中洲川端駅 도보권</span></div>
+    <div class="info-row"><span class="info-label">전화</span><span class="info-val">092-713-6629</span></div>
+  </div>
+
+  <div class="warn-box">
+    ⚠️ <strong>주의:</strong> 메뉴 수 매우 적음. 예약 권장
+  </div>
+
+  <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:8px;">
+    <a class="map-btn" href="https://www.google.com/maps/search/%E3%81%A8%E3%82%8A%E4%B9%83%E5%B1%8B+%E7%A6%8F%E5%B2%A1%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E8%A5%BF%E4%B8%AD%E6%B4%B25-15%20%E3%82%BB%E3%83%B3%E3%83%88%E3%83%A9%E3%83%AB%E3%83%91%E3%83%BC%E3%82%AF%E3%82%BF%E3%83%AF%E3%83%BC%202F" target="_blank">📍 구글맵</a>
+    <a class="map-btn" style="background:#2a5a8a;" href="https://www.hotpepper.jp/strJ001192516/" target="_blank">🌐 홈페이지</a>
+  </div>
+</div>
+
+<!-- 18. 博多とりかわ大臣 KITTE博多串房 -->
+<div class="rest-card">
+  <div class="rest-head">
+    <span class="rest-num">18</span>
+    <div class="rest-names">
+      <div class="rest-ja">博多とりかわ大臣 KITTE博多串房</div>
+      <div class="rest-phonetic">하카타 토리카와다이진 킷테하카타 쿠시보 (Hakata Torikawa Daijin KITTE Hakata)</div>
+      <div class="rest-meaning">博多(하카타)=지명, とりかわ(토리카와)=닭껍질, 大臣(다이진)=대신·장관, 串房(쿠시보)=꼬치 방</div>
+      <span class="rest-category">とりかわ(토리카와 · 닭껍질 꼬치) 전문</span>
+    </div>
+  </div>
+
+  <img class="food-photo"
+    src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Cooking_yakitori.jpg/600px-Cooking_yakitori.jpg"
+    alt="博多とりかわ大臣 KITTE博多串房"
+    loading="lazy"
+    onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Japanese_set_meal_001.jpg/600px-Japanese_set_meal_001.jpg'">
+
+  <div class="special-box">
+    <strong>왜 특별한가:</strong> 일본 전통 방식으로 한 꼬치씩 손으로 찔러 하초벌이(下焼き) 후 타레에 담그고 재벌구이. 박다역에서 낮부터 먹을 수 있는 접근성
+  </div>
+
+  <div class="info-section">
+    <div class="info-title">시그니처 메뉴</div>
+    <ul class="menu-list">
+      
+      <li class="menu-item">
+        <span class="menu-name">とりかわ <span class="menu-phonetic">(토리카와·닭껍질 꼬치)</span></span>
+        
+        <span class="menu-desc">1개씩 주문</span>
+      </li>
+      <li class="menu-item">
+        <span class="menu-name">手羽先 <span class="menu-phonetic">(테바사키·닭날개)</span></span>
+        
+        
+      </li>
+      <li class="menu-item">
+        <span class="menu-name">焼き鳥各種 <span class="menu-phonetic">(야키토리 모듬)</span></span>
+        
+        
+      </li>
+    </ul>
+  </div>
+
+  <div class="info-section">
+    <div class="info-title">영업 정보</div>
+    <div class="info-row"><span class="info-label">영업시간</span><span class="info-val">11:00–24:00 (L.O. 23:30)</span></div>
+    <div class="info-row"><span class="info-label">정기휴무</span><span class="info-val">무휴</span></div>
+    <div class="info-row"><span class="info-label">주소</span><span class="info-val">福岡市博多区博多駅中央街9-1 KITTE博多 B1F</span></div>
+    <div class="info-row"><span class="info-label">교통</span><span class="info-val">JR 博多駅 직결 KITTE博多 지하 1층</span></div>
+    <div class="info-row"><span class="info-label">전화</span><span class="info-val">092-260-6360</span></div>
+  </div>
+
+  <div class="warn-box">
+    ⚠️ <strong>주의:</strong> 박다역 내 시설이므로 관광객 많음. 심야까지 영업
+  </div>
+
+  <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:8px;">
+    <a class="map-btn" href="https://www.google.com/maps/search/%E5%8D%9A%E5%A4%9A%E3%81%A8%E3%82%8A%E3%81%8B%E3%82%8F%E5%A4%A7%E8%87%A3%20KITTE%E5%8D%9A%E5%A4%9A%E4%B8%B2%E6%88%BF+%E7%A6%8F%E5%B2%A1%E5%B8%82%E5%8D%9A%E5%A4%9A%E5%8C%BA%E5%8D%9A%E5%A4%9A%E9%A7%85%E4%B8%AD%E5%A4%AE%E8%A1%979-1%20KITTE%E5%8D%9A%E5%A4%9A%20B1F" target="_blank">📍 구글맵</a>
+    <a class="map-btn" style="background:#2a5a8a;" href="https://hakata-torikawa.com/" target="_blank">🌐 홈페이지</a>
+  </div>
+</div>
+
+<!-- 20. かわ屋 祇園店 -->
+<div class="rest-card">
+  <div class="rest-head">
+    <span class="rest-num">20</span>
+    <div class="rest-names">
+      <div class="rest-ja">かわ屋 祇園店</div>
+      <div class="rest-phonetic">카와야 기온텐 (Kawaya Gion-ten)</div>
+      <div class="rest-meaning">かわ(카와)=껍질(とりかわ 줄임), 屋(야)=가게, 祇園(기온)=지명</div>
+      <span class="rest-category">とりかわ(토리카와) · 焼き鳥(야키토리)</span>
+    </div>
+  </div>
+
+  <img class="food-photo"
+    src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Cooking_yakitori.jpg/600px-Cooking_yakitori.jpg"
+    alt="かわ屋 祇園店"
+    loading="lazy"
+    onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Japanese_set_meal_001.jpg/600px-Japanese_set_meal_001.jpg'">
+
+  <div class="special-box">
+    <strong>왜 특별한가:</strong> 하카타 토리카와의 원류. 닭껍질 한 꼬치를 완성하는 데 6일 소요. 바삭한 겉+쫄깃한 속의 마성. 기온 본점 계열
+  </div>
+
+  <div class="info-section">
+    <div class="info-title">시그니처 메뉴</div>
+    <ul class="menu-list">
+      
+      <li class="menu-item">
+        <span class="menu-name">とりかわ <span class="menu-phonetic">(토리카와)</span></span>
+        
+        <span class="menu-desc">6일간 반복 타레+구이로 완성되는 박다 명물</span>
+      </li>
+      <li class="menu-item">
+        <span class="menu-name">ささみ <span class="menu-phonetic">(사사미·닭가슴살 꼬치)</span></span>
+        
+        
+      </li>
+      <li class="menu-item">
+        <span class="menu-name">野菜焼き <span class="menu-phonetic">(야채구이)</span></span>
+        
+        
+      </li>
+    </ul>
+  </div>
+
+  <div class="info-section">
+    <div class="info-title">영업 정보</div>
+    <div class="info-row"><span class="info-label">영업시간</span><span class="info-val">17:00–24:00 (L.O. 23:30)</span></div>
+    <div class="info-row"><span class="info-label">정기휴무</span><span class="info-val">미확인</span></div>
+    <div class="info-row"><span class="info-label">주소</span><span class="info-val">福岡市博多区祇園町2-8</span></div>
+    <div class="info-row"><span class="info-label">교통</span><span class="info-val">지하철 祇園駅 도보 2분</span></div>
+    <div class="info-row"><span class="info-label">전화</span><span class="info-val">092-281-3100</span></div>
+  </div>
+
+  <div class="warn-box">
+    ⚠️ <strong>주의:</strong> 저녁 전용 영업. 기온역 근처이므로 접근 용이
+  </div>
+
+  <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:8px;">
+    <a class="map-btn" href="https://www.google.com/maps/search/%E3%81%8B%E3%82%8F%E5%B1%8B%20%E7%A5%87%E5%9C%92%E5%BA%97+%E7%A6%8F%E5%B2%A1%E5%B8%82%E5%8D%9A%E5%A4%9A%E5%8C%BA%E7%A5%87%E5%9C%92%E7%94%BA2-8" target="_blank">📍 구글맵</a>
+    <a class="map-btn" style="background:#2a5a8a;" href="https://hakatakawaya.com/shoplist/shop/913/" target="_blank">🌐 홈페이지</a>
+  </div>
+</div>
+
+<!-- 34. とりかわ 粋恭 -->
+<div class="rest-card">
+  <div class="rest-head">
+    <span class="rest-num">34</span>
+    <div class="rest-names">
+      <div class="rest-ja">とりかわ 粋恭</div>
+      <div class="rest-phonetic">토리카와 스이쿄 (Torikawa Suikyo)</div>
+      <div class="rest-meaning">とりかわ(토리카와)=닭껍질, 粋(스이)=멋·세련됨, 恭(쿄)=공손함·경의</div>
+      <span class="rest-category">とりかわ(토리카와) 원조 계열</span>
+    </div>
+  </div>
+
+  <img class="food-photo"
+    src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Cooking_yakitori.jpg/600px-Cooking_yakitori.jpg"
+    alt="とりかわ 粋恭"
+    loading="lazy"
+    onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Japanese_set_meal_001.jpg/600px-Japanese_set_meal_001.jpg'">
+
+  <div class="special-box">
+    <strong>왜 특별한가:</strong> 1968년 야키토리 권베이(権兵衛)에서 토리카와 발명 이후 그 정통을 잇는 가게 중 하나. 1인당 8개 제한이라 더 귀한 맛. 2층은 3명 이상 예약 가능 (1개월 전 금·토 예약)
+  </div>
+
+  <div class="info-section">
+    <div class="info-title">시그니처 메뉴</div>
+    <ul class="menu-list">
+      
+      <li class="menu-item">
+        <span class="menu-name">とりかわ <span class="menu-phonetic">(토리카와)</span></span>
+        
+        <span class="menu-desc">1인 8개 한정. 약 4일 숙성+7회 구이</span>
+      </li>
+      <li class="menu-item">
+        <span class="menu-name">ささみ志ぎ焼き <span class="menu-phonetic">(사사미 시기야키)</span></span>
+        
+        
+      </li>
+    </ul>
+  </div>
+
+  <div class="info-section">
+    <div class="info-title">영업 정보</div>
+    <div class="info-row"><span class="info-label">영업시간</span><span class="info-val">저녁 영업 (상세 전화 확인)</span></div>
+    <div class="info-row"><span class="info-label">정기휴무</span><span class="info-val">미확인</span></div>
+    <div class="info-row"><span class="info-label">주소</span><span class="info-val">福岡市中央区薬院 (정확 번지 현장 확인 권장)</span></div>
+    <div class="info-row"><span class="info-label">교통</span><span class="info-val">지하철 薬院大通駅 근처</span></div>
+    <div class="info-row"><span class="info-label">전화</span><span class="info-val">미확인</span></div>
+  </div>
+
+  <div class="warn-box">
+    ⚠️ <strong>주의:</strong> 인기로 예약 필수. 1인 8개 제한 엄수
+  </div>
+
+  <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:8px;">
+    <a class="map-btn" href="https://www.google.com/maps/search/%E3%81%A8%E3%82%8A%E3%81%8B%E3%82%8F%20%E7%B2%8B%E6%81%AD+%E7%A6%8F%E5%B2%A1%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E8%96%AC%E9%99%A2%20%28%EC%A0%95%ED%99%95%20%EB%B2%88%EC%A7%80%20%ED%98%84%EC%9E%A5%20%ED%99%95%EC%9D%B8%20%EA%B6%8C%EC%9E%A5%29" target="_blank">📍 구글맵</a>
+    <a class="map-btn" style="background:#2a5a8a;" href="https://tabelog.com/en/fukuoka/A4001/A400104/40000336/" target="_blank">🌐 홈페이지</a>
+  </div>
+</div>
+
+</div><!-- end grid -->
+</div><!-- end section-body -->
+
+<!-- ======================================================
+     야키니쿠 섹션
+     ====================================================== -->
+<div class="section-header" id="yakiniku">
+  <span style="font-size:20px">🥩</span>
+  <h2>야키니쿠</h2>
+</div>
+<div class="section-body">
+<div class="rest-grid">
+
+<!-- 16. やきにくのバクロ 博多店 -->
+<div class="rest-card">
+  <div class="rest-head">
+    <span class="rest-num">16</span>
+    <div class="rest-names">
+      <div class="rest-ja">やきにくのバクロ 博多店</div>
+      <div class="rest-phonetic">야키니쿠노 바쿠로 하카타텐 (Yakiniku no Bakuro Hakata)</div>
+      <div class="rest-meaning">焼肉(야키니쿠)=불고기, バクロ(바쿠로)=박로(가게 이름), 博多店(하카타텐)=하카타점</div>
+      <span class="rest-category">黒毛和牛焼肉(쿠로게와규 야키니쿠)</span>
+    </div>
+  </div>
+
+  <img class="food-photo"
+    src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Yakiniku_001.jpg/600px-Yakiniku_001.jpg"
+    alt="やきにくのバクロ 博多店"
+    loading="lazy"
+    onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Japanese_set_meal_001.jpg/600px-Japanese_set_meal_001.jpg'">
+
+  <div class="special-box">
+    <strong>왜 특별한가:</strong> 자사 농장에서 직송하는 가고시마 흑모 와규를 통째 구입. 개인실·카운터·테이블 완비. 30명 이상 개인실 대관 가능. 전국 체인 박다점
+  </div>
+
+  <div class="info-section">
+    <div class="info-title">시그니처 메뉴</div>
+    <ul class="menu-list">
+      
+      <li class="menu-item">
+        <span class="menu-name">鹿児島黒毛和牛 各部位 <span class="menu-phonetic">(가고시마 흑모 와규 각 부위)</span></span>
+        
+        
+      </li>
+      <li class="menu-item">
+        <span class="menu-name">カルビ <span class="menu-phonetic">(카루비·갈비)</span></span>
+        
+        
+      </li>
+      <li class="menu-item">
+        <span class="menu-name">ロース <span class="menu-phonetic">(로스·등심)</span></span>
+        
+        
+      </li>
+      <li class="menu-item">
+        <span class="menu-name">ユッケ <span class="menu-phonetic">(유케·육회)</span></span>
+        
+        
+      </li>
+    </ul>
+  </div>
+
+  <div class="info-section">
+    <div class="info-title">영업 정보</div>
+    <div class="info-row"><span class="info-label">영업시간</span><span class="info-val">11:30–14:30 / 17:00–22:00 (L.O. 21:30)</span></div>
+    <div class="info-row"><span class="info-label">정기휴무</span><span class="info-val">미확인</span></div>
+    <div class="info-row"><span class="info-label">주소</span><span class="info-val">福岡市博多区住吉1-1-9-202</span></div>
+    <div class="info-row"><span class="info-label">교통</span><span class="info-val">JR 博多駅 도보 5분 / 住吉 지역</span></div>
+    <div class="info-row"><span class="info-label">전화</span><span class="info-val">092-710-7029</span></div>
+  </div>
+
+  <div class="warn-box">
+    ⚠️ <strong>주의:</strong> 저녁 예약 권장. 점심은 비교적 여유
+  </div>
+
+  <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:8px;">
+    <a class="map-btn" href="https://www.google.com/maps/search/%E3%82%84%E3%81%8D%E3%81%AB%E3%81%8F%E3%81%AE%E3%83%90%E3%82%AF%E3%83%AD%20%E5%8D%9A%E5%A4%9A%E5%BA%97+%E7%A6%8F%E5%B2%A1%E5%B8%82%E5%8D%9A%E5%A4%9A%E5%8C%BA%E4%BD%8F%E5%90%891-1-9-202" target="_blank">📍 구글맵</a>
+    <a class="map-btn" style="background:#2a5a8a;" href="https://www.bakuro09.com/shop/hakata/" target="_blank">🌐 홈페이지</a>
+  </div>
+</div>
+
+<!-- 21. 大東園 本店 -->
+<div class="rest-card">
+  <div class="rest-head">
+    <span class="rest-num">21</span>
+    <div class="rest-names">
+      <div class="rest-ja">大東園 本店</div>
+      <div class="rest-phonetic">다이토엔 혼텐 (Daitoen Honten)</div>
+      <div class="rest-meaning">大(다이)=크다, 東(토)=동쪽, 園(엔)=정원, 本店(혼텐)=본점</div>
+      <span class="rest-category">焼肉(야키니쿠) · 冷麺(냉면) — 재일코리안 전통</span>
+    </div>
+  </div>
+
+  <img class="food-photo"
+    src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Yakiniku_001.jpg/600px-Yakiniku_001.jpg"
+    alt="大東園 本店"
+    loading="lazy"
+    onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Japanese_set_meal_001.jpg/600px-Japanese_set_meal_001.jpg'">
+
+  <div class="special-box">
+    <strong>왜 특별한가:</strong> 하카타 야키니쿠의 역사. 재일코리안이 만든 박다 냉면 문화의 원류 중 하나. 낮에도 야키니쿠 즐길 수 있는 귀한 곳
+  </div>
+
+  <div class="info-section">
+    <div class="info-title">시그니처 메뉴</div>
+    <ul class="menu-list">
+      
+      <li class="menu-item">
+        <span class="menu-name">焼肉ランチ <span class="menu-phonetic">(야키니쿠 런치)</span></span>
+        
+        <span class="menu-desc">평일 한정 특가</span>
+      </li>
+      <li class="menu-item">
+        <span class="menu-name">냉면 <span class="menu-phonetic">(レイメン)</span></span>
+        
+        <span class="menu-desc">하카타 냉면의 원조격</span>
+      </li>
+      <li class="menu-item">
+        <span class="menu-name">カルビ·ロース·ホルモン 各種 </span>
+        
+        
+      </li>
+    </ul>
+  </div>
+
+  <div class="info-section">
+    <div class="info-title">영업 정보</div>
+    <div class="info-row"><span class="info-label">영업시간</span><span class="info-val">월~금 11:30–14:30 / 16:00–23:00 / 토일공 11:30–23:00</span></div>
+    <div class="info-row"><span class="info-label">정기휴무</span><span class="info-val">없음 (연중무휴)</span></div>
+    <div class="info-row"><span class="info-label">주소</span><span class="info-val">福岡市博多区上川端町1-1-1</span></div>
+    <div class="info-row"><span class="info-label">교통</span><span class="info-val">지하철 中洲川端駅 도보 2분 / 캐널시티 하카타 근처</span></div>
+    <div class="info-row"><span class="info-label">전화</span><span class="info-val">092-282-0055</span></div>
+  </div>
+
+  <div class="warn-box">
+    ⚠️ <strong>주의:</strong> 週末 혼잡. 예약 권장
+  </div>
+
+  <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:8px;">
+    <a class="map-btn" href="https://www.google.com/maps/search/%E5%A4%A7%E6%9D%B1%E5%9C%92%20%E6%9C%AC%E5%BA%97+%E7%A6%8F%E5%B2%A1%E5%B8%82%E5%8D%9A%E5%A4%9A%E5%8C%BA%E4%B8%8A%E5%B7%9D%E7%AB%AF%E7%94%BA1-1-1" target="_blank">📍 구글맵</a>
+    <a class="map-btn" style="background:#2a5a8a;" href="https://ssl.daitoen.com/" target="_blank">🌐 홈페이지</a>
+  </div>
+</div>
+
+</div><!-- end grid -->
+</div><!-- end section-body -->
+
+<!-- ======================================================
+     해산물·와쇼쿠 섹션
+     ====================================================== -->
+<div class="section-header" id="kaisenwa">
+  <span style="font-size:20px">🐟</span>
+  <h2>해산물·와쇼쿠</h2>
+</div>
+<div class="section-body">
+<div class="rest-grid">
+
+<!-- 5. 博多料理 太衛門 -->
+<div class="rest-card">
+  <div class="rest-head">
+    <span class="rest-num">5</span>
+    <div class="rest-names">
+      <div class="rest-ja">博多料理 太衛門</div>
+      <div class="rest-phonetic">하카타요리 타에몬 (Hakata Ryori Taemon)</div>
+      <div class="rest-meaning">博多料理(하카타요리)=하카타 요리, 太衛門(타에몬)=큰 문지기 (이름)</div>
+      <span class="rest-category">博多郷土料理(하카타 향토요리) · 居酒屋(이자카야)</span>
+    </div>
+  </div>
+
+  <img class="food-photo"
+    src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Ikasomen.jpg/600px-Ikasomen.jpg"
+    alt="博多料理 太衛門"
+    loading="lazy"
+    onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Japanese_set_meal_001.jpg/600px-Japanese_set_meal_001.jpg'">
+
+  <div class="special-box">
+    <strong>왜 특별한가:</strong> 요부코(呼子)산 이카(오징어)를 수조에서 직접 제공하는 하카타 향토요리의 정수. 하카타 명물을 한 자리에서 즐길 수 있음
+  </div>
+
+  <div class="info-section">
+    <div class="info-title">시그니처 메뉴</div>
+    <ul class="menu-list">
+      
+      <li class="menu-item">
+        <span class="menu-name">呼子のイカ活造り <span class="menu-phonetic">(요부코 오징어 活造り·살아있는 오징어 회)</span></span>
+        
+        <span class="menu-desc">수조에서 꺼내 즉석 제공</span>
+      </li>
+      <li class="menu-item">
+        <span class="menu-name">ごまさば <span class="menu-phonetic">(고마사바·참깨 고등어)</span></span>
+        
+        <span class="menu-desc">하카타 향토 명물</span>
+      </li>
+      <li class="menu-item">
+        <span class="menu-name">もつ鍋 <span class="menu-phonetic">(모츠나베·곱창전골)</span></span>
+        
+        
+      </li>
+    </ul>
+  </div>
+
+  <div class="info-section">
+    <div class="info-title">영업 정보</div>
+    <div class="info-row"><span class="info-label">영업시간</span><span class="info-val">월~금 11:00–23:00 / 토 15:00–23:00</span></div>
+    <div class="info-row"><span class="info-label">정기휴무</span><span class="info-val">일요일 (월공휴 시 일 영업→월 휴무)</span></div>
+    <div class="info-row"><span class="info-label">주소</span><span class="info-val">福岡市中央区大手門3-1-16</span></div>
+    <div class="info-row"><span class="info-label">교통</span><span class="info-val">지하철 大濠公園駅 도보 6분</span></div>
+    <div class="info-row"><span class="info-label">전화</span><span class="info-val">092-791-3009</span></div>
+  </div>
+
+  <div class="warn-box">
+    ⚠️ <strong>주의:</strong> 일요일 휴무. 런치·디너 모두 가능
+  </div>
+
+  <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:8px;">
+    <a class="map-btn" href="https://www.google.com/maps/search/%E5%8D%9A%E5%A4%9A%E6%96%99%E7%90%86%20%E5%A4%AA%E8%A1%9B%E9%96%80+%E7%A6%8F%E5%B2%A1%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E5%A4%A7%E6%89%8B%E9%96%803-1-16" target="_blank">📍 구글맵</a>
+    <a class="map-btn" style="background:#2a5a8a;" href="https://hakataryori-taemon.gorp.jp/" target="_blank">🌐 홈페이지</a>
+  </div>
+</div>
+
+<!-- 10. 喰しん房松むら -->
+<div class="rest-card">
+  <div class="rest-head">
+    <span class="rest-num">10</span>
+    <div class="rest-names">
+      <div class="rest-ja">喰しん房松むら</div>
+      <div class="rest-phonetic">쿠이신보 마츠무라 (Kuishinbo Matsumura)</div>
+      <div class="rest-meaning">喰しん房(쿠이신보)=먹보·미식가, 松むら(마츠무라)=소나무 마을 (성씨)</div>
+      <span class="rest-category">日本料理(일본요리) · 海鮮定食(해산물 정식)</span>
+    </div>
+  </div>
+
+  <img class="food-photo"
+    src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Sashimi_001.jpg/600px-Sashimi_001.jpg"
+    alt="喰しん房松むら"
+    loading="lazy"
+    onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Japanese_set_meal_001.jpg/600px-Japanese_set_meal_001.jpg'">
+
+  <div class="special-box">
+    <strong>왜 특별한가:</strong> 타베로그 평점 3.51. 신선한 생선을 특히 중요시하는 해산물 전문점. 현지인 점심 단골
+  </div>
+
+  <div class="info-section">
+    <div class="info-title">시그니처 메뉴</div>
+    <ul class="menu-list">
+      
+      <li class="menu-item">
+        <span class="menu-name">刺身御膳 <span class="menu-phonetic">(사시미 고젠·생선회 정식)</span></span>
+        <span class="menu-price">¥1,200~</span>
+        
+      </li>
+      <li class="menu-item">
+        <span class="menu-name">本日の刺身盛り合わせ <span class="menu-phonetic">(오늘의 회 모듬)</span></span>
+        
+        
+      </li>
+    </ul>
+  </div>
+
+  <div class="info-section">
+    <div class="info-title">영업 정보</div>
+    <div class="info-row"><span class="info-label">영업시간</span><span class="info-val">런치 중심 (상세 전화 확인)</span></div>
+    <div class="info-row"><span class="info-label">정기휴무</span><span class="info-val">일요일·공휴일</span></div>
+    <div class="info-row"><span class="info-label">주소</span><span class="info-val">福岡市博多区綱場町5-24</span></div>
+    <div class="info-row"><span class="info-label">교통</span><span class="info-val">지하철 呉服町駅 도보 3분</span></div>
+    <div class="info-row"><span class="info-label">전화</span><span class="info-val">미확인</span></div>
+  </div>
+
+  <div class="warn-box">
+    ⚠️ <strong>주의:</strong> 일·공휴일 휴무. 예약 권장
+  </div>
+
+  <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:8px;">
+    <a class="map-btn" href="https://www.google.com/maps/search/%E5%96%B0%E3%81%97%E3%82%93%E6%88%BF%E6%9D%BE%E3%82%80%E3%82%89+%E7%A6%8F%E5%B2%A1%E5%B8%82%E5%8D%9A%E5%A4%9A%E5%8C%BA%E7%B6%B1%E5%A0%B4%E7%94%BA5-24" target="_blank">📍 구글맵</a>
+    <a class="map-btn" style="background:#2a5a8a;" href="https://www.hotpepper.jp/strJ000553777/" target="_blank">🌐 홈페이지</a>
+  </div>
+</div>
+
+<!-- 14. あじフライ食堂 かば -->
+<div class="rest-card">
+  <div class="rest-head">
+    <span class="rest-num">14</span>
+    <div class="rest-names">
+      <div class="rest-ja">あじフライ食堂 かば</div>
+      <div class="rest-phonetic">아지후라이 쇼쿠도 카바 (Ajifurai Shokudo Kaba)</div>
+      <div class="rest-meaning">あじフライ(아지후라이)=전갱이튀김, 食堂(쇼쿠도)=식당, かば(카바)=가게 이름</div>
+      <span class="rest-category">あじフライ(전갱이 튀김) 전문 정식</span>
+    </div>
+  </div>
+
+  <img class="food-photo"
+    src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Sushi_platter.jpg/600px-Sushi_platter.jpg"
+    alt="あじフライ食堂 かば"
+    loading="lazy"
+    onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Japanese_set_meal_001.jpg/600px-Japanese_set_meal_001.jpg'">
+
+  <div class="special-box">
+    <strong>왜 특별한가:</strong> 전갱이튀김 전문 식당. 신선한 전갱이를 두툼하게 튀겨내는 정성. 현지 주민 애용 런치 맛집. 인스타 소문 맛집
+  </div>
+
+  <div class="info-section">
+    <div class="info-title">시그니처 메뉴</div>
+    <ul class="menu-list">
+      
+      <li class="menu-item">
+        <span class="menu-name">あじフライ定食 <span class="menu-phonetic">(아지후라이 테이쇼쿠·전갱이튀김 정식)</span></span>
+        
+        <span class="menu-desc">두툼하고 신선한 전갱이</span>
+      </li>
+      <li class="menu-item">
+        <span class="menu-name">鉄板料理 <span class="menu-phonetic">(테판료리·철판 요리)</span></span>
+        
+        
+      </li>
+    </ul>
+  </div>
+
+  <div class="info-section">
+    <div class="info-title">영업 정보</div>
+    <div class="info-row"><span class="info-label">영업시간</span><span class="info-val">11:30–14:30 / 토일 +17:00–19:30</span></div>
+    <div class="info-row"><span class="info-label">정기휴무</span><span class="info-val">화요일 및 부정기</span></div>
+    <div class="info-row"><span class="info-label">주소</span><span class="info-val">福岡市城南区別府2-21-5</span></div>
+    <div class="info-row"><span class="info-label">교통</span><span class="info-val">지하철 七隈線 별府駅(벳푸에키) 근처</span></div>
+    <div class="info-row"><span class="info-label">전화</span><span class="info-val">092-841-0277</span></div>
+  </div>
+
+  <div class="warn-box">
+    ⚠️ <strong>주의:</strong> 화요일 휴무. 비교적 외곽이므로 지하철 확인
+  </div>
+
+  <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:8px;">
+    <a class="map-btn" href="https://www.google.com/maps/search/%E3%81%82%E3%81%98%E3%83%95%E3%83%A9%E3%82%A4%E9%A3%9F%E5%A0%82%20%E3%81%8B%E3%81%B0+%E7%A6%8F%E5%B2%A1%E5%B8%82%E5%9F%8E%E5%8D%97%E5%8C%BA%E5%88%A5%E5%BA%9C2-21-5" target="_blank">📍 구글맵</a>
+    <a class="map-btn" style="background:#2a5a8a;" href="https://tabelog.com/en/fukuoka/A4001/A400202/40057140/" target="_blank">🌐 홈페이지</a>
+  </div>
+</div>
+
+<!-- 27. 新三浦 天神店 -->
+<div class="rest-card">
+  <div class="rest-head">
+    <span class="rest-num">27</span>
+    <div class="rest-names">
+      <div class="rest-ja">新三浦 天神店</div>
+      <div class="rest-phonetic">신미우라 텐진텐 (Shin Miura Tenjin-ten)</div>
+      <div class="rest-meaning">新(신)=새로운, 三浦(미우라)=지명/성씨, 天神店(텐진텐)=텐진점</div>
+      <span class="rest-category">水炊き(미즈타키·닭 담백 전골) · 親子丼(오야코동) 전문</span>
+    </div>
+  </div>
+
+  <img class="food-photo"
+    src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Mizutaki_by_midorisyu_in_Fukuoka.jpg/600px-Mizutaki_by_midorisyu_in_Fukuoka.jpg"
+    alt="新三浦 天神店"
+    loading="lazy"
+    onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Japanese_set_meal_001.jpg/600px-Japanese_set_meal_001.jpg'">
+
+  <div class="special-box">
+    <strong>왜 특별한가:</strong> 100년 이상 사랑받아온 수제 닭 육수 전통. 혼자 방문해도 코스 주문 가능. 텐진 복판 접근 최고
+  </div>
+
+  <div class="info-section">
+    <div class="info-title">시그니처 메뉴</div>
+    <ul class="menu-list">
+      
+      <li class="menu-item">
+        <span class="menu-name">水炊きはなコース <span class="menu-phonetic">(미즈타키 하나 코스)</span></span>
+        <span class="menu-price">¥4,700</span>
+        
+      </li>
+      <li class="menu-item">
+        <span class="menu-name">水炊きいろどりコース <span class="menu-phonetic">(이로도리 코스)</span></span>
+        <span class="menu-price">¥5,800</span>
+        
+      </li>
+      <li class="menu-item">
+        <span class="menu-name">親子丼 <span class="menu-phonetic">(오야코동·닭고기 달걀 덮밥)</span></span>
+        
+        
+      </li>
+    </ul>
+  </div>
+
+  <div class="info-section">
+    <div class="info-title">영업 정보</div>
+    <div class="info-row"><span class="info-label">영업시간</span><span class="info-val">11:15–15:00 (L.O. 14:15) / 17:00–21:00 (L.O. 20:15)</span></div>
+    <div class="info-row"><span class="info-label">정기휴무</span><span class="info-val">매주 화요일 + 월 2회 연휴</span></div>
+    <div class="info-row"><span class="info-label">주소</span><span class="info-val">福岡市中央区天神2-12-1 天神ビル B1F</span></div>
+    <div class="info-row"><span class="info-label">교통</span><span class="info-val">지하철 天神駅 도보 3분 / 天神ビル 지하 1층</span></div>
+    <div class="info-row"><span class="info-label">전화</span><span class="info-val">미확인</span></div>
+  </div>
+
+  <div class="warn-box">
+    ⚠️ <strong>주의:</strong> 화요일 휴무. 코스 가격대 있으므로 예산 확인
+  </div>
+
+  <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:8px;">
+    <a class="map-btn" href="https://www.google.com/maps/search/%E6%96%B0%E4%B8%89%E6%B5%A6%20%E5%A4%A9%E7%A5%9E%E5%BA%97+%E7%A6%8F%E5%B2%A1%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E5%A4%A9%E7%A5%9E2-12-1%20%E5%A4%A9%E7%A5%9E%E3%83%93%E3%83%AB%20B1F" target="_blank">📍 구글맵</a>
+    <a class="map-btn" style="background:#2a5a8a;" href="https://f513200.gorp.jp/" target="_blank">🌐 홈페이지</a>
+  </div>
+</div>
+
+<!-- 29. 鮨・あつ賀 -->
+<div class="rest-card">
+  <div class="rest-head">
+    <span class="rest-num">29</span>
+    <div class="rest-names">
+      <div class="rest-ja">鮨・あつ賀</div>
+      <div class="rest-phonetic">스시 아츠가 (Sushi Atsuga)</div>
+      <div class="rest-meaning">鮨(스시)=초밥, あつ賀(아츠가)=두텁게 축하하다 (이름)</div>
+      <span class="rest-category">寿司(스시) · 海鮮(카이센)</span>
+    </div>
+  </div>
+
+  <img class="food-photo"
+    src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Sushi_platter.jpg/600px-Sushi_platter.jpg"
+    alt="鮨・あつ賀"
+    loading="lazy"
+    onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Japanese_set_meal_001.jpg/600px-Japanese_set_meal_001.jpg'">
+
+  <div class="special-box">
+    <strong>왜 특별한가:</strong> 런치 스시 정식의 가성비 전설. 점심 항상 만원. 1,050엔으로 스시 정식을 즐길 수 있는 충격 가성비. 현지인 절대 추천
+  </div>
+
+  <div class="info-section">
+    <div class="info-title">시그니처 메뉴</div>
+    <ul class="menu-list">
+      
+      <li class="menu-item">
+        <span class="menu-name">すし定食ランチ <span class="menu-phonetic">(스시 정식 런치)</span></span>
+        <span class="menu-price">¥1,050~</span>
+        <span class="menu-desc">볼륨+가성비 압도적</span>
+      </li>
+      <li class="menu-item">
+        <span class="menu-name">握り寿司 各種 <span class="menu-phonetic">(니기리 스시 모듬)</span></span>
+        
+        
+      </li>
+      <li class="menu-item">
+        <span class="menu-name">お任せコース <span class="menu-phonetic">(오마카세 코스)</span></span>
+        
+        
+      </li>
+    </ul>
+  </div>
+
+  <div class="info-section">
+    <div class="info-title">영업 정보</div>
+    <div class="info-row"><span class="info-label">영업시간</span><span class="info-val">11:30–13:30 / 17:30–22:00 (L.O. 21:00)</span></div>
+    <div class="info-row"><span class="info-label">정기휴무</span><span class="info-val">일요일·공휴일</span></div>
+    <div class="info-row"><span class="info-label">주소</span><span class="info-val">福岡市中央区渡辺通1-10-1-2 四十川ビル103</span></div>
+    <div class="info-row"><span class="info-label">교통</span><span class="info-val">지하철 七隈線 渡辺通駅 2번 출구 도보 2분 (뉴오타니 옆)</span></div>
+    <div class="info-row"><span class="info-label">전화</span><span class="info-val">092-733-0122</span></div>
+  </div>
+
+  <div class="warn-box">
+    ⚠️ <strong>주의:</strong> 일·공휴일 휴무. 런치 인기로 웨이팅 필수
+  </div>
+
+  <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:8px;">
+    <a class="map-btn" href="https://www.google.com/maps/search/%E9%AE%A8%E3%83%BB%E3%81%82%E3%81%A4%E8%B3%80+%E7%A6%8F%E5%B2%A1%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E6%B8%A1%E8%BE%BA%E9%80%9A1-10-1-2%20%E5%9B%9B%E5%8D%81%E5%B7%9D%E3%83%93%E3%83%AB103" target="_blank">📍 구글맵</a>
+    <a class="map-btn" style="background:#2a5a8a;" href="https://tabelog.com/en/fukuoka/A4001/A400103/40003398/" target="_blank">🌐 홈페이지</a>
+  </div>
+</div>
+
+<!-- 30. 梅山鉄平食堂 -->
+<div class="rest-card">
+  <div class="rest-head">
+    <span class="rest-num">30</span>
+    <div class="rest-names">
+      <div class="rest-ja">梅山鉄平食堂</div>
+      <div class="rest-phonetic">우메야마 텟페이 쇼쿠도 (Umeyama Teppei Shokudo)</div>
+      <div class="rest-meaning">梅山(우메야마)=매화 산, 鉄平(텟페이)=점주 이름, 食堂(쇼쿠도)=식당</div>
+      <span class="rest-category">海鮮定食(해산물 정식) · 魚料理(생선요리)</span>
+    </div>
+  </div>
+
+  <img class="food-photo"
+    src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Japanese_set_meal_001.jpg/600px-Japanese_set_meal_001.jpg"
+    alt="梅山鉄平食堂"
+    loading="lazy"
+    onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Japanese_set_meal_001.jpg/600px-Japanese_set_meal_001.jpg'">
+
+  <div class="special-box">
+    <strong>왜 특별한가:</strong> 겐카이나다(玄界灘)에서 잡아 올린 당일 신선 생선을 매일 40~50종 준비. 날마다 메뉴가 바뀌는 어부의 식탁. 공식 홈페이지에서 당일 메뉴 확인 가능(umeyamateppei.com)
+  </div>
+
+  <div class="info-section">
+    <div class="info-title">시그니처 메뉴</div>
+    <ul class="menu-list">
+      
+      <li class="menu-item">
+        <span class="menu-name">本日の魚定食 <span class="menu-phonetic">(혼지츠노 사카나 테이쇼쿠·오늘의 생선 정식)</span></span>
+        
+        <span class="menu-desc">매일 40~50종 변동</span>
+      </li>
+      <li class="menu-item">
+        <span class="menu-name">刺身盛り合わせ <span class="menu-phonetic">(사시미 모듬)</span></span>
+        
+        
+      </li>
+      <li class="menu-item">
+        <span class="menu-name">煮魚定食 <span class="menu-phonetic">(니자카나 테이쇼쿠·생선조림 정식)</span></span>
+        
+        
+      </li>
+    </ul>
+  </div>
+
+  <div class="info-section">
+    <div class="info-title">영업 정보</div>
+    <div class="info-row"><span class="info-label">영업시간</span><span class="info-val">月木金土 11:30–15:30 / 17:00–22:30 / 火 11:30–15:30 / 17:00–21:30 / 日 11:30–22:30</span></div>
+    <div class="info-row"><span class="info-label">정기휴무</span><span class="info-val">수요일</span></div>
+    <div class="info-row"><span class="info-label">주소</span><span class="info-val">福岡市中央区渡辺通3-6-1</span></div>
+    <div class="info-row"><span class="info-label">교통</span><span class="info-val">지하철 七隈線 渡辺通駅 도보 5분</span></div>
+    <div class="info-row"><span class="info-label">전화</span><span class="info-val">092-715-2344</span></div>
+  </div>
+
+  <div class="warn-box">
+    ⚠️ <strong>주의:</strong> 수요일 휴무. 인기 메뉴는 일찍 소진
+  </div>
+
+  <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:8px;">
+    <a class="map-btn" href="https://www.google.com/maps/search/%E6%A2%85%E5%B1%B1%E9%89%84%E5%B9%B3%E9%A3%9F%E5%A0%82+%E7%A6%8F%E5%B2%A1%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E6%B8%A1%E8%BE%BA%E9%80%9A3-6-1" target="_blank">📍 구글맵</a>
+    <a class="map-btn" style="background:#2a5a8a;" href="https://umeyamateppei.com/" target="_blank">🌐 홈페이지</a>
+  </div>
+</div>
+
+<!-- 31. 田中田式海鮮食堂 魚忠 -->
+<div class="rest-card">
+  <div class="rest-head">
+    <span class="rest-num">31</span>
+    <div class="rest-names">
+      <div class="rest-ja">田中田式海鮮食堂 魚忠</div>
+      <div class="rest-phonetic">타나카다시키 카이센 쇼쿠도 우오츄 (Tanakadashiki Kaisen Shokudo Uochu)</div>
+      <div class="rest-meaning">田中田(타나카다)=밭 속의 밭 (점주 이름), 式(시키)=방식, 海鮮食堂(카이센쇼쿠도)=해산물 식당, 魚忠(우오츄)=생선에 충실</div>
+      <span class="rest-category">海鮮食堂(해산물 정식) · カフェテリア 형식</span>
+    </div>
+  </div>
+
+  <img class="food-photo"
+    src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Japanese_set_meal_001.jpg/600px-Japanese_set_meal_001.jpg"
+    alt="田中田式海鮮食堂 魚忠"
+    loading="lazy"
+    onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Japanese_set_meal_001.jpg/600px-Japanese_set_meal_001.jpg'">
+
+  <div class="special-box">
+    <strong>왜 특별한가:</strong> 타베로그 2024년 100선 식당 선정 (평점 3.73, 리뷰 604건). 40석 (카운터 18+테이블 22). 전자결제 가능. 신선도에 특히 집착하는 해산물 식당
+  </div>
+
+  <div class="info-section">
+    <div class="info-title">시그니처 메뉴</div>
+    <ul class="menu-list">
+      
+      <li class="menu-item">
+        <span class="menu-name">海鮮定食各種 (카이센 테이쇼쿠) ¥1,000~1,999 </span>
+        
+        
+      </li>
+      <li class="menu-item">
+        <span class="menu-name">刺身定食 <span class="menu-phonetic">(사시미 테이쇼쿠)</span></span>
+        
+        
+      </li>
+      <li class="menu-item">
+        <span class="menu-name">焼き魚定食 <span class="menu-phonetic">(야키자카나 테이쇼쿠·생선구이 정식)</span></span>
+        
+        
+      </li>
+    </ul>
+  </div>
+
+  <div class="info-section">
+    <div class="info-title">영업 정보</div>
+    <div class="info-row"><span class="info-label">영업시간</span><span class="info-val">11:30–21:30 (L.O. 21:00) / 테이크아웃 ~21:00</span></div>
+    <div class="info-row"><span class="info-label">정기휴무</span><span class="info-val">매주 수요일 (공휴일은 영업→다음날 휴무)</span></div>
+    <div class="info-row"><span class="info-label">주소</span><span class="info-val">福岡市中央区今泉1-18-26</span></div>
+    <div class="info-row"><span class="info-label">교통</span><span class="info-val">西鉄福岡(天神)駅 도보 약 10분</span></div>
+    <div class="info-row"><span class="info-label">전화</span><span class="info-val">미확인</span></div>
+  </div>
+
+  <div class="warn-box">
+    ⚠️ <strong>주의:</strong> 수요일 휴무. 인기 100선 점이라 웨이팅 가능
+  </div>
+
+  <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:8px;">
+    <a class="map-btn" href="https://www.google.com/maps/search/%E7%94%B0%E4%B8%AD%E7%94%B0%E5%BC%8F%E6%B5%B7%E9%AE%AE%E9%A3%9F%E5%A0%82%20%E9%AD%9A%E5%BF%A0+%E7%A6%8F%E5%B2%A1%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E4%BB%8A%E6%B3%891-18-26" target="_blank">📍 구글맵</a>
+    <a class="map-btn" style="background:#2a5a8a;" href="http://uochuu.net/" target="_blank">🌐 홈페이지</a>
+  </div>
+</div>
+
+</div><!-- end grid -->
+</div><!-- end section-body -->
+
+<!-- ======================================================
+     나베·샤부샤부 섹션
+     ====================================================== -->
+<div class="section-header" id="nabe">
+  <span style="font-size:20px">🫕</span>
+  <h2>나베·샤부샤부</h2>
+</div>
+<div class="section-body">
+<div class="rest-grid">
+
+<!-- 2. 博多わび助 -->
+<div class="rest-card">
+  <div class="rest-head">
+    <span class="rest-num">2</span>
+    <div class="rest-names">
+      <div class="rest-ja">博多わび助</div>
+      <div class="rest-phonetic">하카타 와비스케 (Hakata Wabisuke)</div>
+      <div class="rest-meaning">博多(하카타)=지명, わび(와비)=일본 미학 '와비사비'의 와비(소박한 아름다움), 助(스케)=돕다·이름 접미사</div>
+      <span class="rest-category">しゃぶしゃぶ(샤부샤부) · 炭火焼き鳥(스미비 야키토리)</span>
+    </div>
+  </div>
+
+  <img class="food-photo"
+    src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Motsunabe_002.jpg/600px-Motsunabe_002.jpg"
+    alt="博多わび助"
+    loading="lazy"
+    onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Japanese_set_meal_001.jpg/600px-Japanese_set_meal_001.jpg'">
+
+  <div class="special-box">
+    <strong>왜 특별한가:</strong> 각 점포 최대 50명 규모 연회 가능. 숯불 닭꼬치와 찜 요리 특화. 단체 예약에 강한 곳
+  </div>
+
+  <div class="info-section">
+    <div class="info-title">시그니처 메뉴</div>
+    <ul class="menu-list">
+      
+      <li class="menu-item">
+        <span class="menu-name">炭火焼き鳥 <span class="menu-phonetic">(스미비 야키토리·숯불 닭꼬치)</span></span>
+        
+        
+      </li>
+      <li class="menu-item">
+        <span class="menu-name">しゃぶしゃぶ <span class="menu-phonetic">(샤부샤부)</span></span>
+        
+        <span class="menu-desc">신구점 특화</span>
+      </li>
+      <li class="menu-item">
+        <span class="menu-name">蒸し料理 <span class="menu-phonetic">(무시료리·찜 요리)</span></span>
+        
+        
+      </li>
+    </ul>
+  </div>
+
+  <div class="info-section">
+    <div class="info-title">영업 정보</div>
+    <div class="info-row"><span class="info-label">영업시간</span><span class="info-val">공식 사이트 확인 권장</span></div>
+    <div class="info-row"><span class="info-label">정기휴무</span><span class="info-val">미확인</span></div>
+    <div class="info-row"><span class="info-label">주소</span><span class="info-val">복수 점포 — 福間店(후쿠마텐) / 新宮店(신구텐) (공식 wabisuke-gp.com 확인)</span></div>
+    <div class="info-row"><span class="info-label">교통</span><span class="info-val">각 점포별 상이 (공식 사이트 확인)</span></div>
+    <div class="info-row"><span class="info-label">전화</span><span class="info-val">미확인</span></div>
+  </div>
+
+  <div class="warn-box">
+    ⚠️ <strong>주의:</strong> 점포 위치가 도심 외곽. 예약 필수
+  </div>
+
+  <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:8px;">
+    <a class="map-btn" href="https://www.google.com/maps/search/%E5%8D%9A%E5%A4%9A%E3%82%8F%E3%81%B3%E5%8A%A9+%EB%B3%B5%EC%88%98%20%EC%A0%90%ED%8F%AC%20%E2%80%94%20%E7%A6%8F%E9%96%93%E5%BA%97%28%ED%9B%84%EC%BF%A0%EB%A7%88%ED%85%90%29%20/%20%E6%96%B0%E5%AE%AE%E5%BA%97%28%EC%8B%A0%EA%B5%AC%ED%85%90%29%20%28%EA%B3%B5%EC%8B%9D%20wabisuke-gp.com%20%ED%99%95%EC%9D%B8%29" target="_blank">📍 구글맵</a>
+    <a class="map-btn" style="background:#2a5a8a;" href="https://wabisuke-gp.com/" target="_blank">🌐 홈페이지</a>
+  </div>
+</div>
+
+<!-- 6. 因幡町 一慶 -->
+<div class="rest-card">
+  <div class="rest-head">
+    <span class="rest-num">6</span>
+    <div class="rest-names">
+      <div class="rest-ja">因幡町 一慶</div>
+      <div class="rest-phonetic">이나바마치 잇케이 (Inabamachi Ikkei)</div>
+      <div class="rest-meaning">因幡町(이나바마치)=지명(텐진 내 옛 지명), 一慶(잇케이)=한 번의 경사</div>
+      <span class="rest-category">鯛茶漬け(도미차즈케) · 鍋料理(나베요리) · 居酒屋(이자카야)</span>
+    </div>
+  </div>
+
+  <img class="food-photo"
+    src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Motsunabe_002.jpg/600px-Motsunabe_002.jpg"
+    alt="因幡町 一慶"
+    loading="lazy"
+    onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Japanese_set_meal_001.jpg/600px-Japanese_set_meal_001.jpg'">
+
+  <div class="special-box">
+    <strong>왜 특별한가:</strong> 2022년 오픈한 텐진 이나치카(天神イナチカ)의 화제 맛집. 도미차즈케 런치는 대기 필수. 밤에는 나베 이자카야
+  </div>
+
+  <div class="info-section">
+    <div class="info-title">시그니처 메뉴</div>
+    <ul class="menu-list">
+      
+      <li class="menu-item">
+        <span class="menu-name">鯛茶漬け <span class="menu-phonetic">(도미차즈케·도미 오차즈케)</span></span>
+        
+        <span class="menu-desc">런치 명물</span>
+      </li>
+      <li class="menu-item">
+        <span class="menu-name">もつ鍋 <span class="menu-phonetic">(모츠나베·곱창전골)</span></span>
+        
+        
+      </li>
+      <li class="menu-item">
+        <span class="menu-name">炙りもつ鍋 <span class="menu-phonetic">(아부리 모츠나베·불로 지진 곱창전골)</span></span>
+        
+        
+      </li>
+    </ul>
+  </div>
+
+  <div class="info-section">
+    <div class="info-title">영업 정보</div>
+    <div class="info-row"><span class="info-label">영업시간</span><span class="info-val">11:00–23:00 (L.O. 22:30)</span></div>
+    <div class="info-row"><span class="info-label">정기휴무</span><span class="info-val">없음 (연중무휴)</span></div>
+    <div class="info-row"><span class="info-label">주소</span><span class="info-val">福岡市中央区天神1-10-20 天神ビジネスセンター B2F「天神イナチカ」</span></div>
+    <div class="info-row"><span class="info-label">교통</span><span class="info-val">지하철 天神駅 13번 출구 직결 / 텐진 비즈니스 센터 B2</span></div>
+    <div class="info-row"><span class="info-label">전화</span><span class="info-val">092-791-3161</span></div>
+  </div>
+
+  <div class="warn-box">
+    ⚠️ <strong>주의:</strong> 런치 웨이팅 가능. 위치가 지하이므로 안내판 확인
+  </div>
+
+  <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:8px;">
+    <a class="map-btn" href="https://www.google.com/maps/search/%E5%9B%A0%E5%B9%A1%E7%94%BA%20%E4%B8%80%E6%85%B6+%E7%A6%8F%E5%B2%A1%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E5%A4%A9%E7%A5%9E1-10-20%20%E5%A4%A9%E7%A5%9E%E3%83%93%E3%82%B8%E3%83%8D%E3%82%B9%E3%82%BB%E3%83%B3%E3%82%BF%E3%83%BC%20B2F%E3%80%8C%E5%A4%A9%E7%A5%9E%E3%82%A4%E3%83%8A%E3%83%81%E3%82%AB%E3%80%8D" target="_blank">📍 구글맵</a>
+    <a class="map-btn" style="background:#2a5a8a;" href="https://tabelog.com/en/fukuoka/A4001/A400103/40060531/" target="_blank">🌐 홈페이지</a>
+  </div>
+</div>
+
+<!-- 19. 西新初喜 くうてん博多店 -->
+<div class="rest-card">
+  <div class="rest-head">
+    <span class="rest-num">19</span>
+    <div class="rest-names">
+      <div class="rest-ja">西新初喜 くうてん博多店</div>
+      <div class="rest-phonetic">니시진 하츠키 쿠텐 하카타텐 (Nishijin Hatsuki Kuten Hakata-ten)</div>
+      <div class="rest-meaning">西新(니시진)=지명, 初喜(하츠키)=첫 기쁨, くうてん(쿠텐)=JR博多シティ 9·10층 식당가 이름, 博多店(하카타텐)=하카타점</div>
+      <span class="rest-category">しゃぶしゃぶ(샤부샤부) · すき焼き(스키야키)</span>
+    </div>
+  </div>
+
+  <img class="food-photo"
+    src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Motsunabe_002.jpg/600px-Motsunabe_002.jpg"
+    alt="西新初喜 くうてん博多店"
+    loading="lazy"
+    onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Japanese_set_meal_001.jpg/600px-Japanese_set_meal_001.jpg'">
+
+  <div class="special-box">
+    <strong>왜 특별한가:</strong> 1934년 정육점으로 창업한 니시진 하츠키가 운영하는 고급 샤부샤부. 박다역 직결이라 접근성 최고. 소파석·테이블석·개인실 완비
+  </div>
+
+  <div class="info-section">
+    <div class="info-title">시그니처 메뉴</div>
+    <ul class="menu-list">
+      
+      <li class="menu-item">
+        <span class="menu-name">大理石黒毛和牛しゃぶしゃぶ <span class="menu-phonetic">(마블링 흑모 와규 샤부샤부)</span></span>
+        
+        
+      </li>
+      <li class="menu-item">
+        <span class="menu-name">特選伊万里牛しゃぶしゃぶ <span class="menu-phonetic">(특선 이마리규 샤부샤부)</span></span>
+        
+        
+      </li>
+      <li class="menu-item">
+        <span class="menu-name">すき焼き <span class="menu-phonetic">(스키야키)</span></span>
+        
+        
+      </li>
+    </ul>
+  </div>
+
+  <div class="info-section">
+    <div class="info-title">영업 정보</div>
+    <div class="info-row"><span class="info-label">영업시간</span><span class="info-val">월~금 11:00–15:00 (L.O. 14:00) / 17:00–22:00 (L.O. 21:00)</span></div>
+    <div class="info-row"><span class="info-label">정기휴무</span><span class="info-val">미확인</span></div>
+    <div class="info-row"><span class="info-label">주소</span><span class="info-val">福岡市博多区博多駅中央街1-1 JR博多シティ 10F「くうてん」</span></div>
+    <div class="info-row"><span class="info-label">교통</span><span class="info-val">JR 博多駅 직결 JR博多シティ 10층</span></div>
+    <div class="info-row"><span class="info-label">전화</span><span class="info-val">미확인</span></div>
+  </div>
+
+  <div class="warn-box">
+    ⚠️ <strong>주의:</strong> 저녁 예약 권장. 가격대 있음 (고급 코스)
+  </div>
+
+  <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:8px;">
+    <a class="map-btn" href="https://www.google.com/maps/search/%E8%A5%BF%E6%96%B0%E5%88%9D%E5%96%9C%20%E3%81%8F%E3%81%86%E3%81%A6%E3%82%93%E5%8D%9A%E5%A4%9A%E5%BA%97+%E7%A6%8F%E5%B2%A1%E5%B8%82%E5%8D%9A%E5%A4%9A%E5%8C%BA%E5%8D%9A%E5%A4%9A%E9%A7%85%E4%B8%AD%E5%A4%AE%E8%A1%971-1%20JR%E5%8D%9A%E5%A4%9A%E3%82%B7%E3%83%86%E3%82%A3%2010F%E3%80%8C%E3%81%8F%E3%81%86%E3%81%A6%E3%82%93%E3%80%8D" target="_blank">📍 구글맵</a>
+    <a class="map-btn" style="background:#2a5a8a;" href="https://www.nishijin-hatsuki.jp/stores/hatsuki-kooten/" target="_blank">🌐 홈페이지</a>
+  </div>
+</div>
+
+</div><!-- end grid -->
+</div><!-- end section-body -->
+
+<!-- ======================================================
+     기타 섹션
+     ====================================================== -->
+<div class="section-header" id="etc">
+  <span style="font-size:20px">🎯</span>
+  <h2>기타</h2>
+</div>
+<div class="section-body">
+<div class="rest-grid">
+
+<!-- 7. たこらん -->
+<div class="rest-card">
+  <div class="rest-head">
+    <span class="rest-num">7</span>
+    <div class="rest-names">
+      <div class="rest-ja">たこらん</div>
+      <div class="rest-phonetic">타코란 (Takoran)</div>
+      <div class="rest-meaning">たこ(타코)=문어, らん(란)=난·난초 (가게 이름)</div>
+      <span class="rest-category">たこ焼き(타코야키) 전문</span>
+    </div>
+  </div>
+
+  <img class="food-photo"
+    src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Japanese_set_meal_001.jpg/600px-Japanese_set_meal_001.jpg"
+    alt="たこらん"
+    loading="lazy"
+    onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Japanese_set_meal_001.jpg/600px-Japanese_set_meal_001.jpg'">
+
+  <div class="special-box">
+    <strong>왜 특별한가:</strong> 하카타 타코야키 전문 노포. 다시(出汁) 베이스 반죽으로 만드는 폭신하고 진한 타코야키. 타베로그·포트라벨 게재. 현지인 생활 밀착 가게
+  </div>
+
+  <div class="info-section">
+    <div class="info-title">시그니처 메뉴</div>
+    <ul class="menu-list">
+      
+      <li class="menu-item">
+        <span class="menu-name">たこ焼き 12個 <span class="menu-phonetic">(타코야키 12개)</span></span>
+        <span class="menu-price">¥600</span>
+        
+      </li>
+    </ul>
+  </div>
+
+  <div class="info-section">
+    <div class="info-title">영업 정보</div>
+    <div class="info-row"><span class="info-label">영업시간</span><span class="info-val">11:00–19:00 (L.O. 18:30)</span></div>
+    <div class="info-row"><span class="info-label">정기휴무</span><span class="info-val">미확인</span></div>
+    <div class="info-row"><span class="info-label">주소</span><span class="info-val">福岡市博多区堅粕4-5-11</span></div>
+    <div class="info-row"><span class="info-label">교통</span><span class="info-val">지하철 千代県庁口駅 도보권</span></div>
+    <div class="info-row"><span class="info-label">전화</span><span class="info-val">092-481-8991</span></div>
+  </div>
+
+  <div class="warn-box">
+    ⚠️ <strong>주의:</strong> 19시 종료. 단품 타코야키만 판매
+  </div>
+
+  <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:8px;">
+    <a class="map-btn" href="https://www.google.com/maps/search/%E3%81%9F%E3%81%93%E3%82%89%E3%82%93+%E7%A6%8F%E5%B2%A1%E5%B8%82%E5%8D%9A%E5%A4%9A%E5%8C%BA%E5%A0%85%E7%B2%954-5-11" target="_blank">📍 구글맵</a>
+    <a class="map-btn" style="background:#2a5a8a;" href="https://tabelog.com/en/fukuoka/A4001/A400101/40007075/" target="_blank">🌐 홈페이지</a>
+  </div>
+</div>
+
+<!-- 11. 白金小径 やまや総本店 -->
+<div class="rest-card">
+  <div class="rest-head">
+    <span class="rest-num">11</span>
+    <div class="rest-names">
+      <div class="rest-ja">白金小径 やまや総本店</div>
+      <div class="rest-phonetic">시로가네 코미치 야마야 소혼텐 (Shirogane Komichi Yamaya Sohonten)</div>
+      <div class="rest-meaning">白金(시로가네)=백금·흰 금속=지명, 小径(코미치)=작은 오솔길, やまや(야마야)=산집, 総本店(소혼텐)=총본점</div>
+      <span class="rest-category">明太子料理(명란젓 요리) · カフェ · 土産</span>
+    </div>
+  </div>
+
+  <img class="food-photo"
+    src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Japanese_set_meal_001.jpg/600px-Japanese_set_meal_001.jpg"
+    alt="白金小径 やまや総本店"
+    loading="lazy"
+    onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Japanese_set_meal_001.jpg/600px-Japanese_set_meal_001.jpg'">
+
+  <div class="special-box">
+    <strong>왜 특별한가:</strong> 후쿠오카 명란젓 브랜드 「やまや」의 旗艦 레스토랑. 2023년 3월 오픈. 요리+카페+기념품 한자리. 하카타 해피아워 할인도 유명
+  </div>
+
+  <div class="info-section">
+    <div class="info-title">시그니처 메뉴</div>
+    <ul class="menu-list">
+      
+      <li class="menu-item">
+        <span class="menu-name">明太子ランチ各種 <span class="menu-phonetic">(명란젓 런치)</span></span>
+        
+        <span class="menu-desc">야마야 명란젓 사용</span>
+      </li>
+      <li class="menu-item">
+        <span class="menu-name">白金カステラ <span class="menu-phonetic">(시로가네 카스테라)</span></span>
+        
+        <span class="menu-desc">카페 한정 디저트</span>
+      </li>
+      <li class="menu-item">
+        <span class="menu-name">明太子 土産各種 <span class="menu-phonetic">(명란젓 기념품)</span></span>
+        
+        
+      </li>
+    </ul>
+  </div>
+
+  <div class="info-section">
+    <div class="info-title">영업 정보</div>
+    <div class="info-row"><span class="info-label">영업시간</span><span class="info-val">11:00–18:00 (L.O. 17:30) / 저녁 18:00–22:00 (L.O. 21:00, 수~토 한정)</span></div>
+    <div class="info-row"><span class="info-label">정기휴무</span><span class="info-val">화요일 / 일·월요일 저녁 휴무</span></div>
+    <div class="info-row"><span class="info-label">주소</span><span class="info-val">福岡市中央区白金1-5-5</span></div>
+    <div class="info-row"><span class="info-label">교통</span><span class="info-val">지하철 薬院駅 도보 10분 / 渡辺通駅 도보 10분</span></div>
+    <div class="info-row"><span class="info-label">전화</span><span class="info-val">092-406-8087</span></div>
+  </div>
+
+  <div class="warn-box">
+    ⚠️ <strong>주의:</strong> 저녁은 수~토 한정. 화요일 휴무
+  </div>
+
+  <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:8px;">
+    <a class="map-btn" href="https://www.google.com/maps/search/%E7%99%BD%E9%87%91%E5%B0%8F%E5%BE%84%20%E3%82%84%E3%81%BE%E3%82%84%E7%B7%8F%E6%9C%AC%E5%BA%97+%E7%A6%8F%E5%B2%A1%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E7%99%BD%E9%87%911-5-5" target="_blank">📍 구글맵</a>
+    <a class="map-btn" style="background:#2a5a8a;" href="https://yamaya-sohonten.jp/shiroganekomichi/" target="_blank">🌐 홈페이지</a>
+  </div>
+</div>
+
+<!-- 12. hiromu -->
+<div class="rest-card">
+  <div class="rest-head">
+    <span class="rest-num">12</span>
+    <div class="rest-names">
+      <div class="rest-ja">hiromu</div>
+      <div class="rest-phonetic">히로무 (Hiromu)</div>
+      <div class="rest-meaning"></div>
+      <span class="rest-category">미확인 (현지 확인 필요)</span>
+    </div>
+  </div>
+
+  <img class="food-photo"
+    src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Japanese_set_meal_001.jpg/600px-Japanese_set_meal_001.jpg"
+    alt="hiromu"
+    loading="lazy"
+    onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Japanese_set_meal_001.jpg/600px-Japanese_set_meal_001.jpg'">
+
+  <div class="info-section">
+    <div class="info-title">시그니처 메뉴</div>
+    <ul class="menu-list">
+      
+    </ul>
+  </div>
+
+  <div class="info-section">
+    <div class="info-title">영업 정보</div>
+    <div class="info-row"><span class="info-label">영업시간</span><span class="info-val"><span style="color:#d9534f;font-weight:bold;">전화 확인 권장</span></span></div>
+    <div class="info-row"><span class="info-label">정기휴무</span><span class="info-val">미확인</span></div>
+    <div class="info-row"><span class="info-label">주소</span><span class="info-val"><span style="color:#d9534f;font-weight:bold;">정보 확인 중 — 방문 전 구글맵 검색 권장</span></span></div>
+    <div class="info-row"><span class="info-label">교통</span><span class="info-val">미확인</span></div>
+    <div class="info-row"><span class="info-label">전화</span><span class="info-val">미확인</span></div>
+  </div>
+
+  <div class="warn-box">
+    ⚠️ <strong>주의:</strong> 웹에서 정보를 특정하지 못했습니다. 원본 이미지 또는 현지 확인 필요
+  </div>
+
+  <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:8px;">
+    <a class="map-btn" href="https://www.google.com/maps/search/hiromu+" target="_blank">📍 구글맵</a>
+  </div>
+</div>
+
+<!-- 15. isozaki -->
+<div class="rest-card">
+  <div class="rest-head">
+    <span class="rest-num">15</span>
+    <div class="rest-names">
+      <div class="rest-ja">isozaki</div>
+      <div class="rest-phonetic">이소자키 (Isozaki)</div>
+      <div class="rest-meaning"></div>
+      <span class="rest-category">미확인 (현지 확인 필요)</span>
+    </div>
+  </div>
+
+  <img class="food-photo"
+    src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Japanese_set_meal_001.jpg/600px-Japanese_set_meal_001.jpg"
+    alt="isozaki"
+    loading="lazy"
+    onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Japanese_set_meal_001.jpg/600px-Japanese_set_meal_001.jpg'">
+
+  <div class="info-section">
+    <div class="info-title">시그니처 메뉴</div>
+    <ul class="menu-list">
+      
+    </ul>
+  </div>
+
+  <div class="info-section">
+    <div class="info-title">영업 정보</div>
+    <div class="info-row"><span class="info-label">영업시간</span><span class="info-val"><span style="color:#d9534f;font-weight:bold;">전화 확인 권장</span></span></div>
+    <div class="info-row"><span class="info-label">정기휴무</span><span class="info-val">미확인</span></div>
+    <div class="info-row"><span class="info-label">주소</span><span class="info-val"><span style="color:#d9534f;font-weight:bold;">정보 확인 중 — 방문 전 구글맵 검색 권장</span></span></div>
+    <div class="info-row"><span class="info-label">교통</span><span class="info-val">미확인</span></div>
+    <div class="info-row"><span class="info-label">전화</span><span class="info-val">미확인</span></div>
+  </div>
+
+  <div class="warn-box">
+    ⚠️ <strong>주의:</strong> 웹에서 정보를 특정하지 못했습니다. 원본 이미지 또는 현지 확인 필요
+  </div>
+
+  <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:8px;">
+    <a class="map-btn" href="https://www.google.com/maps/search/isozaki+" target="_blank">📍 구글맵</a>
+  </div>
+</div>
+
+<!-- 28. とんかつ わか葉 天神本店 -->
+<div class="rest-card">
+  <div class="rest-head">
+    <span class="rest-num">28</span>
+    <div class="rest-names">
+      <div class="rest-ja">とんかつ わか葉 天神本店</div>
+      <div class="rest-phonetic">돈카츠 와카바 텐진혼텐 (Tonkatsu Wakaba Tenjin Honten)</div>
+      <div class="rest-meaning">とんかつ(돈카츠)=돼지고기 커틀렛, わか葉(와카바)=어린잎·새싹, 天神本店(텐진혼텐)=텐진 본점</div>
+      <span class="rest-category">とんかつ(돈카츠) 전문</span>
+    </div>
+  </div>
+
+  <img class="food-photo"
+    src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Japanese_set_meal_001.jpg/600px-Japanese_set_meal_001.jpg"
+    alt="とんかつ わか葉 天神本店"
+    loading="lazy"
+    onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Japanese_set_meal_001.jpg/600px-Japanese_set_meal_001.jpg'">
+
+  <div class="special-box">
+    <strong>왜 특별한가:</strong> 저온 조리로 완성되는 겉면이 하얀 「白いとんかつ」 — 일반 돈카츠와 완전히 다른 비주얼+식감. 행렬이 끊이지 않는 후쿠오카 No.1 돈카츠 화제점. RKB 방송 소개
+  </div>
+
+  <div class="info-section">
+    <div class="info-title">시그니처 메뉴</div>
+    <ul class="menu-list">
+      
+      <li class="menu-item">
+        <span class="menu-name">白いとんかつ <span class="menu-phonetic">(시로이 돈카츠·흰 돈카츠)</span></span>
+        
+        <span class="menu-desc">저온 튀김으로 흰 겉면+연분홍 속</span>
+      </li>
+      <li class="menu-item">
+        <span class="menu-name">ロースかつ <span class="menu-phonetic">(로스카츠·등심 돈카츠)</span></span>
+        
+        
+      </li>
+      <li class="menu-item">
+        <span class="menu-name">ヒレかつ <span class="menu-phonetic">(히레카츠·안심 돈카츠)</span></span>
+        
+        
+      </li>
+      <li class="menu-item">
+        <span class="menu-name">かつ丼 <span class="menu-phonetic">(카츠동·돈카츠 덮밥)</span></span>
+        
+        
+      </li>
+    </ul>
+  </div>
+
+  <div class="info-section">
+    <div class="info-title">영업 정보</div>
+    <div class="info-row"><span class="info-label">영업시간</span><span class="info-val">월~토 10:30–14:30 / 17:00–20:45 / 일 10:30–14:30 / 17:00–19:45</span></div>
+    <div class="info-row"><span class="info-label">정기휴무</span><span class="info-val">미확인</span></div>
+    <div class="info-row"><span class="info-label">주소</span><span class="info-val">福岡市中央区天神1-15-36 天神Aビル</span></div>
+    <div class="info-row"><span class="info-label">교통</span><span class="info-val">지하철 天神駅 도보 3분</span></div>
+    <div class="info-row"><span class="info-label">전화</span><span class="info-val">092-406-8189</span></div>
+  </div>
+
+  <div class="warn-box">
+    ⚠️ <strong>주의:</strong> 웨이팅 필수. 오픈 전 도착 권장
+  </div>
+
+  <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:8px;">
+    <a class="map-btn" href="https://www.google.com/maps/search/%E3%81%A8%E3%82%93%E3%81%8B%E3%81%A4%20%E3%82%8F%E3%81%8B%E8%91%89%20%E5%A4%A9%E7%A5%9E%E6%9C%AC%E5%BA%97+%E7%A6%8F%E5%B2%A1%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E5%A4%A9%E7%A5%9E1-15-36%20%E5%A4%A9%E7%A5%9EA%E3%83%93%E3%83%AB" target="_blank">📍 구글맵</a>
+    <a class="map-btn" style="background:#2a5a8a;" href="https://tabelog.com/en/fukuoka/A4001/A400103/40050758/" target="_blank">🌐 홈페이지</a>
+  </div>
+</div>
+
+<!-- 32. Eat O'Kashi (いとおかし) -->
+<div class="rest-card">
+  <div class="rest-head">
+    <span class="rest-num">32</span>
+    <div class="rest-names">
+      <div class="rest-ja">Eat O'Kashi (いとおかし)</div>
+      <div class="rest-phonetic">이토오카시 / 이트 오카시 (Eat O'Kashi)</div>
+      <div class="rest-meaning">いとおかし=예쁘고 사랑스럽다 (고어), Eat O'Kashi=먹다+과자의 영어+일본어 합성</div>
+      <span class="rest-category">焼き菓子(야키가시·구운 과자) 전문</span>
+    </div>
+  </div>
+
+  <img class="food-photo"
+    src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Japanese_set_meal_001.jpg/600px-Japanese_set_meal_001.jpg"
+    alt="Eat O'Kashi (いとおかし)"
+    loading="lazy"
+    onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Japanese_set_meal_001.jpg/600px-Japanese_set_meal_001.jpg'">
+
+  <div class="special-box">
+    <strong>왜 특별한가:</strong> 파티시에 경력 10년의 여성 점주 나이토 치하루(内藤千晴)씨가 2022년 오픈. 계란·밀·백설탕·유제품 불사용 건강 지향. 네트워크에서 화제가 된 후 실제 매장 오픈
+  </div>
+
+  <div class="info-section">
+    <div class="info-title">시그니처 메뉴</div>
+    <ul class="menu-list">
+      
+      <li class="menu-item">
+        <span class="menu-name">パウンドケーキ (파운드 케이크) 1본 ¥1,800 / 2본 ¥3,500 / 슬라이스 </span>
+        <span class="menu-price">¥350</span>
+        
+      </li>
+      <li class="menu-item">
+        <span class="menu-name">フィナンシェ (피낭시에) ¥300~350 </span>
+        
+        
+      </li>
+      <li class="menu-item">
+        <span class="menu-name">カヌレ <span class="menu-phonetic">(카늘레)</span></span>
+        <span class="menu-price">¥350</span>
+        
+      </li>
+      <li class="menu-item">
+        <span class="menu-name">ガレット・ブルトンヌ <span class="menu-phonetic">(갈레트 브르통느)</span></span>
+        <span class="menu-price">¥300</span>
+        
+      </li>
+      <li class="menu-item">
+        <span class="menu-name">ディアマンクッキー <span class="menu-phonetic">(다이아몬드 쿠키)</span></span>
+        <span class="menu-price">¥700</span>
+        
+      </li>
+    </ul>
+  </div>
+
+  <div class="info-section">
+    <div class="info-title">영업 정보</div>
+    <div class="info-row"><span class="info-label">영업시간</span><span class="info-val">목~토 11:00–17:00</span></div>
+    <div class="info-row"><span class="info-label">정기휴무</span><span class="info-val">일~수 (주 3일만 영업)</span></div>
+    <div class="info-row"><span class="info-label">주소</span><span class="info-val">福岡市中央区平和3-2-24</span></div>
+    <div class="info-row"><span class="info-label">교통</span><span class="info-val">지하철 薬院駅 도보 10분 / 渡辺通駅 도보 권</span></div>
+    <div class="info-row"><span class="info-label">전화</span><span class="info-val">미확인</span></div>
+  </div>
+
+  <div class="warn-box">
+    ⚠️ <strong>주의:</strong> 목~토만 영업. 선물용으로 인기라 품절 빠름
+  </div>
+
+  <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:8px;">
+    <a class="map-btn" href="https://www.google.com/maps/search/Eat%20O%27Kashi%20%28%E3%81%84%E3%81%A8%E3%81%8A%E3%81%8B%E3%81%97%29+%E7%A6%8F%E5%B2%A1%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E5%B9%B3%E5%92%8C3-2-24" target="_blank">📍 구글맵</a>
+    <a class="map-btn" style="background:#2a5a8a;" href="https://eatokashi.theshop.jp/" target="_blank">🌐 홈페이지</a>
+  </div>
+</div>
+
+<!-- 33. 路地裏カレー Tiki -->
+<div class="rest-card">
+  <div class="rest-head">
+    <span class="rest-num">33</span>
+    <div class="rest-names">
+      <div class="rest-ja">路地裏カレー Tiki</div>
+      <div class="rest-phonetic">로지우라 카레 티키 (Rojiura Curry Tiki)</div>
+      <div class="rest-meaning">路地裏(로지우라)=골목 안쪽, カレー(카레)=카레, Tiki=티키 (가게 이름)</div>
+      <span class="rest-category">スパイスカレー(스파이스 카레) 전문</span>
+    </div>
+  </div>
+
+  <img class="food-photo"
+    src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Japanese_set_meal_001.jpg/600px-Japanese_set_meal_001.jpg"
+    alt="路地裏カレー Tiki"
+    loading="lazy"
+    onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Japanese_set_meal_001.jpg/600px-Japanese_set_meal_001.jpg'">
+
+  <div class="special-box">
+    <strong>왜 특별한가:</strong> 후쿠오카 스파이스 카레 씬의 선구자. 좁은 골목 안 숨은 명점. 오픈 전부터 줄 서는 인기. 타베로그 수록. 매일 15시 이전 소진 마감
+  </div>
+
+  <div class="info-section">
+    <div class="info-title">시그니처 메뉴</div>
+    <ul class="menu-list">
+      
+      <li class="menu-item">
+        <span class="menu-name">スパイスカレー各種 <span class="menu-phonetic">(스파이스 카레)</span></span>
+        
+        <span class="menu-desc">매일 종류 다름</span>
+      </li>
+      <li class="menu-item">
+        <span class="menu-name">チキンカレー <span class="menu-phonetic">(치킨 카레)</span></span>
+        
+        
+      </li>
+      <li class="menu-item">
+        <span class="menu-name">週替わりカレー <span class="menu-phonetic">(주간 특선 카레)</span></span>
+        
+        
+      </li>
+    </ul>
+  </div>
+
+  <div class="info-section">
+    <div class="info-title">영업 정보</div>
+    <div class="info-row"><span class="info-label">영업시간</span><span class="info-val">10:30–15:00 (소진 시 조기 마감)</span></div>
+    <div class="info-row"><span class="info-label">정기휴무</span><span class="info-val">일요일</span></div>
+    <div class="info-row"><span class="info-label">주소</span><span class="info-val">福岡市中央区渡辺通5-24-38</span></div>
+    <div class="info-row"><span class="info-label">교통</span><span class="info-val">지하철 七隈線 天神南駅 6번 출구 바로 앞</span></div>
+    <div class="info-row"><span class="info-label">전화</span><span class="info-val">092-738-2008</span></div>
+  </div>
+
+  <div class="warn-box">
+    ⚠️ <strong>주의:</strong> 일요일 휴무. 소진 조기 마감 빈번. 오픈 전 도착 권장
+  </div>
+
+  <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:8px;">
+    <a class="map-btn" href="https://www.google.com/maps/search/%E8%B7%AF%E5%9C%B0%E8%A3%8F%E3%82%AB%E3%83%AC%E3%83%BC%20Tiki+%E7%A6%8F%E5%B2%A1%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E6%B8%A1%E8%BE%BA%E9%80%9A5-24-38" target="_blank">📍 구글맵</a>
+    <a class="map-btn" style="background:#2a5a8a;" href="https://tikicurry.com/" target="_blank">🌐 홈페이지</a>
+  </div>
+</div>
+
+</div><!-- end grid -->
+</div><!-- end section-body -->
+
+</div> <!-- container end -->
+<footer>
+  <p>이 가이드는 현지 정보 및 확인 데이터를 바탕으로 작성되었습니다.</p>
+</footer>
+</body>
+</html>
